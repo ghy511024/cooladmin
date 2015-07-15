@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--基本结构</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="css/highlight/agate.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+
+        <link rel="stylesheet" href="css/adminpage.css"/>
+        <script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+    </head>
+    <body>
+        <!--顶部导航-->
+        <div class="topbar">
+            <div class="topbar-left left-home">
+                <!--首页房间小图标-->
+                <a href="#"><i class="fa fa-home fa-3x"></i></a>
+            </div>
+            <!--顶部导航-->
+            <div class="topbar-left">
+                <a href="#" class="topbar-nav-btn active"><span>常用功能</span></a>
+                <a href="#" class="topbar-nav-btn "><span>图表功能</span></a>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="main-content">
+            <!--内容一级导航-->
+            <div class="left-slide-bar">
+                <ul>
+                    <li class="active"><a href="index.html">基础依赖</a></li>
+                    <li><a href="/datatable/basic.html">数据表格</a></li>
+                    <li><a href="#">日期插件</a></li>
+                    <li><a href="#">查询条件</a></li>
+                    <li><a href="#">提示插件</a></li>
+                    <li><a href="#">图标使用</a></li>
+                    <li><a href="#">功能集锦</a></li>
+                </ul>
+            </div>
+            <!--内容主要区域-->
+            <div class="content-inner left-content">
+                <!--内容二级导航-->
+                <div class="inner-slide-bar">
+                    <div class="title">数据表格</div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="index.html" ><div class="link">依赖关系</div></a>
+                            </li>
+                            <li >
+                                <a href="structure.html" class="current"><div class="link">页面结构</div></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="right-content">
+                        <div class="content-title">
+                            <h5>页面结构</h5>
+                        </div>
+                        <div class="margin-top" style="margin-bottom:100px">
+                            <p>以本页面结构为例子，下面给出 html 结构 直接拷贝可用。例子中代码和实际效果请参照本页面自行脑补。</p>
+                            <p>在使用本文结构之前，请阅读依赖关系，配置好核心所需要的样式和 js</p>
+                            <pre><code class="language">
+    &lt;body>
+        &lt;!--顶部导航-->
+        &lt;div class="topbar">
+            &lt;div class="topbar-left left-home">
+                &lt;!--首页房间小图标-->
+                &lt;a href="#">&lt;i class="fa fa-home fa-3x">&lt;/i>&lt;/a>
+            &lt;/div>
+            &lt;!--顶部导航-->
+            &lt;div class="topbar-left">
+                &lt;a href="#" class="topbar-nav-btn active">&lt;span>常用功能&lt;/span>&lt;/a>
+                &lt;a href="#" class="topbar-nav-btn ">&lt;span>图表功能&lt;/span>&lt;/a>
+            &lt;/div>
+        &lt;/div>
+        &lt;!--中间内容-->
+        &lt;div class="main-content">
+            &lt;!--内容一级导航-->
+            &lt;div class="left-slide-bar">
+                &lt;ul>
+                    &lt;!--选中加 active class-->
+                    &lt;li class="active">&lt;a href="index.html">基础依赖&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">数据表格&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">日期插件&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">查询条件&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">提示插件&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">图标使用&lt;/a>&lt;/li>
+                    &lt;li>&lt;a href="#">功能集锦&lt;/a>&lt;/li>
+                &lt;/ul>
+            &lt;/div>
+            &lt;!--内容主要区域-->
+            &lt;div class="content-inner left-content">
+                &lt;!--内容二级导航-->
+                &lt;div class="inner-slide-bar">
+                    &lt;div class="title">数据表格&lt;/div>
+                    &lt;div class="list">
+                        &lt;ul>
+                            &lt;li>
+                                &lt;a href="index.html" >&lt;div class="link">依赖关系&lt;/div>&lt;/a>
+                            &lt;/li>
+                            &lt;li >
+                                &lt;!--选中加 current class-->
+                                &lt;a href="structure.html" class="current">&lt;div class="link">页面结构&lt;/div>&lt;/a>
+                            &lt;/li>
+                        &lt;/ul>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div class="content-body">
+                    &lt;div class="right-content">
+                        &lt;div class="content-title">
+                            &lt;h5>页面结构&lt;/h5>
+                        &lt;/div>
+                        &lt;div class="margin-top" style="margin-bottom:100px;">
+                             &lt!--内容主要区域-->
+                             &lt!--你想写的都在这儿写-->
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/body>
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" language="javascript" src="http://10.0.13.109:8804/zystatic/js/admin/DT_table.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#table').dataTable();
+            })
+        </script>
+    </body>
+</html>

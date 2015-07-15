@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="css/highlight/agate.css" rel="stylesheet"/>
+         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+
+        <link rel="stylesheet" href="css/adminpage.css"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+    </head>
+    <body>
+        <!--顶部导航-->
+        <div class="topbar">
+            <div class="topbar-left left-home">
+                <a href="/admin"><i class="fa fa-home fa-3x"></i></a>
+            </div>
+            <div class="topbar-left">
+                <a href="/admins/prosearch" class="topbar-nav-btn active">
+                    <span>常用功能</span>
+                </a>
+                <a href="/admins/payments" class="topbar-nav-btn ">
+                    <span>图表功能</span>
+                </a>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="main-content">
+            <!--内容一级导航-->
+            <div class="left-slide-bar">
+                <ul>
+                    <li class="active">
+                        <a href="index.html">基础依赖</a>
+                    </li>
+                    <li>
+                        <a href="datatable/basic.html">数据表格</a>
+                    </li>
+                    <li class="">
+                        <a href="/admins/alldirector">日期插件</a>
+                    </li>
+                    <li >
+                        <a href="/admins/applyadmin">查询条件</a>
+                    </li>
+                    <li class="">
+                        <a href="/admins/applyadmin">提示插件</a>
+                    </li>
+                    <li class="">
+                        <a href="/admins/reportworker">图标使用</a>
+                    </li>
+                    <li class="">
+                        <a href="/admins/giftConfig">功能集锦</a>
+                    </li>
+                </ul>
+            </div>
+            <!--内容主要区域-->
+            <div class="content-inner left-content">
+                <!--内容二级导航-->
+                <div class="inner-slide-bar">
+                    <div class="title">使用须知</div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="index.html" class="current">
+                                    <div class="link">
+                                        依赖关系
+                                    </div>
+                                </a>
+                            </li>
+                            <li >
+                                <a href="structure.html" >
+                                    <div class="link">
+                                        页面结构
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="right-content">
+                        <div class="content-title">
+                            <h5>后端依赖关系</h5>
+                        </div>
+                        <div class="margin-top">
+                            <p>后端常用静态资源地址集合（请慎用第三方cdn 访问速度是个问题。）</p>
+                            <pre><code class="language">
+    &lt!--bootstrap核心 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+    &lt!--图标字体,admin 后端样式 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
+
+    &lt!--jQuery -->
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js">&lt;/script>
+
+    &lt!--后端工具依赖 -->
+    &lt;script  src="http://8.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/admin.js">&lt;/script>
+
+    &lt!--时间插件依赖 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/date/jquery-ui.1.8.21.min.css"/>
+    &lt;script  src="http://static.ws.kukuplay.com/common/date/jquery-ui.1.8.21.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/date/jquery-ui-datetimepicker-zh-CN.js">&lt;/script>
+
+    &lt!--datatable依赖 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
+    &lt;script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
+    &lt;script  src="http://6.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/DT_table.js">&lt;/script>
+
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" language="javascript" src="http://10.0.13.109:8804/zystatic/js/admin/DT_table.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
+</html>
