@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>coolAdmin 后端wiki</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+
+        <link rel="stylesheet" href="../css/adminpage.css"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+    </head>
+    <body>
+        <!--顶部导航-->
+        <div class="topbar">
+            <div class="topbar-left left-home">
+                <a href="/admin"><i class="fa fa-home fa-3x"></i></a>
+            </div>
+            <div class="topbar-left">
+                <div class="topbar-nav-btn active">
+                    <a href="#">
+                        <span>常用功能</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div class="main-content">
+            <!--内容一级导航-->
+            <div class="left-slide-bar">
+                <ul>
+                    <li><a href="../index.html">基础依赖</a></li>
+                    <li><a href="../datatable/basic.html">数据表格</a></li>
+                    <li class="active"><a href="..page/date.html">日期插件</a></li>
+                </ul>
+            </div>
+            <!--内容主要区域-->
+            <div class="content-inner left-content">
+                <!--内容二级导航-->
+                <div class="inner-slide-bar">
+                    <div class="title">日期插件</div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <a href="date.html">
+                                    <div class="link">
+                                        jquery 版
+                                    </div>
+                                </a>
+                                <a href="bootstrapdate.html" class="current">
+                                    <div class="link">
+                                        bootstrap 版
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-body">
+                    <div class="right-content">
+                        <div class="content-title">
+                            <h5>日期插件</h5>
+                        </div>
+                        <div class="margin-top">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="table" class="table table-bordered">
+                                        <thead>
+                                        <th>依赖</th>
+                                        <th>js</th>
+                                        <th>css</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>bootstrap</td>
+                                                <td>http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js</td>
+                                                <td>http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/css/bootstrap.min.css</td>
+                                            </tr>   
+                                            <tr>
+                                                <td>日期插件</td>
+                                                <td>http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js</td>
+                                                <td>http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css</td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-12">
+                                    <p>
+                                        1：更详细的api，参见<a href="http://www.bootcss.com/p/bootstrap-datetimepicker/index.htm" target="_blank">官网</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>默认使用</p>
+                                    <pre><code class="language">
+        &lt;script type="text/javascript">
+            $(document).ready(function () {
+               $("#date1").datetimepicker();
+            })
+        &lt;/script>
+</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="date1"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top">  <div class="col-md-12">
+                                    <p>参数设置</p>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <pre><code class="language">
+        &lt;script type="text/javascript">
+            $(document).ready(function () {
+                  $("#date2").datetimepicker({
+                    showMeridian: true, //分屏
+                    autoclose: true, //选完关闭
+                    todayBtn: true, //现在时间
+                });
+            })
+        &lt;/script>
+</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="date2"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row margin-top">
+                                <div class="col-md-12">  <p>参数设置2</p></div>
+
+                                <div class="col-md-6">
+                                    <pre><code class="language">
+        &lt;script type="text/javascript">
+             $("#date3").datetimepicker({
+                    startDate: "2015-12-13", //开始时间
+                    endDate: "2015-12-28", //开始时间
+                    minuteStep: 3//分钟间隔
+                });
+        &lt;/script>
+</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" id="date3"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="http://8.fyimg.kukuplay.com/zytv/v1.8.53/js/jquery-1.9.2.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.css"/>
+        <script  src="http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#date1").datetimepicker();
+                $("#date2").datetimepicker({
+                    showMeridian: true, //分屏
+                    autoclose: true, //选完关闭
+                    todayBtn: true, //现在时间
+                });
+                $("#date3").datetimepicker({
+                    startDate: "2015-12-13", //开始时间
+                    endDate: "2015-12-28", //开始时间
+                    minuteStep: 3//分钟间隔
+                });
+
+            })
+        </script>
+    </body>
+</html>
