@@ -9,12 +9,12 @@ and open the template in the editor.
         <title>coolAdmin 后端wiki--基本结构</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link type="text/css" href="css/highlight/agate.css" rel="stylesheet"/>
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
 
-        <link rel="stylesheet" href="css/adminpage.css"/>
+        <link rel="stylesheet" href="../css/adminpage.css"/>
         <script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
         <script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -30,8 +30,11 @@ and open the template in the editor.
             </div>
             <!--顶部导航-->
             <div class="topbar-left">
-                <a href="#" class="topbar-nav-btn active"><span>常用功能</span></a>
-                <a href="#" class="topbar-nav-btn "><span>图表功能</span></a>
+                <div class="topbar-nav-btn active">
+                    <a href="#">
+                        <span>常用功能</span>
+                    </a>
+                </div>
             </div>
         </div>
         <!--中间内容-->
@@ -39,13 +42,9 @@ and open the template in the editor.
             <!--内容一级导航-->
             <div class="left-slide-bar">
                 <ul>
-                    <li class="active"><a href="index.html">基础依赖</a></li>
-                    <li><a href="/datatable/basic.html">数据表格</a></li>
-                    <li><a href="#">日期插件</a></li>
-                    <li><a href="#">查询条件</a></li>
-                    <li><a href="#">提示插件</a></li>
-                    <li><a href="#">图标使用</a></li>
-                    <li><a href="#">功能集锦</a></li>
+                    <li class="active"><a href="../index.html">基础依赖</a></li>
+                    <li><a href="../datatable/basic.html">数据表格</a></li>
+                    <li><a href="date.html">日期插件</a></li>
                 </ul>
             </div>
             <!--内容主要区域-->
@@ -56,10 +55,19 @@ and open the template in the editor.
                     <div class="list">
                         <ul>
                             <li>
-                                <a href="index.html" ><div class="link">依赖关系</div></a>
+                                <a href="../index.html">
+                                    <div class="link">基础类库cdn</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="basicdep.html" >
+                                    <div class="link">依赖关系</div>
+                                </a>
                             </li>
                             <li >
-                                <a href="structure.html" class="current"><div class="link">页面结构</div></a>
+                                <a href="structure.html"  class="current">
+                                    <div class="link">页面结构</div>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -82,8 +90,11 @@ and open the template in the editor.
             &lt;/div>
             &lt;!--顶部导航-->
             &lt;div class="topbar-left">
-                &lt;a href="#" class="topbar-nav-btn active">&lt;span>常用功能&lt;/span>&lt;/a>
-                &lt;a href="#" class="topbar-nav-btn ">&lt;span>图表功能&lt;/span>&lt;/a>
+                 &lt;div class="topbar-nav-btn">
+                    &lt;a href="#">
+                        &lt;span>常用功能&lt;/span>
+                    &lt;/a>
+                &lt;/div>
             &lt;/div>
         &lt;/div>
         &lt;!--中间内容-->
@@ -95,17 +106,13 @@ and open the template in the editor.
                     &lt;li class="active">&lt;a href="index.html">基础依赖&lt;/a>&lt;/li>
                     &lt;li>&lt;a href="#">数据表格&lt;/a>&lt;/li>
                     &lt;li>&lt;a href="#">日期插件&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">查询条件&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">提示插件&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">图标使用&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">功能集锦&lt;/a>&lt;/li>
                 &lt;/ul>
             &lt;/div>
             &lt;!--内容主要区域-->
             &lt;div class="content-inner left-content">
                 &lt;!--内容二级导航-->
                 &lt;div class="inner-slide-bar">
-                    &lt;div class="title">数据表格&lt;/div>
+                    &lt;div class="title">页面结构&lt;/div>
                     &lt;div class="list">
                         &lt;ul>
                             &lt;li>
@@ -138,13 +145,12 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-
         <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
         <script type="text/javascript" language="javascript" src="http://10.0.13.109:8804/zystatic/js/admin/DT_table.js"></script>
-        <script type="text/javascript" src="js/admin.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
         <script>
             $(document).ready(function () {
                 $('#table').dataTable();

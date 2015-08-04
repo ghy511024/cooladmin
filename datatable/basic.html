@@ -30,8 +30,11 @@ and open the template in the editor.
             </div>
             <!--顶部导航-->
             <div class="topbar-left">
-                <a href="#" class="topbar-nav-btn active"><span>常用功能</span></a>
-                <a href="#" class="topbar-nav-btn "><span>图表功能</span></a>
+                <div class="topbar-nav-btn active">
+                    <a href="#">
+                        <span>常用功能</span>
+                    </a>
+                </div>
             </div>
         </div>
         <!--中间内容-->
@@ -39,13 +42,9 @@ and open the template in the editor.
             <!--内容一级导航-->
             <div class="left-slide-bar">
                 <ul>
-                    <li><a href="../index.html">基础依赖</a></li>
-                    <li class="active"><a href="basic.html" class="active">数据表格</a></li>
-                    <li><a href="#">日期插件</a></li>
-                    <li><a href="#">查询条件</a></li>
-                    <li><a href="#">提示插件</a></li>
-                    <li><a href="#">图标使用</a></li>
-                    <li><a href="#">功能集锦</a></li>
+                    <li ><a href="../index.html">基础依赖</a></li>
+                    <li class="active"><a href="../datatable/basic.html">数据表格</a></li>
+                    <li><a href="../page/date.html">日期插件</a></li>
                 </ul>
             </div>
             <!--内容主要区域-->
@@ -56,10 +55,7 @@ and open the template in the editor.
                     <div class="list">
                         <ul>
                             <li>
-                              <a href="basic.html" class="current"><div class="link">基本使用</div></a>
-                            </li>
-                            <li >
-                              <a href="#" ><div class="link">高级属性</div></a>
+                                <a href="basic.html" class="current"><div class="link">基本使用</div></a>
                             </li>
                         </ul>
                     </div>
@@ -70,43 +66,6 @@ and open the template in the editor.
                             <h5>基本使用</h5>
                         </div>
                         <div class="margin-top" style="margin-bottom:100px;">
-                            <h6>依赖关系</h6>
-                            <pre><code class="language">
-    &lt!--bootstrap核心 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-    &lt!--图标字体,admin 后端样式 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
-
-    &lt!--jQuery -->
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js">&lt;/script>
-
-    &lt!--datatable依赖 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
-    &lt;script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">&lt;/script>
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
-</code></pre>
-
-                            <h6>html 代码</h6>
-                            <pre><code class="language">
-   &lt;table id="table">
-       &lt;thead>
-        ....
-        &lt;/thead>
-       &lt;tbody>
-        ....
-        &lt;/tbody>
-    &lt;/table>
-</code></pre>
-                            <h6>js 初始化表格</h6>
-                            <pre><code class="language">
-    &ltscript>
-            $(document).ready(function () {
-                $('#table').dataTable();
-            })
-       &lt/script>
-</code></pre>
                             <div>
                                 <table id="table" class="table table-bordered">
                                     <thead>
@@ -129,7 +88,44 @@ and open the template in the editor.
                                     </tbody>
                                 </table>
                             </div>
-                            <p>PS:需要注意一点：有些表格中的一些按钮需要绑定事件（click 之类的），这些事件最好在初始化表格之前绑定，要不然在翻页时事件会失效</p>
+                            <h6 class="margin-top">依赖关系</h6>
+                            <pre><code class="language">
+    &lt!--bootstrap核心 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+    &lt!--图标字体,admin 后端样式 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
+
+    &lt!--jQuery -->
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js">&lt;/script>
+
+    &lt!--datatable依赖 -->
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
+    &lt;script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
+</code></pre>
+
+                            <h6 class="margin-top">html 代码</h6>
+                            <pre><code class="language">
+   &lt;table id="table">
+       &lt;thead>
+        ....
+        &lt;/thead>
+       &lt;tbody>
+        ....
+        &lt;/tbody>
+    &lt;/table>
+</code></pre>
+                            <h6>js 初始化表格</h6>
+                            <pre><code class="language">
+    &ltscript>
+            $(document).ready(function () {
+                $('#table').dataTable();
+            })
+       &lt/script>
+</code></pre>
+                            <p class="margin-top">PS:需要注意一点：有些表格中的一些按钮需要绑定事件（click 之类的），这些事件最好在初始化表格之前绑定，要不然在翻页时事件会失效</p>
                             <pre><code class="language">
     &ltscript>
             $(document).ready(function () {
@@ -141,7 +137,7 @@ and open the template in the editor.
             })
        &lt/script>
 </code></pre>
-                            <p>目前有现成封装好的初始化 只需要引用一个js 就行了</p>
+                            <p class="margin-top">目前有现成封装好的初始化 只需要引用一个js 就行了</p>
                             <pre><code class="language">
 // 定义id 为table 其他的无效
    &lt;table id="table">

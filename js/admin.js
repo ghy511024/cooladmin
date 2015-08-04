@@ -17,6 +17,18 @@ var Admins = (function () {
                     $(this).html(str);
                 }
             })
+            var start = Ut.getParam("start");
+            var end = Ut.getParam("end");
+            if (start != null) {
+                var start = new Date(Number(start));
+                var str = Ut.getTimeTostr(start)
+                $("#start-time").val(str);
+            }
+            if (end != null) {
+                var end = new Date(Number(end));
+                var str2 = Ut.getTimeTostr(end)
+                $("#end-time").val(str2);
+            }
         },
         initEvent: function () {
             $("table").on("click", ".trup", function () {
@@ -33,6 +45,13 @@ var Admins = (function () {
                 var parent = $(this).parent().parent();
                 parent.remove();
             });
+            $(".nav-tabs").on("click", "li a", function () {
+                $(this).parent().parent().find(".active").removeClass("active");
+                $(this).parent().addClass("active");
+                var _id = $(this).attr("data-id");
+                $(".nav-content").removeClass("active");
+                $("#" + _id).addClass("active");
+            })
         },
         load: function () {
         }
@@ -127,7 +146,7 @@ var fytip = (function ($) {
                     var left = $(this).offset().left;
                     var w = $(this).innerWidth();
                     var h = $(this).innerHeight();
-                  
+
                     var type = $(this).attr("data-tip") || "top";
                     var desc = $(this).attr("data-desc");
                     _this.reset();
@@ -135,9 +154,9 @@ var fytip = (function ($) {
                     tip.find(".tip-inner").html(desc);
                     var sw = tip.width();
                     var sh = tip.height();
-                      console.log(top, left, w, h,sw,sh);
-                      console.log((left - (sw - w) / 2));
-                      
+                    console.log(top, left, w, h, sw, sh);
+                    console.log((left - (sw - w) / 2));
+
                     if (type == "top") {
                         tip.css({left: (left - (sw - w) / 2), top: (top - sh - 5)});
                     }
@@ -162,7 +181,6 @@ var fytip = (function ($) {
             arrow.removeClass("bottom-arrow")
         },
         getSinleton: function () {
-
             function getInstance() {
                 if (instance == null) {
                     instance = new createTip();

@@ -4,7 +4,6 @@ body{
     line-height: 1.428571429;
     color: #333333;
     background-color: #ffffff;
-    margin:0px;
 }
 ul,ul li{  list-style: none;
     padding: 0px;
@@ -31,6 +30,15 @@ margin: 0px;}
 table.dataTable {
     margin-top: 0px !important;
 }
+p{
+    
+}
+//顶部导航
+$color1:#41A1BF;
+$color2:#40505B;
+$tb_color:#40505B;
+$lb_color:#3B8686;
+$lb2_color:#ECF0F1;
 //顶部导航
 .topbar{
     a{  text-decoration: none;}
@@ -38,15 +46,16 @@ table.dataTable {
     z-index: 100;
     clear: both;
     height: 50px;
-    background: #09C;
+    background: $tb_color;
     font-size: 12px;
     min-width: 1200px;
+    z-index:101;
     .topbar-left{
         &.left-home{
             width:80px;
             a{
-                color:#fff;
                 margin-left:20px;
+                color:#fff;
                 line-height:68px;
             }
         }
@@ -55,14 +64,61 @@ table.dataTable {
     }
     .topbar-nav-btn{
         padding: 0 20px;
-        display: inline-block;
         height: 50px;
         font-size: 14px;
         color: #fff;
         font-size: 14px;
         line-height: 50px;
+        position:relative;
+        float:left;
+        a{
+            color: #fff;
+        }
         &.active{
-            background: #0080AB;
+            background: #fff;
+            a{
+                color: #444444;
+            }
+        }
+        &:hover{
+            background: #fff;
+            a{
+                color: #444444;
+            }
+            .dropdown-menu{
+                display:block;
+            }
+        }
+    }
+    .dropdown-menu{
+        border: none;
+        padding: 10px;
+        margin-top: 0;
+        white-space: nowrap;
+        border-radius: 0px;
+        .topbar-nav-col{
+            display: inline-block;
+            vertical-align: top;
+            padding: 0 10px;
+            ul{
+                li{
+                    min-width: 140px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-bottom: 2px;
+                    a{
+                        display: block;
+                        height: 100%;
+                        padding: 0 10px;
+                        text-decoration: none;
+                        color: #555555;
+                        font-size:1px;
+                        &:hover{
+                            background:#f2f2f2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -81,7 +137,7 @@ table.dataTable {
         position: fixed;
         top: 50px;
         bottom: 0px;
-        background-color: #293038;
+        background-color: $lb_color;
         z-index: 102;
         overflow-x: hidden;
         ul{
@@ -95,13 +151,14 @@ table.dataTable {
                     color:#fff;
                     text-align:center;
                     &:hover{
-                        background: #37424f;
+                        color:#444444;
+                        background:$lb2_color;
                     }
                 }
                 &.active{
-                    
                     a{
-                        background: #16999E;
+                        color:#444444;
+                        background: $lb2_color;
                     }
                 }
             }
@@ -120,8 +177,9 @@ table.dataTable {
             left:80px;
         }
     }
+    $in_w:96px;
     .inner-slide-bar{
-        width: 120px;
+        width: $in_w;
         float: left;
         background-color: #EAEDF1;
         position: absolute;
@@ -132,17 +190,17 @@ table.dataTable {
         .title{
             font-weight: bold;
             text-indent: 20px;
-            width: 120px;
-            height: 70px;
-            line-height: 70px;
-            background: #D9DEE4;
+            width: $in_w;
+            height: 40px;
+            line-height: 40px;
+            background: #EAEDF1;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
         .list{
             position: absolute;
-            top: 70px;
+            top: 40px;
             left: 0px;
             right: 0px;
             bottom: 0px;
@@ -151,24 +209,23 @@ table.dataTable {
             ul{
                 li{
                     a{
-                        &.current{
+                        &.current,&:hover{
                             background:#fff;
                         }
-                        width: 120px;
+                        width:   $in_w;
                         height: 40px;
                         line-height: 40px;
                         display: block;
                         color: #333;
                         text-align:center;
                         .link{
-                            width: 120px;
+                            width:   $in_w;;
                             float: left;
                             overflow: hidden;
                             text-overflow: ellipsis;
                             white-space: nowrap;
                         }
                     }
-                    
                 }
             }
         }
@@ -179,10 +236,11 @@ table.dataTable {
         width: auto;
         top: 0px;
         bottom: 0px;
-        left: 120px;
+        left: $in_w;
         right: 0px;
         overflow: hidden;
         overflow-y: auto;
+        padding-bottom: 50px;
         .right-content{
             padding:0px 15px;
             .content-title{
@@ -192,7 +250,6 @@ table.dataTable {
                 h5{
                     text-indent: 8px;
                     border-left: 2px solid #88B7E0;
-                    
                 }
             }
         }
@@ -219,6 +276,7 @@ table.dataTable {
             border-left: 0px;
             border-right: 0px;
             border-bottom: 1px solid #FFF;
+            cursor:pointer;
         }
         &.active{
             border-top: 0px;
@@ -242,6 +300,12 @@ table.dataTable {
 .nav-tabs>li.active>a,.nav-tabs>li.active>a:hover,.nav-tabs>li.active>a:focus{border-top:2px solid #00a2ca;border-left:0px;border-right:0px;border-bottom:1px solid #FFF;color:#333}
 .nav-tabs>li>a:hover{background-color:#FFF;color:#09C}.nav-tabs .open>a,.nav-tabs .open>a:hover,.nav-tabs .open>a:focus{color:#000;background-color:#FAFAFA;border-color:#EEE}
 
+.nav-content{
+    display:none;
+    &.active{
+        display:block;
+    }
+}
 
 /*==============================表单=========================*/
 #table_wrapper{
@@ -302,4 +366,9 @@ table.dataTable {
         border-radius: 0 0;
         background-color: #163342;
     }
+}
+//============table 覆盖样式==========
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 5px;
+    vertical-align: middle;
 }

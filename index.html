@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>coolAdmin 后端wiki</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="css/highlight/agate.css" rel="stylesheet"/>
-         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
 
         <link rel="stylesheet" href="css/adminpage.css"/>
@@ -23,12 +18,11 @@ and open the template in the editor.
                 <a href="/admin"><i class="fa fa-home fa-3x"></i></a>
             </div>
             <div class="topbar-left">
-                <a href="/admins/prosearch" class="topbar-nav-btn active">
-                    <span>常用功能</span>
-                </a>
-                <a href="/admins/payments" class="topbar-nav-btn ">
-                    <span>图表功能</span>
-                </a>
+                <div class="topbar-nav-btn active">
+                    <a href="#">
+                        <span>常用功能</span>
+                    </a>
+                </div>
             </div>
         </div>
         <!--中间内容-->
@@ -36,27 +30,9 @@ and open the template in the editor.
             <!--内容一级导航-->
             <div class="left-slide-bar">
                 <ul>
-                    <li class="active">
-                        <a href="index.html">基础依赖</a>
-                    </li>
-                    <li>
-                        <a href="datatable/basic.html">数据表格</a>
-                    </li>
-                    <li class="">
-                        <a href="/admins/alldirector">日期插件</a>
-                    </li>
-                    <li >
-                        <a href="/admins/applyadmin">查询条件</a>
-                    </li>
-                    <li class="">
-                        <a href="/admins/applyadmin">提示插件</a>
-                    </li>
-                    <li class="">
-                        <a href="/admins/reportworker">图标使用</a>
-                    </li>
-                    <li class="">
-                        <a href="/admins/giftConfig">功能集锦</a>
-                    </li>
+                    <li class="active"><a href="index.html">基础依赖</a></li>
+                    <li><a href="datatable/basic.html">数据表格</a></li>
+                    <li><a href="page/date.html">日期插件</a></li>
                 </ul>
             </div>
             <!--内容主要区域-->
@@ -68,16 +44,17 @@ and open the template in the editor.
                         <ul>
                             <li>
                                 <a href="index.html" class="current">
-                                    <div class="link">
-                                        依赖关系
-                                    </div>
+                                    <div class="link">基础类库cdn</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="page/basicdep.html">
+                                    <div class="link">依赖关系</div>
                                 </a>
                             </li>
                             <li >
-                                <a href="structure.html" >
-                                    <div class="link">
-                                        页面结构
-                                    </div>
+                                <a href="page/structure.html" >
+                                    <div class="link">页面结构</div>
                                 </a>
                             </li>
                         </ul>
@@ -89,33 +66,151 @@ and open the template in the editor.
                             <h5>后端依赖关系</h5>
                         </div>
                         <div class="margin-top">
-                            <p>后端常用静态资源地址集合（请慎用第三方cdn 访问速度是个问题。）</p>
-                            <pre><code class="language">
-    &lt!--bootstrap核心 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-    &lt!--图标字体,admin 后端样式 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
-
-    &lt!--jQuery -->
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js">&lt;/script>
-
-    &lt!--后端工具依赖 -->
-    &lt;script  src="http://8.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/admin.js">&lt;/script>
-
-    &lt!--时间插件依赖 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/date/jquery-ui.1.8.21.min.css"/>
-    &lt;script  src="http://static.ws.kukuplay.com/common/date/jquery-ui.1.8.21.min.js">&lt;/script>
-    &lt;script  src="http://static.ws.kukuplay.com/common/date/jquery-ui-datetimepicker-zh-CN.js">&lt;/script>
-
-    &lt!--datatable依赖 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
-    &lt;script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">&lt;/script>
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
-    &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
-    &lt;script  src="http://6.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/DT_table.js">&lt;/script>
-
-</code></pre>
+                            <p>后端常用静态资源地址集合（请慎用第三方cdn 连通性不能保证）</p>
+                            <table id="table" class="table table-bordered">
+                                <caption>jquery</caption>
+                                <thead>
+                                <th>版本</th>
+                                <th>js</th>
+                                <th>备注</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> v1.11.3  </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.11.3/jquery-1.11.3.min.js
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> v1.9.1  </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.9.1/jquery-1.9.1.min.js
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> v1.8.3  </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.8.3/jquery-1.8.3.min.js
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table id="table" class="table table-bordered">
+                                <caption>bootstrap </caption>
+                                <thead>
+                                <th>版本</th>
+                                <th>js</th>
+                                <th>css</th>
+                                <th>备注</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> v3.3.5  </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/css/bootstrap.min.css
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> datetimepicker </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/css/bootstrap-datetimepicker.js
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table id="table" class="table table-bordered">
+                                <caption>jquery-ui </caption>
+                                <thead>
+                                <th>版本</th>
+                                <th>js</th>
+                                <th>css</th>
+                                <th>备注</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> v1.8.21  </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css
+                                        </td>
+                                        <td> 现用网站后台所用的日期插件 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> v1.10.4 </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.js
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.css
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> v1.11.4</td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.js
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.css
+                                        </td>
+                                        <td> 无 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table id="table" class="table table-bordered">
+                                <caption>zylib </caption>
+                                <thead>
+                                <th>文件</th>
+                                <th>版本</th>
+                                <th>路径</th>
+                                <th>描述</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td> zylib  </td>
+                                        <td>
+                                            v1.0
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/zylib/v1.0/ZYlib-1.0.0.js
+                                        </td>
+                                        <td> 章鱼底层插件，包含本地存储，cookie等基础类库 </td>
+                                    </tr>
+                                    <tr>
+                                        <td> admin.js </td>
+                                        <td>
+                                            v1.0
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/zylib/v1.0/admin-1.0.0.js
+                                        </td>
+                                        <td> 章鱼后端基础js类库，包含后端常用工具等</td>
+                                    </tr>
+                                    <tr>
+                                        <td> adminpage.css </td>
+                                        <td>
+                                            v1.0
+                                        </td>
+                                        <td>
+                                            http://static.ws.kukuplay.com/common/lib/zylib/v1.0/adminpage.min.css
+                                        </td>
+                                        <td> 章鱼后端基础css类库，包含后端页面的基础样式，后端核心样式基于bootstrap3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
