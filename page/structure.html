@@ -14,8 +14,8 @@ and open the template in the editor.
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
 
-        <link rel="stylesheet" href="../css/adminpage.css"/>
-        <script  src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v1.0/adminpage.min.css"/>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
         <script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
@@ -44,7 +44,7 @@ and open the template in the editor.
                 <ul>
                     <li class="active"><a href="../index.html">基础依赖</a></li>
                     <li><a href="../datatable/basic.html">数据表格</a></li>
-                    <li><a href="date.html">日期插件</a></li>
+                    <li><a href="../page/date.html">日期插件</a></li>
                 </ul>
             </div>
             <!--内容主要区域-->
@@ -81,6 +81,16 @@ and open the template in the editor.
                             <p>以本页面结构为例子，下面给出 html 结构 直接拷贝可用。例子中代码和实际效果请参照本页面自行脑补。</p>
                             <p>在使用本文结构之前，请阅读依赖关系，配置好核心所需要的样式和 js</p>
                             <pre><code class="language">
+     &lt;head>
+         &lt;title>标题 &lt;/title>
+         &lt;meta charset="UTF-8">
+         &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
+         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
+         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v1.0/adminpage.min.css"/>
+
+         &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
+     &lt;/head>
     &lt;body>
         &lt;!--顶部导航-->
         &lt;div class="topbar">
@@ -145,16 +155,7 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
-        <script type="text/javascript" language="javascript" src="http://10.0.13.109:8804/zystatic/js/admin/DT_table.js"></script>
         <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#table').dataTable();
-            })
-        </script>
     </body>
 </html>
