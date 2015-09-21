@@ -51,7 +51,7 @@ and open the template in the editor.
             <div class="content-inner left-content">
                 <!--内容二级导航-->
                 <div class="inner-slide-bar">
-                    <div class="title">数据表格</div>
+                    <div class="title">后端基础</div>
                     <div class="list">
                         <ul>
                             <li>
@@ -78,8 +78,35 @@ and open the template in the editor.
                             <h5>页面结构</h5>
                         </div>
                         <div class="margin-top" style="margin-bottom:100px">
+                            <p><a href="http://www.zhangyu.tv/admins/config" target="_blank">配置入口</a>（删除等操作请慎重！）<a href="http://www.zhangyu.tv/api/getadminpagelink" target="_blank">查看后端接口</a></p>
                             <p>以本页面结构为例子，下面给出 html 结构 直接拷贝可用。例子中代码和实际效果请参照本页面自行脑补。</p>
-                            <p>在使用本文结构之前，请阅读依赖关系，配置好核心所需要的样式和 js</p>
+                            <p>在使用本文结构之前，请阅读依赖关系，配置好核心所需要的样式和 js（新版后端仅限于www.zhangyu.tv 这个域名下使用，其他域名下想使用，请等第三版）</p>
+                            <pre><code class="language">
+                 &lt;head>
+                     &lt;title>后端标题&lt;/title>
+                     &lt;meta charset="UTF-8">
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
+
+                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
+                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.0.js"> &lt;/script>
+                 &lt;/head>
+                &lt;body>
+                    &lt;div id="content">
+                        &lt;div class="content-title">
+                            &lt;h5>自定义标题&lt;/h5>
+                        &lt;/div>
+                        &lt;div class="margin-top">
+                             &lt!--内容写在这儿。-->
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/body>
+         &lt!--配置-->
+         &lt;script type="text/javascript">
+            AdminConf = {top: "网站管理", "tag": "频道相关", link: "超级黑名单"}
+         &lt;/script>
+            </code></pre>
+                            <p>下面结构是第一版后端的模版，现在仅供参考，也是生成后的dom</p>
                             <pre><code class="language">
      &lt;head>
          &lt;title>标题 &lt;/title>

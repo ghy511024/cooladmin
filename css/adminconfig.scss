@@ -1,0 +1,22 @@
+.item{
+    *zoom: 1;&:after{content: "";display: table;clear: both;}
+    margin-top:3px;
+    display:table;
+    position:relative;
+    label,input,.wrap{float:left;position:relative;}
+    label{text-align:left;margin:0px 5px 0px 6px;  line-height: 28px;}
+    .wrap{margin-top:20px;}
+    input{border:none;outline:none;}
+    .add-tag-btn{
+        position:absolute;
+        cursor: pointer;
+        right: -23px;
+        top: 1px;
+    }
+    .del-link-btn{
+        position: absolute;
+        right: -18px;
+        top: 6px;
+        cursor: pointer;
+    }
+}

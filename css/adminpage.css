@@ -27,6 +27,12 @@ ul, ul li {
   line-height: 14px;
 }
 
+.small-btn {
+  padding: 0px 3px;
+  line-height: 12px;
+  height: 16px;
+}
+
 .fleft {
   float: left !important;
 }
@@ -37,6 +43,10 @@ ul, ul li {
 
 table.dataTable {
   margin-top: 0px !important;
+}
+
+.hide {
+  display: none;
 }
 
 .topbar {
@@ -356,7 +366,7 @@ table.dataTable {
   border-bottom: 1px solid #ccc;
 }
 
-.form-group input[type="text"], .form-group select {
+input[type="text"], select {
   height: 28px;
   border-radius: 0px;
   padding: 4px 6px;
@@ -365,6 +375,7 @@ table.dataTable {
   font-size: 12px;
   border: 1px solid #ccc;
 }
+
 .form-group.full {
   width: 100%;
 }
