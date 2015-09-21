@@ -21,6 +21,11 @@ margin: 0px;}
     height: 26px;
     line-height: 14px;
 }
+.small-btn{
+    padding: 0px 3px;
+    line-height: 12px;
+    height: 16px;
+}
 .fleft{
     float:left !important;
 }
@@ -30,9 +35,7 @@ margin: 0px;}
 table.dataTable {
     margin-top: 0px !important;
 }
-p{
-    
-}
+.hide{display:none;}
 //顶部导航
 $color1:#41A1BF;
 $color2:#40505B;
@@ -314,16 +317,16 @@ $lb2_color:#ECF0F1;
 .margin-top{margin-top:8px;}
 .margin-top2{margin-top:15px;}
 .padding-bottom{padding-bottom:8px;border-bottom:1px solid #ccc;}
+input[type="text"],select{
+    height: 28px;
+    border-radius: 0px;
+    padding:4px 6px;
+    -webkit-transition: none;
+    transition: none;
+    font-size: 12px;
+    border: 1px solid #ccc;
+}
 .form-group{
-    input[type="text"],select{
-        height: 28px;
-        border-radius: 0px;
-        padding:4px 6px;
-        -webkit-transition: none;
-        transition: none;
-        font-size: 12px;
-        border: 1px solid #ccc;
-    }
     &.full{
         width:100%;
     }

@@ -1,0 +1,39 @@
+.item {
+  *zoom: 1;
+  margin-top: 3px;
+  display: table;
+  position: relative;
+}
+.item:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.item label, .item input, .item .wrap {
+  float: left;
+  position: relative;
+}
+.item label {
+  text-align: left;
+  margin: 0px 5px 0px 6px;
+  line-height: 28px;
+}
+.item .wrap {
+  margin-top: 20px;
+}
+.item input {
+  border: none;
+  outline: none;
+}
+.item .add-tag-btn {
+  position: absolute;
+  cursor: pointer;
+  right: -23px;
+  top: 1px;
+}
+.item .del-link-btn {
+  position: absolute;
+  right: -18px;
+  top: 6px;
+  cursor: pointer;
+}
