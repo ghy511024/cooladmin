@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>章鱼后端配置</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
@@ -40,17 +40,18 @@ and open the template in the editor.
                                 <label>title:</label><input type="text" class="tag-title" value=''/>
                                 <label>url:</label><input type="text" class="tag-url" value=''/>
                                 <span class='del-link-btn del-btn1'><i class="fa fa-minus-circle fa-1x"></i></span>
-                            </ 
-                            >
-                            <div class="item">
-                                <label>links: <span class='add-tag-btn'   hide='hide-linkwrap' ap='links-wrap'><i class="fa fa-plus-square fa-1x"></i></span></label>
-                                <div class="wrap links-wrap">
-                                    <div class="item hide hide-linkwrap link-item">
-                                        <label>name:</label>
-                                        <input type="text" class="link-name" value=''/>
-                                        <label>url:</label>
-                                        <input type="text" class="link-url" value=''/>
-                                        <span class='del-link-btn del-btn2'><i class="fa fa-minus-circle fa-1x"></i></span>
+                                </ 
+                                >
+                                <div class="item">
+                                    <label>links: <span class='add-tag-btn'   hide='hide-linkwrap' ap='links-wrap'><i class="fa fa-plus-square fa-1x"></i></span></label>
+                                    <div class="wrap links-wrap">
+                                        <div class="item hide hide-linkwrap link-item">
+                                            <label>name:</label>
+                                            <input type="text" class="link-name" value=''/>
+                                            <label>url:</label>
+                                            <input type="text" class="link-url" value=''/>
+                                            <span class='del-link-btn del-btn2'><i class="fa fa-minus-circle fa-1x"></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,59 +59,58 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-        </div>
-        <script type="text/javascript" src='http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js'></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $(document).on("click", ".add-tag-btn", function () {
-                    var hide = $(this).attr("hide")
-                    var ap = $(this).attr("ap")
-                    var wrap = $(this).parent().parent().find("." + hide).clone().removeClass(hide).removeClass("hide");
-                    console.log(wrap.length)
-                    wrap.appendTo($(this).parent().parent().find("." + ap))
-                })
-                $("#add-top-wrap").on("click", function () {
-                    var item = $(".hide-top").clone().removeClass("hide").removeClass("hide-top");
-                    $(".config").append(item);
-                })
-                $(document).on("click", ".del-btn1", function () {
-                    if (confirm("删除操作，施主请三思")) {
-                        $(this).parent().parent().remove();
-                    }
-                })
-                $(document).on("click", ".del-btn2", function () {
-                    $(this).parent().remove();
-                })
-                $("#send-btn").on("click", function () {
-                    var array = [];
-                    $(".top-wrap").each(function () {
-                        var name = $(this).find(".top-name").val()
-                        var url = $(this).find(".top-url").val()
-                        var tagarray = [];
-                        $(this).find(".tag-item").each(function () {
-                            var name = $(this).find(".tag-name").val()
-                            var title = $(this).find(".tag-title").val()
-                            var url = $(this).find(".tag-url").val();
-                            var linkarray = [];
-                            $(this).find(".link-item").each(function () {
-                                var name = $(this).find(".link-name").val()
-                                var url = $(this).find(".link-url").val();
+            <script type="text/javascript" src='http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js'></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $(document).on("click", ".add-tag-btn", function () {
+                        var hide = $(this).attr("hide")
+                        var ap = $(this).attr("ap")
+                        var wrap = $(this).parent().parent().find("." + hide).clone().removeClass(hide).removeClass("hide");
+                        console.log(wrap.length)
+                        wrap.appendTo($(this).parent().parent().find("." + ap))
+                    })
+                    $("#add-top-wrap").on("click", function () {
+                        var item = $(".hide-top").clone().removeClass("hide").removeClass("hide-top");
+                        $(".config").append(item);
+                    })
+                    $(document).on("click", ".del-btn1", function () {
+                        if (confirm("删除操作，施主请三思")) {
+                            $(this).parent().parent().remove();
+                        }
+                    })
+                    $(document).on("click", ".del-btn2", function () {
+                        $(this).parent().remove();
+                    })
+                    $("#send-btn").on("click", function () {
+                        var array = [];
+                        $(".top-wrap").each(function () {
+                            var name = $(this).find(".top-name").val()
+                            var url = $(this).find(".top-url").val()
+                            var tagarray = [];
+                            $(this).find(".tag-item").each(function () {
+                                var name = $(this).find(".tag-name").val()
+                                var title = $(this).find(".tag-title").val()
+                                var url = $(this).find(".tag-url").val();
+                                var linkarray = [];
+                                $(this).find(".link-item").each(function () {
+                                    var name = $(this).find(".link-name").val()
+                                    var url = $(this).find(".link-url").val();
+                                    if (name != "" && url != "") {
+                                        var link = {name: name, url: url}
+                                        linkarray.push(link);
+                                    }
+                                })
                                 if (name != "" && url != "") {
-                                    var link = {name: name, url: url}
-                                    linkarray.push(link);
+                                    var tag = {name: name, title: title, url: url, links: linkarray}
+                                    tagarray.push(tag);
                                 }
                             })
-                            if (name != "" && url != "") {
-                                var tag = {name: name, title: title, url: url, links: linkarray}
-                                tagarray.push(tag);
-                            }
+                            var item = {name: name, url: url, tag: tagarray}
+                            array.push(item);
                         })
-                        var item = {name: name, url: url, tag: tagarray}
-                        array.push(item);
+                        console.log(JSON.stringify(array));
                     })
-                    console.log(JSON.stringify(array));
                 })
-            })
-        </script>
+            </script>
     </body>
 </html>
