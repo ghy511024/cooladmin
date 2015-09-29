@@ -12,209 +12,166 @@
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
     </head>
     <body>
-        <!--顶部导航-->
-        <div class="topbar">
-            <div class="topbar-left left-home">
-                <a href="/admin"><i class="fa fa-home fa-3x"></i></a>
-            </div>
-            <div class="topbar-left">
-                <div class="topbar-nav-btn active">
-                    <a href="#">
-                        <span>常用功能</span>
-                    </a>
+        <div class="content-body">
+            <div class="right-content" id="content">
+                <div class="content-title">
+                    <h5>后端依赖关系</h5>
                 </div>
-            </div>
-        </div>
-        <!--中间内容-->
-        <div class="main-content">
-            <!--内容一级导航-->
-            <div class="left-slide-bar">
-                <ul>
-                    <li class="active"><a href="index.html">基础依赖</a></li>
-                    <li><a href="datatable/basic.html">数据表格</a></li>
-                    <li><a href="page/date.html">日期插件</a></li>
-                </ul>
-            </div>
-            <!--内容主要区域-->
-            <div class="content-inner left-content">
-                <!--内容二级导航-->
-                <div class="inner-slide-bar">
-                    <div class="title">使用须知</div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="index.html" class="current">
-                                    <div class="link">基础类库cdn</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page/basicdep.html">
-                                    <div class="link">依赖关系</div>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="page/structure.html" >
-                                    <div class="link">页面结构</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-body">
-                    <div class="right-content">
-                        <div class="content-title">
-                            <h5>后端依赖关系</h5>
-                        </div>
-                        <div class="margin-top">
-                            <p>后端常用静态资源地址集合（请慎用第三方cdn 连通性不能保证）</p>
-                            <table id="table" class="table table-bordered">
-                                <caption>jquery</caption>
-                                <thead>
-                                <th>版本</th>
-                                <th>js</th>
-                                <th>备注</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> v1.11.3  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.11.3/jquery-1.11.3.min.js
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> v1.9.1  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.9.1/jquery-1.9.1.min.js
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> v1.8.3  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.8.3/jquery-1.8.3.min.js
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> v1.9.2  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js
-                                        </td>
-                                        <td> 支持现章鱼网站后台日期插件，和数据表格版本（其他版会有错误，推荐使用） </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table id="table" class="table table-bordered">
-                                <caption>bootstrap </caption>
-                                <thead>
-                                <th>版本</th>
-                                <th>js</th>
-                                <th>css</th>
-                                <th>备注</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> v3.3.5  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js
-                                        </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/css/bootstrap.min.css
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> datetimepicker </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js
-                                        </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/css/bootstrap-datetimepicker.js
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table id="table" class="table table-bordered">
-                                <caption>jquery-ui </caption>
-                                <thead>
-                                <th>版本</th>
-                                <th>js</th>
-                                <th>css</th>
-                                <th>备注</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> v1.8.21  </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js
-                                        </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css
-                                        </td>
-                                        <td> 现用网站后台所用的日期插件 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> v1.10.4 </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.js
-                                        </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.css
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> v1.11.4</td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.js
-                                        </td>
-                                        <td>
-                                            http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.css
-                                        </td>
-                                        <td> 无 </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table id="table" class="table table-bordered">
-                                <caption>zylib </caption>
-                                <thead>
-                                <th>文件</th>
-                                <th>版本</th>
-                                <th>路径</th>
-                                <th>描述</th>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td> zylib  </td>
-                                        <td>v1.0</td>
-                                        <td>http://static.ws.kukuplay.com/common/lib/zylib/v1.0/ZYlib-1.0.0.js</td>
-                                        <td> 章鱼底层插件，包含本地存储，cookie等基础类库 </td>
-                                    </tr>
-                                    <tr>
-                                        <td> admin.js </td>
-                                        <td>v2.0</td>
-                                        <td>http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.1.js</td>
-                                        <td> 章鱼后端基础js类库，包含后端常用工具等,后端结构改版第二版</td>
-                                    </tr>
-                                    <tr>
-                                        <td> adminpage.css </td>
-                                        <td>v2.0</td>
-                                        <td>http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css</td>
-                                        <td> 章鱼后端基础css类库，包含后端页面的基础样式，后端核心样式基于bootstrap3</td>
-                                    </tr>
-                                </tbody>
+                <div class="margin-top">
+                    <p>后端常用静态资源地址集合（请慎用第三方cdn 连通性不能保证）</p>
+                    <table id="table" class="table table-bordered">
+                        <caption>jquery</caption>
+                        <thead>
+                        <th>版本</th>
+                        <th>js</th>
+                        <th>备注</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> v1.11.3  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery/v1.11.3/jquery-1.11.3.min.js
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                            <tr>
+                                <td> v1.9.1  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery/v1.9.1/jquery-1.9.1.min.js
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                            <tr>
+                                <td> v1.8.3  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery/v1.8.3/jquery-1.8.3.min.js
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                            <tr>
+                                <td> v1.9.2  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js
+                                </td>
+                                <td> 支持现章鱼网站后台日期插件，和数据表格版本（其他版会有错误，推荐使用） </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="table" class="table table-bordered">
+                        <caption>bootstrap </caption>
+                        <thead>
+                        <th>版本</th>
+                        <th>js</th>
+                        <th>css</th>
+                        <th>备注</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> v3.3.5  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js
+                                </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/css/bootstrap.min.css
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                            <tr>
+                                <td> datetimepicker </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js
+                                </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/css/bootstrap-datetimepicker.js
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="table" class="table table-bordered">
+                        <caption>jquery-ui </caption>
+                        <thead>
+                        <th>版本</th>
+                        <th>js</th>
+                        <th>css</th>
+                        <th>备注</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> v1.8.21  </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js
+                                </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css
+                                </td>
+                                <td> 现用网站后台所用的日期插件 </td>
+                            </tr>
+                            <tr>
+                                <td> v1.10.4 </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.js
+                                </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.10.4/jquery-ui-1.10.4.custom.min.css
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                            <tr>
+                                <td> v1.11.4</td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.js
+                                </td>
+                                <td>
+                                    http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.11.4/jquery-ui.min.css
+                                </td>
+                                <td> 无 </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table id="table" class="table table-bordered">
+                        <caption>zylib </caption>
+                        <thead>
+                        <th>文件</th>
+                        <th>版本</th>
+                        <th>路径</th>
+                        <th>描述</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> zylib  </td>
+                                <td>v1.0</td>
+                                <td>http://static.ws.kukuplay.com/common/lib/zylib/v1.0/ZYlib-1.0.0.js</td>
+                                <td> 章鱼底层插件，包含本地存储，cookie等基础类库 </td>
+                            </tr>
+                            <tr>
+                                <td> admin.js </td>
+                                <td>v2.0</td>
+                                <td>http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.1.js</td>
+                                <td> 章鱼后端基础js类库，包含后端常用工具等,后端结构改版第二版</td>
+                            </tr>
+                            <tr>
+                                <td> admin.js </td>
+                                <td>v2.4</td>
+                                <td>http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.4.js</td>
+                                <td> 增加zencoding 模版语言解析，页面配置可通过urlpath 识别，支持js 页面模版配置</td>
+                            </tr>
+                            <tr>
+                                <td> adminpage.css </td>
+                                <td>v2.0</td>
+                                <td>http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css</td>
+                                <td> 章鱼后端基础css类库，包含后端页面的基础样式，后端核心样式基于bootstrap3</td>
+                            </tr>
+                        </tbody>
 
-                            </table>
-                        </div>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>
         <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script  src="../js/adminConf.js"></script>
         <script type="text/javascript" src="js/admin.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </body>

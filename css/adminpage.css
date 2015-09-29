@@ -1,10 +1,11 @@
 @charset "UTF-8";
+@import "http://static.ws.kukuplay.com/common/styles/font-awesome.min.css";
 body {
   font-size: 12px;
   font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #EAEDF1;
 }
 
 ul, ul li {
@@ -43,10 +44,6 @@ ul, ul li {
 
 table.dataTable {
   margin-top: 0px !important;
-}
-
-.hide {
-  display: none;
 }
 
 .topbar {
@@ -115,7 +112,7 @@ table.dataTable {
   padding: 0 10px;
 }
 .topbar .dropdown-menu .topbar-nav-col ul li {
-  min-width: 140px;
+  min-width: 60px;
   height: 30px;
   line-height: 30px;
   margin-bottom: 2px;
@@ -126,7 +123,7 @@ table.dataTable {
   padding: 0 10px;
   text-decoration: none;
   color: #555555;
-  font-size: 1px;
+  font-size: 12px;
 }
 .topbar .dropdown-menu .topbar-nav-col ul li a:hover {
   background: #f2f2f2;
@@ -139,7 +136,7 @@ table.dataTable {
   top: 50px;
   bottom: 0px;
   background-color: #000;
-  /*====================鍐呭閮ㄥ垎=================*/
+  /*====================内容部分=================*/
 }
 .main-content a {
   text-decoration: none;
@@ -196,7 +193,6 @@ table.dataTable {
 }
 .main-content .inner-slide-bar .title {
   font-weight: bold;
-  text-indent: 20px;
   width: 96px;
   height: 40px;
   line-height: 40px;
@@ -204,6 +200,7 @@ table.dataTable {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 .main-content .inner-slide-bar .list {
   position: absolute;
@@ -243,15 +240,21 @@ table.dataTable {
   overflow-y: auto;
   padding-bottom: 50px;
 }
-.main-content .content-body .right-content {
+.main-content .content-body .right-content, .main-content .content-body #content {
+  margin: 0px;
+}
+
+.right-content, #content {
+  background: #fff;
+  margin: 50px 0px 0px 176px;
   padding: 0px 15px;
 }
-.main-content .content-body .right-content .content-title {
+.right-content .content-title, #content .content-title {
   padding: 16px 0px;
   min-height: 70px;
   border-bottom: 1px solid #DDD;
 }
-.main-content .content-body .right-content .content-title h5 {
+.right-content .content-title h5, #content .content-title h5 {
   text-indent: 8px;
   border-left: 2px solid #88B7E0;
 }
@@ -348,7 +351,7 @@ table.dataTable {
   display: block;
 }
 
-/*==============================琛ㄥ崟=========================*/
+/*==============================表单=========================*/
 #table_wrapper label {
   margin-bottom: 0px;
 }

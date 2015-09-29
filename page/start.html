@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin--start--手把手教你玩后台</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script  src="../js/adminConf.js"></script>
+        <script  src="../js/admin.js"></script>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>开始使用后端模版</h5>
+            </div>
+            <h2>1: 引入类库</h2>
+            <p>神秘网页是后端的一个管理页面，我们不知道他是干啥的，但无论是干啥的，都可以使用这一套后端模版</p>
+            <p>第一步当然是引用后端模版的核心类库。</p>
+            <div class="margin-top">
+                <pre><code class="language">
+                 &lt;head>
+                     &lt;title>神秘网页&lt;/title>
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
+
+                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
+                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.4.js"> &lt;/script>
+                 &lt;/head>
+                &lt;body>
+                    &lt;div>
+                     业务逻辑
+                    &lt;/div>
+                &lt;/body>
+            </code></pre>
+                <p>上面两个css 和js 为核心类库，基于bootsrtap 和jquery 开发。在使用时，第一件事就是将这4个文件放入 heade 标签顶部（有些习惯将业务逻辑的js 放在网页底部，但这儿请不要这么做，因为这是后端框架，需要优先加载执行，所以请放最上面。正常的业务js可以放置于底部）</p>
+                <h2>2:配置后端</h2>
+                <p>后端现在支持两种配置,接口请求，和静态配置</p>
+                <p>1:静态配置</p>
+                <p>新建一个 adminConf.js (名字随便取) 文件配置大致如下</p>
+                <pre><code class="language">
+            window.AdminPage =[{
+                    name: "起步",
+                    url: "/page/start.html",
+                    tag: [
+                        {
+                            name: "资源集合",
+                            title: "常用资源集合",
+                            url: "/",
+                            links: [
+                                {
+                                    name: "cdn 类库",
+                                    url: "/"
+                                },
+                                ...
+                            ]
+                        },
+                        {
+                            name: "光速上手",
+                            title: "上手指南",
+                            url: "/page/start.html",
+                            links: [
+                                {
+                                    name: "开始使用",
+                                    url: "/page/start.html"
+                                }
+                            ]
+                        }
+                    ]
+                }]
+            </code></pre>
+                <p>2:接口配置</p>
+                <p>如果为大型的项目后端，有服务器支持，那推荐接口配置<a href="/page/config.html" target="_blank">配置demo</a></p>
+                <p>如果配置数据存于服务器上了，然后可以将类库中接口地址改为你服务器上的那个地址（源代码中找，这儿不列出来）返回数据格式同上 返回的是一个 list 格式的 (章鱼的工程师应该知道配置入口)</p>
+                <h2>3:设置配置</h2>
+                <pre><code class="language">
+                 &lt;head>
+                     &lt;title>神秘网页&lt;/title>
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
+
+                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
+ &lt;!--------------有后端接口就不用此配置，如果没有后端接口，那引用配置文件，配置格式如上（出于性能考虑，此配置需放置于类库之前）----------->
+                    &lt;script  src="../js/adminConf.js"> &lt;/script>                    
+                    &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.4.js"> &lt;/script>
+                 &lt;/head>
+                &lt;body>
+&lt;!--------------这个id 必须加上，类库根据此id 识别----------->
+                    &lt;div id="content">
+                     业务逻辑
+                    &lt;/div>
+                &lt;/body>
+            </code></pre>
+                <h2>4:其他说明</h2>
+                <p>1:接口配置 vs 静态配置</p>
+                <p>接口适用于大型网站后端，后端结构复杂，管理页面极其多的情况下比较容易维护扩展。静态配置适用于轻博客之类的文档介绍，优点是简单，缺点是每个页面都要引用配置文件</p>
+                <p>2:jsonp 格式的配置</p>
+                <p>目前暂无此功能，优点是支持跨域，缺点是影响性能，如果做支持jsonp 配置的话，那么一个类库 可适配3种配置，还不如分为3个类库版本让用户选择。</p>
+            </div>
+        </div>
+        <script src="../js/main.js"></script>
+    </body>
+</html>

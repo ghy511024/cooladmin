@@ -20,10 +20,15 @@
 }
 .item .wrap {
   margin-top: 20px;
+  margin-left: 17px;
 }
 .item input {
   border: none;
   outline: none;
+}
+.item input:disabled {
+  /*background:#F9F9F9;*/
+  background: #fff;
 }
 .item .add-tag-btn {
   position: absolute;
@@ -31,9 +36,22 @@
   right: -23px;
   top: 1px;
 }
-.item .del-link-btn {
+.item .del-link-btn, .item .edite-link-btn, .item .up-btn {
   position: absolute;
-  right: -18px;
-  top: 6px;
+  left: -24px;
+  top: 7px;
   cursor: pointer;
+}
+.item .edite-link-btn {
+  left: -8px;
+}
+.item .up-btn {
+  left: -40px;
+}
+.item.showline input {
+  border: 1px solid #ccc;
+  outline: none;
+}
+.item .link-url {
+  width: 300px;
 }

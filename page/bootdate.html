@@ -6,59 +6,52 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-
         <link rel="stylesheet" href="../css/adminpage.css"/>
-        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
-        <script  src="../js/adminConf.js"></script>
+        <script type="text/javascript" src="http://8.fyimg.kukuplay.com/zytv/v1.8.53/js/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/adminConf.js"></script>
         <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
     </head>
     <body>
-        <div class="right-content" id="content">
+        <div class="right-content" id="content" style="margin-bottom: 100px;">
             <div class="content-title">
-                <h5>日期插件（jquery ui）</h5>
+                <h5>日期插件</h5>
             </div>
             <div class="margin-top">
                 <div class="row">
                     <div class="col-md-12">
                         <table id="table" class="table table-bordered">
                             <thead>
-                            <th>版本</th>
-                            <th>jquery</th>
-                            <th>jquery-ui.js</th>
-                            <th>jquery-ui.css</th>
-                            <!--<th>中文辅助</th>-->
-                            <!--<th>备注</th>-->
+                            <th>依赖</th>
+                            <th>js</th>
+                            <th>css</th>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>章鱼tv 现用版本</td>
-                                    <td>http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js</td>
-                                    <td>http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js</td>
-                                    <td>http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css</td>
-                                    <!--<td>http://static.ws.kukuplay.com/common/date/jquery-ui-datetimepicker-zh-CN.js</td>-->
-                                    <!--<td>目前后端所采用的版本，下面例子也是基于此版本</td>-->
+                                    <td>bootstrap</td>
+                                    <td>http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js</td>
+                                    <td>http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/css/bootstrap.min.css</td>
                                 </tr>   
+                                <tr>
+                                    <td>日期插件</td>
+                                    <td>http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js</td>
+                                    <td>http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.css</td>
                             </tbody>
                         </table>
                     </div>
                     <div class="col-md-12">
                         <p>
-                            1：本文版本 为章鱼后端通用版本，中文设置已经集成到类库中，无需多引用东西。有良好的兼容性,推荐使用。
+                            1：更详细的api，参见<a href="http://www.bootcss.com/p/bootstrap-datetimepicker/index.htm" target="_blank">官网</a>
                         </p>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <h3>例子</h3><span></span>
-
-                </div>
                 <div class="row">
                     <div class="col-md-6">
+                        <p>默认使用</p>
                         <pre><code class="language">
         &lt;script type="text/javascript">
             $(document).ready(function () {
-                $("#date2").datetimepicker();//同时选定日期和时间
+               $("#date1").datetimepicker();
             })
         &lt;/script>
 </code></pre>
@@ -70,16 +63,17 @@
                     </div>
                 </div>
                 <div class="row margin-top">  <div class="col-md-12">
-                        <p>限制某一段时间不可选</p>
+                        <p>参数设置</p>
 
                     </div>
                     <div class="col-md-6">
                         <pre><code class="language">
         &lt;script type="text/javascript">
             $(document).ready(function () {
-                $("#date2").datetimepicker({//月份中数值需要加1（0代表1月）
-                    minDate: new Date(2015, 7, 12),
-                    maxDate: new Date(1440518400000)
+                  $("#date2").datetimepicker({
+                    showMeridian: true, //分屏
+                    autoclose: true, //选完关闭
+                    todayBtn: true, //现在时间
                 });
             })
         &lt;/script>
@@ -92,13 +86,15 @@
                     </div>
                 </div>
                 <div class="row margin-top">
-                    <div class="col-md-12">  <p>设置默认时间</p></div>
+                    <div class="col-md-12">  <p>参数设置2</p></div>
 
                     <div class="col-md-6">
                         <pre><code class="language">
         &lt;script type="text/javascript">
              $("#date3").datetimepicker({
-                    defaultDate: "2015-12-13"
+                    startDate: "2015-12-13", //开始时间
+                    endDate: "2015-12-28", //开始时间
+                    minuteStep: 3//分钟间隔
                 });
         &lt;/script>
 </code></pre>
@@ -111,20 +107,26 @@
                 </div>
             </div>
         </div>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css"/>
-        <script  src="http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js"></script>
+
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.css"/>
+        <script  src="http://static.ws.kukuplay.com/common/lib/bootstrap/datetimepicker/bootstrap-datetimepicker.min.js"></script>
 
         <script type="text/javascript" src="../js/main.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#date1").datetimepicker();//同时选定日期和时间
-                $("#date2").datetimepicker({//月份中数值需要加1（0代表1月，11代表12月）
-                    minDate: new Date(2015, 7, 12),
-                    maxDate: new Date(1440518400000)
+                $("#date1").datetimepicker();
+                $("#date2").datetimepicker({
+                    showMeridian: true, //分屏
+                    autoclose: true, //选完关闭
+                    todayBtn: true, //现在时间
                 });
                 $("#date3").datetimepicker({
-                    defaultDate: "2015-12-13"
+                    startDate: "2015-12-13", //开始时间
+                    endDate: "2015-12-28", //开始时间
+                    minuteStep: 3//分钟间隔
                 });
+
             })
         </script>
     </body>

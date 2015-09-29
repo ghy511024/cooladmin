@@ -1,9 +1,12 @@
+@charset "utf-8";
+@import "http://static.ws.kukuplay.com/common/styles/font-awesome.min.css";
+
 body{  
     font-size: 12px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
     line-height: 1.428571429;
     color: #333333;
-    background-color: #ffffff;
+    background-color: #EAEDF1;
 }
 ul,ul li{  list-style: none;
     padding: 0px;
@@ -12,7 +15,6 @@ margin: 0px;}
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    
 }
 .btn{
     font-size: 12px;
@@ -35,7 +37,6 @@ margin: 0px;}
 table.dataTable {
     margin-top: 0px !important;
 }
-.hide{display:none;}
 //顶部导航
 $color1:#41A1BF;
 $color2:#40505B;
@@ -105,7 +106,7 @@ $lb2_color:#ECF0F1;
             padding: 0 10px;
             ul{
                 li{
-                    min-width: 140px;
+                    min-width: 60px;
                     height: 30px;
                     line-height: 30px;
                     margin-bottom: 2px;
@@ -115,7 +116,7 @@ $lb2_color:#ECF0F1;
                         padding: 0 10px;
                         text-decoration: none;
                         color: #555555;
-                        font-size:1px;
+                        font-size:12px;
                         &:hover{
                             background:#f2f2f2;
                         }
@@ -192,7 +193,6 @@ $lb2_color:#ECF0F1;
         overflow: hidden;
         .title{
             font-weight: bold;
-            text-indent: 20px;
             width: $in_w;
             height: 40px;
             line-height: 40px;
@@ -200,6 +200,8 @@ $lb2_color:#ECF0F1;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            text-align:center;
+            
         }
         .list{
             position: absolute;
@@ -244,21 +246,25 @@ $lb2_color:#ECF0F1;
         overflow: hidden;
         overflow-y: auto;
         padding-bottom: 50px;
-        .right-content{
-            padding:0px 15px;
-            .content-title{
-                padding: 16px 0px;
-                min-height: 70px;
-                border-bottom: 1px solid #DDD;
-                h5{
-                    text-indent: 8px;
-                    border-left: 2px solid #88B7E0;
-                }
-            }
+        .right-content,#content{
+            margin:0px;
         }
     }
 }
-
+.right-content,#content{
+    background:#fff;
+    margin:50px 0px 0px 176px;
+    padding:0px 15px;
+    .content-title{
+        padding: 16px 0px;
+        min-height: 70px;
+        border-bottom: 1px solid #DDD;
+        h5{
+            text-indent: 8px;
+            border-left: 2px solid #88B7E0;
+        }
+    }
+}
 //===========自定义navbar==============
 .nav-tabs{
     margin-top:20px;
