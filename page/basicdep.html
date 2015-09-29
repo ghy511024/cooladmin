@@ -7,100 +7,44 @@
         <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-
         <link rel="stylesheet" href="../css/adminpage.css"/>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
     </head>
     <body>
-        <!--顶部导航-->
-        <div class="topbar">
-            <div class="topbar-left left-home">
-                <a href="/admin"><i class="fa fa-home fa-3x"></i></a>
+        <div class="right-content" id="content">
+            <div class="content-title">
+                <h5>后端依赖关系</h5>
             </div>
-            <div class="topbar-left">
-                <div class="topbar-nav-btn active">
-                    <a href="#">
-                        <span>常用功能</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!--中间内容-->
-        <div class="main-content">
-            <!--内容一级导航-->
-            <div class="left-slide-bar">
-                <ul>
-                    <li class="active"><a href="../index.html">基础依赖</a></li>
-                    <li><a href="../datatable/basic.html">数据表格</a></li>
-                    <li><a href="date.html">日期插件</a></li>
-                </ul>
-            </div>
-            <!--内容主要区域-->
-            <div class="content-inner left-content">
-                <!--内容二级导航-->
-                <div class="inner-slide-bar">
-                    <div class="title">使用须知</div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="../index.html">
-                                    <div class="link">基础类库cdn</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="basicdep.html"  class="current">
-                                    <div class="link">依赖关系</div>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="structure.html" >
-                                    <div class="link">页面结构</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-body">
-                    <div class="right-content">
-                        <div class="content-title">
-                            <h5>后端依赖关系</h5>
-                        </div>
-                        <div class="margin-top">
-                            <p>后端常用静态资源地址集合（请慎用第三方cdn 访问速度是个问题。）</p>
-                            <pre><code class="language">
-    &lt!--bootstrap核心 -->
+            <div class="margin-top">
+                <p>后端常用静态资源地址集合（请慎用第三方cdn 访问速度是个问题。）</p>
+                <pre><code class="language">
+    &lt!--核心样式 -->
     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-    &lt!--图标字体,admin 后端样式 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
 
     &lt!--jQuery -->
     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js">&lt;/script>
 
-    &lt!--后端工具依赖 -->
-    &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v1.0/admin-1.0.4.js">&lt;/script>
+    &lt!--后端基础类库 -->
+    &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.4.js">&lt;/script>
 
     &lt!--时间插件依赖 -->
     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css"/>
     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js">&lt;/script>
 
     &lt!--datatable依赖 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
     &lt;script  src="http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js">&lt;/script>
     &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
     &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
     &lt;script  src="http://6.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/DT_table.js">&lt;/script>
 
 </code></pre>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-
         <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
         <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script  src="../js/adminConf.js"></script>
         <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
     </body>

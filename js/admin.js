@@ -2,11 +2,10 @@
  * 章鱼tv 后端基础类库
  * @hongyu
  * @qq：249398279
- * @version v2.1
+ * @version v2.4
  * */
 $(document).ready(function () {
-    Admins.init();
-    fytip.init();
+
 });
 var Admins = (function () {
     var admin = {
@@ -41,7 +40,7 @@ var Admins = (function () {
                 var str2 = Ut.getTimeTostr(end)
                 $("#end-time").val(str2);
             }
-            
+
         },
         initEvent: function () {
             $("table").on("click", ".trup", function () {
@@ -68,44 +67,59 @@ var Admins = (function () {
         },
         load: function () {
             if ($(".topbar").length == 0) {
-                $.ajax({
-                    url: "/api/getadminpagelink",
-                    type: "post",
-                    data: ({}),
-                    dataType: "json",
-                    success: function (ret) {
-                        admin.cpage(ret);
-                    }
-                })
+                if ((typeof AdminPage != "undefined") && AdminPage != null) {
+                    setTimeout(function () {
+                        admin.cpage(AdminPage);
+                    }, 10)
+                } else {
+                    $.ajax({
+                        url: "/api/getadminpagelink.html",
+                        type: "post",
+                        data: ({}),
+                        dataType: "json",
+                        success: function (ret) {
+                            admin.cpage(ret);
+                        }
+                    })
+                }
             }
         },
         cpage: function (data) {
             //布局页面
             if (data) {
                 //========读取变量============
-                var ctop = AdminConf["top"];
-                var ctag = AdminConf["tag"];
-                var clink = AdminConf["link"];
-                
+                var ctop = "";
+                var ctag = ""
+                var clink = ""
+                //检查配置
+                if (typeof AdminConf == undefined) {
+                    ctop = AdminConf["top"];
+                    ctag = AdminConf["tag"];
+                    clink = AdminConf["link"];
+                }
+                else {
+                    var ret = admin.getCurrentPage(data)
+                    ctop = ret["ctop"];
+                    ctag = ret["ctag"];
+                    clink = ret["clink"];
+                }
                 //==========创建 导航框架=============
-                var topnav = $("<div class='topbar'></div>");
-                var navhome = $('<div class="topbar-left left-home"><a href="#"><i class="fa fa-home fa-3x"></i></a></div>')
-                var navbar = $('<div class="topbar-left"></div>')
-                topnav.append(navhome);
+                var topnav = zen("div.topbar>div.topbar-left.left-home>a>i.fa.fa-home.fa-3x");
+                var navbar = zen("div.topbar-left")
                 topnav.append(navbar);
                 $("body").prepend(topnav);
-                
+
                 //===============包裹 内容页面 ===================
-                $("#content").wrap("<div class='main-content'><div class='content-inner left-content'><div class='content-body'></div></div></div>")
+//                $("#content").wrap("<div class='main-content'><div class='content-inner left-content'><div class='content-body'></div></div></div>")
+                $("#content").wrap(zen("div.main-content>div.content-inner.left-content>div.content-body"))
                 //========一级导航=========
                 var mainContent = $(".main-content");
-                var leftSlide = $('<div class="left-slide-bar"><ul></ul></div>')
-                mainContent.append(leftSlide)
+                mainContent.zen("div.left-slide-bar>ul")
+                var leftSlide = mainContent.find(".left-slide-bar");
                 //========二级导航=========
                 var inner = $(".content-inner");
-                var innerSlide = $("<div class='inner-slide-bar'><div class='list'></div></div>")
-                inner.append(innerSlide);
-                
+                inner.zen("div.inner-slide-bar>div.list")
+                var innerSlide = inner.find(".inner-slide-bar");
                 //========添加页面=============
                 var topdata = null;
                 for (var i in data) {
@@ -123,10 +137,10 @@ var Admins = (function () {
                         navitem.addClass("active")
                     }
                     //=======添加悬浮提示导航=======
-                    var dropmenu = $("<div class='dropdown-menu'></div>");
+                    var dropmenu = zen("div.dropdown-menu");
                     var taglink = topitem["tag"] || [];
                     for (var i = 0; i < taglink.length; i++) {
-                        var col = $("<div class='topbar-nav-col'><ul></ul></div>")
+                        var col = zen("div.topbar-nav-col>ul");
                         var links = taglink[i]["links"] || [];
                         for (var m = 0; m < links.length; m++) {
                             var src = links[m]["url"];
@@ -167,6 +181,34 @@ var Admins = (function () {
                     innerSlide.append("<div class='title'>" + title + "</div>")
                 }
             }
+        },
+        getCurrentPage: function (data) {
+            var pathname = window.location.pathname;
+            var href = window.location.href;
+            var host = window.location.host;
+            var ctop = ""
+            var ctag = "";
+            var clink = "";
+            var ret = {};
+
+            for (var i in data) {
+                var topdata = data[i]
+                for (var n = 0; n < topdata["tag"].length; n++) {
+                    var tagdata = topdata["tag"][n]
+                    for (var m = 0; m < tagdata["links"].length; m++) {
+                        var linkitem = tagdata["links"][m]
+                        if (linkitem["url"] == pathname || "http://" + host + linkitem["url"] == href) {
+                            ctop = topdata["name"];
+                            ctag = tagdata["name"];
+                            clink = linkitem["name"];
+                            ret["ctop"] = ctop
+                            ret["ctag"] = ctag
+                            ret["clink"] = clink
+                        }
+                    }
+                }
+            }
+            return ret;
         }
     }
     var ret = {
@@ -248,7 +290,7 @@ var fytip = (function ($) {
             this.initEvent();
         },
         layout: function () {
-            
+
         },
         initEvent: function () {
             $(".fy-tip").on({mouseenter: function () {
@@ -257,7 +299,6 @@ var fytip = (function ($) {
                     var left = $(this).offset().left;
                     var w = $(this).innerWidth();
                     var h = $(this).innerHeight();
-                    
                     var type = $(this).attr("data-tip") || "top";
                     var desc = $(this).attr("data-desc");
                     _this.reset();
@@ -265,9 +306,6 @@ var fytip = (function ($) {
                     tip.find(".tip-inner").html(desc);
                     var sw = tip.width();
                     var sh = tip.height();
-                    console.log(top, left, w, h, sw, sh);
-                    console.log((left - (sw - w) / 2));
-                    
                     if (type == "top") {
                         tip.css({left: (left - (sw - w) / 2), top: (top - sh - 5)});
                     }
@@ -278,7 +316,6 @@ var fytip = (function ($) {
                     tip.show();
                 },
                 mouseleave: function () {
-                    console.log("leave")
                     var tip = $(_this.getSinleton());
                     tip.hide();
                 }
@@ -292,7 +329,6 @@ var fytip = (function ($) {
             arrow.removeClass("bottom-arrow")
         },
         getSinleton: function () {
-            
             function getInstance() {
                 if (instance == null) {
                     instance = new createTip();
@@ -312,5 +348,50 @@ var fytip = (function ($) {
     }
     var _this = fytip;
     return fytip;
-    
-})($)
+})($);
+/**
+ * @author ghy
+ * @desc zen 模版基础类库
+ * @contact qq 249398279
+ * */
+jQuery.fn.zen = function (selector, callback) {
+    var $this = $(this);
+    if (typeof selector == undefined)
+        return $this;
+    selector.replace(/^([^>+]+)(([>+])(.*))?/, function ($0, instruction, $1, operator, subSelector) {
+        instruction.replace(/^([^*]+)(\*([0-9]+))?/, function ($0, tag, multiplier, factor) {
+            if (factor == undefined)
+                factor = 1;
+            if (factor < 1)
+                factor = 1;
+            var tagName = tag.match(/[^.#]+/)[0];
+            for (var i = 1; i <= factor; i++) {
+                var el = $('<' + tagName + '>');
+                tag.replace(/([.#])([^.#]+)/g, function ($0, kind, name) {
+                    if (kind == '#') {
+                        el.attr('id', name);
+                    } else if (kind == '.') {
+                        el.addClass(name);
+                    }
+                });
+                $this.append(el);
+                if (operator == undefined) {
+                    if (callback != undefined)
+                        jQuery.each([el], callback);
+                } else if (operator == '+') {
+                    $this.zen(subSelector, callback);
+                } else if (operator == '>') {
+                    el.zen(subSelector, callback);
+                }
+            }
+        });
+    });
+    return $(this);
+}
+window.zen = function (selector, callback) {
+    var dom = $("<span>").zen(selector, callback).html();
+    return  $(dom);
+}
+//=======立即执行加快页面渲染==================
+Admins.init();
+fytip.init();

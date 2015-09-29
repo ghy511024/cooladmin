@@ -12,103 +12,64 @@ and open the template in the editor.
         <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-
         <link rel="stylesheet" href="../css/adminpage.css"/>
-        <script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script  type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script  type="text/javascript" src="../js/adminConf.js"></script>  
+        <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
         <script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
         <script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
     </head>
     <body>
-        <!--顶部导航-->
-        <div class="topbar">
-            <div class="topbar-left left-home">
-                <!--首页房间小图标-->
-                <a href="#"><i class="fa fa-home fa-3x"></i></a>
+        <div class="right-content" id="content">
+            <div class="content-title">
+                <h5>基本使用</h5>
             </div>
-            <!--顶部导航-->
-            <div class="topbar-left">
-                <div class="topbar-nav-btn active">
-                    <a href="#">
-                        <span>常用功能</span>
-                    </a>
+            <div class="margin-top" style="margin-bottom:100px;">
+                <div>
+                    <table id="example" class="table table-bordered">
+                        <thead>
+                        <th>序号</th>
+                        <th>xxxx</th>
+                        <th>yyyy</th>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>123</td><td>12312</td></tr>
+                            <tr><td>2</td><td>1231a12323</td><td>wert</td></tr>
+                            <tr><td>3</td><td>erty</td><td>tw</td></tr>
+                            <tr><td>4</td><td>sgdfsg</td><td>sreter</td></tr>
+                            <tr><td>5</td><td>1231sdfg23</td><td>ssdfg</td></tr>
+                            <tr><td>6</td><td>s</td><td>jghj</td></tr>
+                            <tr><td>7</td><td>123123</td><td>wert</td></tr>
+                            <tr><td>8</td><td>wert</td><td>wert</td></tr>
+                            <tr><td>9</td><td>sdfg</td><td>fhgj</td></tr>
+                            <tr><td>10</td><td>qwer</td><td>12312</td></tr>
+                            <tr><td>11</td><td>hfgh</td><td>fghj</td></tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-        </div>
-        <!--中间内容-->
-        <div class="main-content">
-            <!--内容一级导航-->
-            <div class="left-slide-bar">
-                <ul>
-                    <li ><a href="../index.html">基础依赖</a></li>
-                    <li class="active"><a href="../datatable/basic.html">数据表格</a></li>
-                    <li><a href="../page/date.html">日期插件</a></li>
-                </ul>
-            </div>
-            <!--内容主要区域-->
-            <div class="content-inner left-content">
-                <!--内容二级导航-->
-                <div class="inner-slide-bar">
-                    <div class="title">数据表格</div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="basic.html" class="current"><div class="link">基本使用</div></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-body">
-                    <div class="right-content">
-                        <div class="content-title">
-                            <h5>基本使用</h5>
-                        </div>
-                        <div class="margin-top" style="margin-bottom:100px;">
-                            <div>
-                                <table id="table" class="table table-bordered">
-                                    <thead>
-                                    <th>序号</th>
-                                    <th>xxxx</th>
-                                    <th>yyyy</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr><td>1</td><td>123</td><td>12312</td></tr>
-                                        <tr><td>2</td><td>1231a12323</td><td>wert</td></tr>
-                                        <tr><td>3</td><td>erty</td><td>tw</td></tr>
-                                        <tr><td>4</td><td>sgdfsg</td><td>sreter</td></tr>
-                                        <tr><td>5</td><td>1231sdfg23</td><td>ssdfg</td></tr>
-                                        <tr><td>6</td><td>s</td><td>jghj</td></tr>
-                                        <tr><td>7</td><td>123123</td><td>wert</td></tr>
-                                        <tr><td>8</td><td>wert</td><td>wert</td></tr>
-                                        <tr><td>9</td><td>sdfg</td><td>fhgj</td></tr>
-                                        <tr><td>10</td><td>qwer</td><td>12312</td></tr>
-                                        <tr><td>11</td><td>hfgh</td><td>fghj</td></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <h6 class="margin-top">依赖关系</h6>
-                            <pre><code class="language">
+                <h6 class="margin-top">依赖关系</h6>
+                <pre><code class="language">
+    &lt!--此引用样例只含datatable 如需其他模块功能，请到相应-->
     &lt!--bootstrap核心 -->
     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-    &lt!--图标字体,admin 后端样式 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-    &lt;link rel="stylesheet" href="http://1.fyimg.kukuplay.com/zytv/v1.8.33/css/admin/adminpage.css"/>
-
+    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
     &lt!--jQuery -->
     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js">&lt;/script>
-
     &lt!--datatable依赖 -->
-    &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
-    &lt;script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js">&lt;/script>
+    &lt;script  src="http://static.ws.kukuplay.com/common/lib/bootstrap/v3.3.5/js/bootstrap.min.js">&lt;/script>
     &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js">&lt;/script>
     &lt;script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js">&lt;/script>
+    &lt!--此文件为datatable 初始化表格入口 建议放在最下面而不是顶部 -->
+    &lt!--否则在此插件初始化之后table中翻页后元素的绑定事件容易失效 -->
+    &lt!--如果自己写了表格的初始化方法，可以不引用此文件 -->
+    &lt;script  src="http://6.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/DT_table.js">&lt;/script>
 </code></pre>
 
-                            <h6 class="margin-top">html 代码</h6>
-                            <pre><code class="language">
-   &lt;table id="table" class="table table-bordered">
+                <h6 class="margin-top">html 代码</h6>
+                <pre><code class="language">
+   &lt;table id="example" class="table table-bordered">
        &lt;thead>
         ....
         &lt;/thead>
@@ -117,30 +78,30 @@ and open the template in the editor.
         &lt;/tbody>
     &lt;/table>
 </code></pre>
-                            <h6>js 初始化表格</h6>
-                            <pre><code class="language">
+                <h6>js 初始化表格（如果引用了 入口文件将可不写初始化方法，但table的id为example）</h6>
+                <pre><code class="language">
     &ltscript>
             $(document).ready(function () {
-                $('#table').dataTable();
+                $('#example').dataTable();
             })
        &lt/script>
 </code></pre>
-                            <p class="margin-top">PS:需要注意一点：有些表格中的一些按钮需要绑定事件（click 之类的），这些事件最好在初始化表格之前绑定，要不然在翻页时事件会失效</p>
-                            <pre><code class="language">
+                <p class="margin-top">PS:需要注意一点：有些表格中的一些按钮需要绑定事件（click 之类的），这些事件最好在初始化表格之前绑定，要不然在翻页时事件会失效</p>
+                <pre><code class="language">
     &ltscript>
             $(document).ready(function () {
                 $(".xxx").on("click",function(){})
                 ...
                 ...
                 //事件绑定完了初始化表格插件
-                $('#table').dataTable();
+                $('#example').dataTable();
             })
        &lt/script>
 </code></pre>
-                            <p class="margin-top">目前有现成封装好的初始化 只需要引用一个js 就行了</p>
-                            <pre><code class="language">
+                <p class="margin-top">目前有现成封装好的初始化 只需要引用一个js 就行了</p>
+                <pre><code class="language">
 // 定义id 为table 其他的无效
-   &lt;table id="table">
+   &lt;table id="example">
        &lt;thead>
         ....
         &lt;/thead>
@@ -159,20 +120,12 @@ and open the template in the editor.
 //这个文件放最后，原因如上。
  &lt;script  src="http://6.fyimg.kukuplay.com/zytv/v1.8.33/js/admin/DT_table.js">&lt;/script>
 </code></pre>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
-
-        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
-        <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
         <script>
             $(document).ready(function () {
-                $('#table').dataTable();
+                $('#example').dataTable();
             })
         </script>
     </body>
