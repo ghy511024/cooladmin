@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/video/video2-js.css"/>
+        <script  src="http://static.ws.kukuplay.com/common/lib/video/v5.0/video2.js"></script>
+        <script  >
+            videojs.options.flash.swf = "http://static.ws.kukuplay.com/common/lib/video/v5.0/video-js.swf";
+        </script>
+    </head>
+    <body>
+        <video id="my_video_1" class="video-js vjs-default-skin"   autoplay="true"   data-setup="{}">  
+            <source src="http://localhost:8809/zystatic/video/home.mp4" type='video/mp4'/>  
+        </video> 
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <!--[if lte IE 7]>
+             <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/json2.js"></script>
+           <![endif]-->
+        <!--[if lte IE 9]>
+    <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/html5/html5.js"></script>  
+      <![endif]-->
+
+        <!---->
+        <script type="text/javascript">
+            window.onbeforeunload = onbeforeunload_handler;
+            function onbeforeunload_handler() {
+                alert("sdddddd")
+                var img = new Image()
+                img.src = "http://www.zhangyu.tv"
+//               var warning = "确认关闭www.someabcd.com?";
+//               //你的业务操作。。。。      
+//               return warning;
+            }
+        </script>
+    </body>
+</html>
