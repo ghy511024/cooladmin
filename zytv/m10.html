@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--js代码片段</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/adminpage.css"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>十月上线日志</h5>
+            </div>
+            <div class="margin-top">
+                <div class="part">
+                    <h4>10-16</h4>
+                    <p>
+                        1:随机红包限制：主播发送随机红包将扣税，扣税规则为（10次内无税，10-20次内10%税，20次以上30%税）
+                    </p>
+                    <p>
+                        2:随机红包限制：用户每日领取红包，超过一定次数并且超过一定额度，将拒绝领取。次数和额度为后台配置
+                    </p>
+                    <p>
+                        3:暖场弹幕出现逻辑需要播放器通知（播放器回调Chat.playready() 后才执行暖场弹幕逻辑）
+                    </p>
+                    <p>
+                        4:未注册用户红包提示逻辑修改。原逻辑：进入播放页1分钟后提示红包，且红包不能关闭，5分钟轮询。现在逻辑：进去即出现红包，可以选择关闭，5分钟轮询。
+                    </p>
+                    <p>
+                        5:封禁聚合增加ip 聚合查询页面
+                    </p>
+                    <p>
+                        6:注册来源统计，user 新增behavior 字段统计注册来源，目前只有 未注册红包注册来源统计，字段为 redpacketpcregist
+                    </p>
+                    <p>
+                        7:喇叭功能上线，喇叭新增链接字段。喇叭文本字数限制为30字，链接部分没有限制字数。
+                    </p>
+                    <p>
+                        8:红包领取失败提醒策略更改，以前为一固定提示：领取红包失败，现在提醒变更为后端返回的提示。
+                    </p>
+                    <p>
+                        9:个人中心我的红包显示，红包价格为税后价格
+                    </p>
+                    <p>
+                        bug: 修复bug 注册时，后端在铜盾拒绝后，注册结果没有正确返回。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script  src="../js/adminConf.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

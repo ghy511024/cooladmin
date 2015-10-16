@@ -63,7 +63,37 @@ window.AdminPage = [{
                 ]
             }
         ]
-    }]
+    }, {
+        name: "js 片段",
+        url: "/jspage/keycode.html", tag: [
+            {
+                name: "代码片段",
+                title: "简单易忘片段",
+                url: "/jspage/keycode.html",
+                links: [
+                    {
+                        name: "代码尸体",
+                        url: "/jspage/keycode.html"
+                    },
+                ]
+            }
+        ]}, {
+        name: "上线日志",
+        url: "/zytv/m10.html", tag: [
+            {
+                name: "上线日志",
+                title: "章鱼10月",
+                url: "/zytv/m10.html",
+                links: [
+                    {
+                        name: "10月日志",
+                        url: "/zytv/m10.html"
+                    },
+                ]
+            }
+        ]
+    }
+]
 AdminConf = {
     tj: "false",
 }
