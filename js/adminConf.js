@@ -64,7 +64,7 @@ window.AdminPage = [{
             }
         ]
     }, {
-        name: "js 片段",
+        name: "js",
         url: "/jspage/keycode.html", tag: [
             {
                 name: "代码片段",
@@ -72,11 +72,45 @@ window.AdminPage = [{
                 url: "/jspage/keycode.html",
                 links: [
                     {
-                        name: "代码尸体",
+                        name: "code part",
                         url: "/jspage/keycode.html"
                     },
                 ]
+            },
+            {
+                name: "常用插件",
+                title: "常用插件",
+                url: "/jspage/html5video.html",
+                links: [
+                    {
+                        name: "html5 video",
+                        url: "/jspage/html5video.html"
+                    },
+                    {
+                        name: "zclip 一键复制",
+                        url: "/jspage/zcopy.html"
+                    },
+                ]
             }
+        ]}, {
+        name: "java",
+        url: "/jspage/keycode.html", tag: [
+            {
+                name: "代码片段",
+                title: "code part",
+                url: "/javapage/partcode.html",
+                links: [
+                    {
+                        name: "code part",
+                        url: "/javapage/partcode.html"
+                    },
+                    {
+                        name: "paging 分页",
+                        url: "/javapage/paging.html"
+                    }
+                ]
+            }
+
         ]}, {
         name: "上线日志",
         url: "/zytv/m10.html", tag: [
@@ -94,6 +128,3 @@ window.AdminPage = [{
         ]
     }
 ]
-AdminConf = {
-    tj: "false",
-}

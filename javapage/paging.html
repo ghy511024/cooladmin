@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--java 分页控件</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/adminpage.css"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>后端分页组件</h5>
+            </div>
+            <div class="margin-top">
+                <div class="mt40">
+                    <h4>数组排序</h4>
+                    <pre><code class="language">
+
+                     </code></pre>
+                </div>
+                <div class="mt40">
+                    <h4>list 排序</h4>
+                    <pre><code class="language">
+package com.yuncheng.zyuser.util;
+/**
+ * @author hongyu.gong
+ */
+public class PagingUtils {
+
+    public static class Page {
+
+        private Integer allnum;//所有条数
+        private Integer onesize;//单页条数
+        private Integer allpage;//所有页数
+        private Integer begin;//起始页
+        private Integer end;//结束页
+        private Integer cpage;//当前页
+        private Integer limit;//数组切割开始
+        private Integer limitend;//数组切割结束 一页10条则返回9
+        private Integer showpage;//显示多少页
+        private Boolean before;//是否显示上一页
+        private Boolean next;//是否显示下一页
+        private Boolean status;//参数校验 防止乱填
+
+        public Integer getAllnum() {return allnum;}
+        public void setAllnum(Integer allnum) {this.allnum = allnum;}
+        public Integer getOnesize() {return onesize;}
+        public void setOnesize(Integer onesize) {this.onesize = onesize;}
+        public Integer getAllpage() {return allpage;}
+        public void setAllpage(Integer allpage) {this.allpage = allpage;}
+        public Integer getBegin() {return begin;}
+        public void setBegin(Integer begin) {this.begin = begin;}
+        public Integer getEnd() {return end;}
+        public void setEnd(Integer end) {this.end = end;}
+        public Integer getLimit() {return limit;}
+        public void setLimit(Integer limit) {this.limit = limit;}
+        public Integer getLimitend() {return limitend;}
+        public void setLimitend(Integer limitend) {this.limitend = limitend;}
+        public Integer getShowpage() {return showpage;}
+        public void setShowpage(Integer showpage) {this.showpage = showpage;}
+        public Boolean getBefore() {return before;}
+        public void setBefore(Boolean before) {this.before = before;}
+        public Boolean getNext() {return next;}
+        public void setNext(Boolean next) {this.next = next;}
+        public Boolean getStatus() {return status;}
+        public void setStatus(Boolean status) {this.status = status;}
+        public Integer getCpage() {return cpage;}
+        public void setCpage(Integer cpage) {this.cpage = cpage;}
+    }
+
+    /**
+     * 分页计算方法
+     *
+     * @param allsize 总条数
+     * @param onsize 一页条数
+     * @param cpage 当前页
+     * @param showpage 显示多少页 ..12345..
+     */
+    public static Page getPage(int allsize, int onsize, int cpage, int showpage) {
+        Page page = new Page();
+        if ((cpage < 1) || (showpage < 1) || (allsize <= 0) || ((cpage - 1) * onsize >= allsize)) {
+            page.setStatus(Boolean.FALSE);
+            return page;
+        }
+        page.setStatus(Boolean.TRUE);
+        int limit = (cpage - 1) * onsize;//切割起始位置
+        int allpage = (allsize / onsize);//总页数
+        if (allsize % onsize != 0) {
+            allpage = allpage + 1;
+        }
+        int limitend = allsize;//切割结束位置
+        int begin = 1;//起始页
+        int end = 1;//结束页
+        boolean before = false;
+        boolean next = false;
+        if (allsize > (limit + onsize)) {
+            limitend = (limit + onsize - 1);
+        } else {
+            limitend = allsize - 1;
+        }
+        //计算起始页,结束页
+        if (allpage <= showpage) {
+            begin = 1;
+            end = allpage;
+        } else if (cpage <= (showpage / 2 + 1)) {
+            begin = 1;
+            end = showpage;
+            next = true;
+        } else if (cpage <= (allpage - (showpage / 2))) {
+            before = true;
+            next = true;
+            begin = cpage - (showpage / 2);
+            end = cpage + (showpage / 2);
+        } else {
+            before = true;
+            begin = allpage - showpage + 1;
+            end = allpage;
+        }
+        page.setAllnum(allsize);
+        page.setBegin(begin);
+        page.setAllpage(allpage);
+        page.setEnd(end);
+        page.setLimit(limit);
+        page.setLimitend(limitend);
+        page.setOnesize(onsize);
+        page.setCpage(cpage);
+        page.setShowpage(showpage);
+        page.setBefore(before);
+        page.setNext(next);
+        return page;
+    }
+}
+                     </code></pre>
+                    <p>为节省篇幅，set get方法压缩显示,通常这个java工具类一般放在util包里面。</p>
+                </div>
+                <div class="mt40">
+                    <h4>后端JAVA Controller 中调用分页组件</h4>
+                    <pre><code class="language">
+        List&lt;XXX> list =XXX;
+        if (list != null) {
+                int p = Utils.parseInteger(request.getParameter("p"), 1);//页数
+                Page page = PagingUtils.getPage(list.size(), 10, p, 5);//每页10条 一共5页
+                if (page.getStatus() != null && page.getStatus()) {
+                    mv.addObject("page", page);
+                    mv.addObject("list", list);
+ }
+            }
+                     </code></pre>
+                    <div class="mt40">
+                        <h4>前端jsp 中调用分页组件</h4>
+                        <pre><code class="language">
+    // 表格中 遍历
+    &lt;c:forEach  items="${list}" var="item" varStatus="status" begin="${page.limit}" end="${page.limitend}">
+        &lt;tr id="${item._id}"
+            ...
+        &lt;/tr>
+    &lt;/c:forEach>
+
+            //分页 按钮
+            &lt;div class="op-wrap">
+                &lt;c:if test="${page!=null&&page.end>1}">
+                    &lt;div class="page-op">
+                        &lt;c:if test="${page.before}">
+                            &lt;a class="pre-page page-btn" href="xxx?p=${page.cpage-1}">上一页&lt;/a>
+                        &lt;/c:if>
+                        &lt;c:forEach var="item" varStatus="c" begin="${page.begin}" end="${page.end}">
+                            &lt;a class="page-link  &lt;c:if test="${c.index==page.cpage}">current&lt;/c:if>"  href="xxx?p=${c.index}">${c.index}&lt;/a>
+                        &lt;/c:forEach>
+                        &lt;c:if test="${page.next}">
+                            &lt;a class="next-page page-btn"  href="xxx?p=${page.cpage+1}">下一页&lt;/a>
+                        &lt;/c:if>
+                    &lt;/div>
+                &lt;/c:if>
+            &lt;/div>
+                     </code></pre>
+                    </div>
+                    <div class="mt40">
+                        <p>另外附上分页样式，避免重复开发</p>
+                        <h4>分页样式</h4>
+                        <pre><code class="language">
+.page-op{
+    width:auto;
+    .page-btn{
+        float:left;
+        width:78px;
+        border:1px solid #dfdfdf;
+        background:#fff;
+        font-size:12px;
+        height:24px;
+        line-height:24px;
+        text-align:center;
+        &:hover{
+            border-color: #f61d64;
+        }
+    }
+    .page-link{
+        display:block;
+        float:left;
+        width:24px;
+        height:24px;
+        border-radius:3px;
+        font-size:12px;
+        border:1px solid #dfdfdf;
+        text-align:center;
+        line-height:24px;
+        cursor:pointer;
+        margin:0px 4px;
+        &.current{
+            border:none;
+            background:#f61d64;
+            color:#fff;
+        }
+        &:hover{
+            border-color: #f61d64;
+        }
+    }
+}
+ </code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script  src="../js/adminConf.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

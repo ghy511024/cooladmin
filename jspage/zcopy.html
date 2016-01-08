@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--zcopy 一键复制</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>一键复制插件</h5>
+            </div>
+            <div class="margin-top">
+                <p>点击复制代码引用样例</p>
+                <pre><code class="language">
+         &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
+         &lt;script  src="http://static.ws.kukuplay.com/common/lib/zclip/jquery.zclip.min.js"> &lt;/script>
+         &lt;script >
+                $('#xxx').zclip({
+                    path: 'http://static.ws.kukuplay.com/common/lib/zclip/ZeroClipboard.swf',
+                    copy: function () {
+                        return "复制内容"
+                    },
+                    afterCopy: function () {
+                        alert("复制成功")
+                    }
+                });
+         &lt;/script>
+</code></pre>
+                <p>如果出现 swf 请求被拒绝，可以尝试延时10毫秒后执行 zclip 函数</p>
+                <div class="btn btn-info" id="test">复制测试</div>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                setTimeout(function () {
+                    $('.btn-info').zclip({
+                        path: 'http://static.ws.kukuplay.com/common/lib/zclip/ZeroClipboard.swf',
+                        copy: function () {
+                            return "http://www.zhangyu.tv";
+                        },
+                        afterCopy: function () {
+                            alert("复制成功")
+                        }
+                    });
+                }, 10)
+            })
+        </script>
+    </body>
+</html>

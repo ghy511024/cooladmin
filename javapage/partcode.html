@@ -6,11 +6,63 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>coolAdmin 后端wiki--java code part</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="../css/adminpage.css"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div id="content">
+            <div class="content-title">
+                <h5>后端项目常用易忘代码备注</h5>
+            </div>
+            <div class="margin-top">
+                <div class="mt40">
+                    <h4>数组排序</h4>
+                    <pre><code class="language">
+
+                     </code></pre>
+                </div>
+                <div class="mt40">
+                    <h4>list 排序</h4>
+                    <pre><code class="language">
+   Collections.sort(lists, new Comparator() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                Integer item0 = (Channel) o1;
+                Integer item1 = (Channel) o2;
+                return item0-item1;
+            }
+        });
+                     </code></pre>
+                </div>
+                <div class="mt40">
+                    <h4>统一格式输出</h4>
+                    <pre><code class="language">
+            public static void writeResponse(HttpServletResponse response, String className, String msg, Object ret) {
+                response.setContentType("text/html;charset=UTF-8");
+                PrintWriter out = null;
+                try {
+                    out = response.getWriter();
+                    out.print(ret);
+                } catch (IOException ex) {
+                    Logger.getLogger(className).log(Level.SEVERE, msg, ex);
+                } finally {
+                    out.close();
+                }
+            }
+                     </code></pre>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/scripts/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" language="javascript" src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script  src="../js/adminConf.js"></script>
+        <script type="text/javascript" src="../js/admin.js"></script>
+        <script type="text/javascript" src="../js/main.js"></script>
     </body>
 </html>

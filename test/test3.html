@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>后台动态表单</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="ztitle">
+                <h5>标题</h5>
+                <a href="asdf">asdfasd</a>
+            </div>
+            <div class="cond">
+                <div class="form full"><label >sdfs</label>
+                    <div class="btn btn-info fright">sdfsd</div>
+                </div>
+                <div class="form"><input type="text" />
+                <input type="text" id="start-time" class="timepicker"/>
+                </div>
+            </div>
+            <div class="mt20">
+                <table class="table table-bordered">
+                    <thead>
+                    <th>
+                        姓名
+                    </th>
+                    <th>
+                        raido测试
+                    </th>
+                    <th>
+                        爱好
+                    </th>
+                    <th>
+                        多行编辑
+                    </th>
+                    <th>
+                        多行编辑
+                    </th>
+                    <th>
+                        操作
+                    </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-key="_id" data-value="哈哈">
+                                <input type="text" value="哈哈"/>
+                            </td>
+                            <td data-key="radio" data-value="2">
+                                2
+                            </td>
+                            <td data-key="checkbox" data-value="['bb',5]"  class='ghy'>
+                                1,5
+                            </td>
+                            <td data-key='textarea' data-value="asdfasdfasdfasdf">
+                                asdfasdfasdf
+                            </td>
+                            <td data-key="dynlist" data-value='[{"链接": {"key": "ghy1", "value": "2342"}}]' class='haha'>
+                                <input type="text" value='2345'/>
+                                <input type="text" value='23ss'/>
+                            </td>
+                            <td>
+                                <button class='zedite'>编辑</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script type="text/javascript">
+//            var data = {
+//                _id: {type: "text", name: "标题1", value: "123"},
+//                _id2: {type: "text", name: "标题4", value: "4"},
+//                _id3: {type: "text", name: "标题5", value: "5"},
+//                radio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}], value: "1"},
+//                checkbox: {type: "checkbox", check: [{name: "男", value: "1"}, {name: "n女", value: "5"}, {name: "阿斯蒂芬", value: "3"}], value: ["1"]},
+//                textarea: {type: "textarea", name: "描述", value: "haha"},
+//                dynlist: {type: "dynlist", name: "动态列表", list: [{name: "中文描述", key: "ghy1"}, {name: "bb", key: "sdg"}], value: [{value3: {key: "ghy1", value: "2342"}, bb: {key: "ghy1", value: "2342"}}, {value3: {key: "ghy1", value: "vvvv"}}]}
+//            };
+            var data2 = {
+                _id: {type: "text", name: "标题1"},
+                _id2: {type: "text", name: "标题4"},
+                _id3: {type: "text", name: "标题5", value: "5"},
+                radio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
+                checkbox: {type: "checkbox", check: [{name: "男", value: "1"}, {name: "n女", value: "5"}, {name: "阿斯蒂芬", value: "3"}]},
+                textarea: {type: "textarea", name: "描述", value: "haha"},
+                dynlist: {type: "dynlist", name: "动态列表", list: [{name: "链接", key: "ghy1"}]}
+            };
+
+            zadmin.ready(function () {
+                console.log("....")
+//                cform.cform(data2);
+                $(".zedite").on("click", function () {
+                    var el = $(this).parent().parent();
+                    zform.eform(el, data2, function (retdata) {
+                        alert(JSON.stringify(retdata));
+                    });
+                })
+            });
+        </script>
+    </body>
+</html>

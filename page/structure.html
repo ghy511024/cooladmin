@@ -10,179 +10,129 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css"/>
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-
-        <link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v1.0/adminpage.min.css"/>
-        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
-        <script  src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <script  src="http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js"></script>
-        <script  src="http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+        <style type="text/css">
+            img{width:100%;}
+        </style>
     </head>
     <body>
-        <!--顶部导航-->
-        <div class="topbar">
-            <div class="topbar-left left-home">
-                <!--首页房间小图标-->
-                <a href="#"><i class="fa fa-home fa-3x"></i></a>
+        <div id="content">
+            <div class="ztitle">
+                <h5>coolAdmin 后端结构详细介绍</h5>
             </div>
-            <!--顶部导航-->
-            <div class="topbar-left">
-                <div class="topbar-nav-btn active">
-                    <a href="#">
-                        <span>常用功能</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!--中间内容-->
-        <div class="main-content">
-            <!--内容一级导航-->
-            <div class="left-slide-bar">
-                <ul>
-                    <li class="active"><a href="../index.html">基础依赖</a></li>
-                    <li><a href="../datatable/basic.html">数据表格</a></li>
-                    <li><a href="../page/date.html">日期插件</a></li>
-                </ul>
-            </div>
-            <!--内容主要区域-->
-            <div class="content-inner left-content">
-                <!--内容二级导航-->
-                <div class="inner-slide-bar">
-                    <div class="title">后端基础</div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <a href="../index.html">
-                                    <div class="link">基础类库cdn</div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="basicdep.html" >
-                                    <div class="link">依赖关系</div>
-                                </a>
-                            </li>
-                            <li >
-                                <a href="structure.html"  class="current">
-                                    <div class="link">页面结构</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="content-body">
-                    <div class="right-content">
-                        <div class="content-title">
-                            <h5>页面结构</h5>
-                        </div>
-                        <div class="margin-top" style="margin-bottom:100px">
-                            <p><a href="http://www.zhangyu.tv/admins/config" target="_blank">配置入口</a>（删除等操作请慎重！）<a href="http://www.zhangyu.tv/api/getadminpagelink" target="_blank">查看后端接口</a></p>
-                            <p>以本页面结构为例子，下面给出 html 结构 直接拷贝可用。例子中代码和实际效果请参照本页面自行脑补。</p>
-                            <p>在使用本文结构之前，请阅读依赖关系，配置好核心所需要的样式和 js（新版后端仅限于www.zhangyu.tv 这个域名下使用，其他域名下想使用，请等第三版）</p>
-                            <pre><code class="language">
-                 &lt;head>
-                     &lt;title>后端标题&lt;/title>
-                     &lt;meta charset="UTF-8">
-                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-                     &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/adminpage-v2.0.css"/>
-
-                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
-                     &lt;script  src="http://static.ws.kukuplay.com/common/lib/zylib/v2.0/admin-v2.7.js"> &lt;/script>
-                 &lt;/head>
+            <h3>1：设置标题</h3>
+            <!--jjj-->
+            <div class="row mt20">
+                <div class="col-md-6">
+                    <pre><code class="language">
                 &lt;body>
                     &lt;div id="content">
-                        &lt;div class="content-title">
-                            &lt;h5>自定义标题&lt;/h5>
-                        &lt;/div>
-                        &lt;div class="margin-top">
-                             &lt!--内容写在这儿。-->
-                        &lt;/div>
+                     &lt;!------title start------>
+                         &lt;div class="content-title">
+                            &lt;h5>coolAdmin v3.0 demo 教程&lt;/h5>
+                         &lt;/div>
+                     &lt;!------title end------>
                     &lt;/div>
                 &lt;/body>
-         &lt!--配置-->
-         &lt;script type="text/javascript">
-            AdminConf = {top: "网站管理", "tag": "频道相关", link: "超级黑名单"}
-         &lt;/script>
             </code></pre>
-                            <p>下面结构是第一版后端的模版，现在仅供参考，也是生成后的dom</p>
-                            <pre><code class="language">
-     &lt;head>
-         &lt;title>标题 &lt;/title>
-         &lt;meta charset="UTF-8">
-         &lt;meta name="viewport" content="width=device-width, initial-scale=1.0">
-         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/bootstrap3.3.4/css/bootstrap.min.css"/>
-         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/styles/font-awesome.min.css"/>
-         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/zylib/v1.0/adminpage.min.css"/>
-
-         &lt;script  src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"> &lt;/script>
-     &lt;/head>
-    &lt;body>
-        &lt;!--顶部导航-->
-        &lt;div class="topbar">
-            &lt;div class="topbar-left left-home">
-                &lt;!--首页房间小图标-->
-                &lt;a href="#">&lt;i class="fa fa-home fa-3x">&lt;/i>&lt;/a>
-            &lt;/div>
-            &lt;!--顶部导航-->
-            &lt;div class="topbar-left">
-                 &lt;div class="topbar-nav-btn">
-                    &lt;a href="#">
-                        &lt;span>常用功能&lt;/span>
-                    &lt;/a>
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
-        &lt;!--中间内容-->
-        &lt;div class="main-content">
-            &lt;!--内容一级导航-->
-            &lt;div class="left-slide-bar">
-                &lt;ul>
-                    &lt;!--选中加 active class-->
-                    &lt;li class="active">&lt;a href="index.html">基础依赖&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">数据表格&lt;/a>&lt;/li>
-                    &lt;li>&lt;a href="#">日期插件&lt;/a>&lt;/li>
-                &lt;/ul>
-            &lt;/div>
-            &lt;!--内容主要区域-->
-            &lt;div class="content-inner left-content">
-                &lt;!--内容二级导航-->
-                &lt;div class="inner-slide-bar">
-                    &lt;div class="title">页面结构&lt;/div>
-                    &lt;div class="list">
-                        &lt;ul>
-                            &lt;li>
-                                &lt;a href="index.html" >&lt;div class="link">依赖关系&lt;/div>&lt;/a>
-                            &lt;/li>
-                            &lt;li >
-                                &lt;!--选中加 current class-->
-                                &lt;a href="structure.html" class="current">&lt;div class="link">页面结构&lt;/div>&lt;/a>
-                            &lt;/li>
-                        &lt;/ul>
-                    &lt;/div>
-                &lt;/div>
-                &lt;div class="content-body">
-                    &lt;div class="right-content">
-                        &lt;div class="content-title">
-                            &lt;h5>页面结构&lt;/h5>
-                        &lt;/div>
-                        &lt;div class="margin-top" style="margin-bottom:100px;">
-                             &lt!--内容主要区域-->
-                             &lt!--你想写的都在这儿写-->
-                        &lt;/div>
-                    &lt;/div>
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
-    &lt;/body>
-</code></pre>
-                        </div>
+                </div>
+                <div class="col-md-6"><img src="/images/structure/pic-title.png" alt="" /></div>
+            </div>
+            <h3 class="mt50">2：查询条件专用区域</h3>
+            <div class="row mt20">
+                <div class="col-md-6">
+                    <pre><code class="language">
+     &lt;div id="content">
+         &lt;div class="content-title">
+             &lt;h5>coolAdmin v3.0 demo 教程 &lt;/h5>
+         &lt;/div>
+         &lt;div class="cond">
+             &lt;div class="form">
+                 &lt;label>开始时间： &lt;/label> &lt;input type="text" id="start-time" class="timepicker"/>
+                 &lt;label>结束时间： &lt;/label> &lt;input type="text" id="end-time" class="timepicker"/>
+                 &lt;div class="btn btn-info">靠左查询按钮 &lt;/div>
+             &lt;/div>
+             &lt;div class="form mt10">
+                 &lt;label>选择条件： &lt;/label>
+                 &lt;select>
+                     &lt;option value="value1">value1 &lt;/option>
+                     &lt;option value="value2">value2 &lt;/option>
+                 &lt;/select>
+                 &lt;label>查询条件1： &lt;/label> &lt;input type="text"/>
+                 &lt;label>查询条件2： &lt;/label> &lt;input type="text"/>
+                 &lt;div class="btn btn-success fright">靠右查询按钮 &lt;/div>
+             &lt;/div>
+         &lt;/div>
+     &lt;/div>
+            </code></pre>
+                </div>
+                <div class="col-md-6">
+                    <img src="/images/structure/pic-cond.png" alt="" />
+                    <div class="mt20">
+                        <p>部分class 类名解释</p>
+                        <p>
+                            cond,form （类库定义类名，请勿更改）
+                        </p>
+                        <p>
+                            mt10,mt20,mt50 (上边距，距离上面10像素，20像素，50像素)
+                        </p>
+                        <p>
+                            btn,btn-info,btn-success （bttostrap 3按钮样式）
+                        </p>
+                        <p>
+                            fright （右对齐）
+                        </p>
+                        <p>
+                            timepicker (input 加上此类名，将会当作日期选择插件处理)
+                        </p>
+                        <p>ps:这儿只规范查询表单的样式，具体查询逻辑js 部分还是得自己写的，类库不做任何干预</p>
+                    </div>
+                </div>
+            </div>
+            <h3 class="mt50">3：数据表格</h3>
+            <div class="row mt20">
+                <div class="col-md-6">
+                    <pre><code class="language">
+                 &lt;table class="table table-bordered" id="table10">
+                     &lt;thead>
+                     &lt;th>标题1 &lt;/th> 
+                     &lt;th>标题2 &lt;/th>
+                     &lt;th>标题3 &lt;/th>
+                     &lt;th>标题4 &lt;/th>
+                     &lt;/thead>
+                     &lt;tbody>
+                         &lt;tr>
+                             &lt;td>aaa0 &lt;/td>
+                             &lt;td>bbb &lt;/td>
+                             &lt;td>ccc &lt;/td>
+                             &lt;td>ddd &lt;/td>
+                         &lt;/tr>
+                     &lt;/tbody>
+                 &lt;/table>
+            </code></pre>     
+                </div>
+                <div class="col-md-6">
+                    <img src="/images/structure/pic-table.png" alt="" />
+                    <div class="mt20">
+                        <p>部分class，id 解释</p>
+                        <p>
+                            class="table table-bordered" （bootstrap 3表格样式）
+                        </p>
+                        <p>
+                            id="table" (类库定义id，有此id表格将会初始化datatable 数据表格插件)
+                        </p>
+                        <p>
+                            id="table"|| id="example" (默认每页100条)
+                        </p>
+                        <p>
+                            id="table10" (默认每页10条)
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="../js/admin.js"></script>
         <script type="text/javascript" src="../js/main.js"></script>
     </body>
 </html>

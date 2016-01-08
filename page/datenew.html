@@ -101,7 +101,8 @@
         <script type="text/javascript" src="../js/main.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $("#date1").datetimepicker();//同时选定日期和时间
+//                $.datetimepicker.setLocale('zh');
+                $("#date1").datetimepicker({lang:"ch",format:"Y-m-d H:i",step:"30"});//同时选定日期和时间
                 $("#date2").datetimepicker({//月份中数值需要加1（0代表1月，11代表12月）
                     minDate: new Date(2015, 7, 12),
                     maxDate: new Date(1440518400000)

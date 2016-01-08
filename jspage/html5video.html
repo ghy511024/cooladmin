@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--兼容的video</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>兼容的html5 video插件</h5>
+            </div>
+            <div class="margin-top">
+                <p>
+                    能找到一款兼容ie7 的html video 插件实属不易，官网或者github 上的最新版都不能做到很好的兼容。
+                </p>
+                <p>
+                    特此记录一下，以备后时之需要
+                </p>
+                <pre><code class="language">
+     &lt;head>
+         &lt;link rel="stylesheet" href="http://static.ws.kukuplay.com/common/lib/video/video2-js.css"/>
+         &lt;script  src="http://static.ws.kukuplay.com/common/lib/video/v5.0/video2.js"> &lt;/script>
+         &lt;script  >
+            videojs.options.flash.swf = "http://static.ws.kukuplay.com/common/lib/video/v5.0/video-js.swf";
+         &lt;/script>
+     &lt;/head>
+     &lt;body>
+         &lt;video id="h5video" class="video-js vjs-default-skin"   autoplay="true"   data-setup="{}">  
+             &lt;source src="http://static.ws.kukuplay.com/movie/fitness.mp4" type='video/mp4'/>  
+         &lt;/video> 
+     &lt;/body>
+</code></pre>
+                <p>
+                    备注：js 和css 版本请不要随意更改，一改绝对不好使（ie7,8），尽量类库引用放在头部，flash 赋值部分放在头部。
+                </p>
+                <p>自动播放代码</p>
+                <pre><code class="language">
+                    var myPlayer = videojs('h5video');
+                    videojs("h5video").ready(function () {
+                        var myPlayer = this;
+                        myPlayer.play();
+                    });
+</code></pre>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>
