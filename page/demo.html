@@ -124,13 +124,48 @@ and open the template in the editor.
                 </table>
                 <h3>4：zform 动态表单 样例</h3>
                 <div class="btn btn-info" id="cform">创建表单</div>
+                <p>编辑表格中数据 ,点击下面编辑按钮</p>
+                <table class="table table-bordered">
+                    <thead>
+                    <th> 姓名 </th>
+                    <th> raido测试 </th>
+                    <th> 爱好 </th>
+                    <th>  多行编辑 </th>
+                    <th>  多行编辑 </th>
+                    <th> 操作 </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-key="_id" data-value="哈哈">
+                                哈哈
+                            </td>
+                            <td data-key="radio" data-value="2">
+                                2
+                            </td>
+                            <td data-key="checkbox" data-value="['bb',5]"  class='ghy'>
+                                1,5
+                            </td>
+                            <td data-key='textarea' data-value="asdfasdfasdfasdf">
+                                asdfasdfasdf
+                            </td>
+                            <td data-key="dynlist" data-value='[{"链接": {"key": "ghy1", "value": "2342"}}]' class='haha'>
+                                <input type="text" value='2345'/>
+                                <input type="text" value='23ss'/>
+                            </td>
+                            <td>
+                                <div class='btn btn-info zedite'>点我编辑</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>5：下班了，今天先写到这儿，下周继续。。。</h3>
             </div>
         </div>
         <script type="text/javascript">
             var data2 = {
                 _id: {type: "text", name: "标题1"},
                 _id2: {type: "text", name: "标题4"},
-                _id3: {type: "text", name: "标题5", value: "5"},
+                _id3: {type: "text", name: "标题5", },
                 radio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
                 checkbox: {type: "checkbox", check: [{name: "男", value: "1"}, {name: "n女", value: "5"}, {name: "阿斯蒂芬", value: "3"}]},
                 textarea: {type: "textarea", name: "描述", value: "haha"},
@@ -140,6 +175,12 @@ and open the template in the editor.
             zadmin.ready(function () {
                 $("#cform").on("click", function () {
                     zform.cform(data2);
+                })
+                $(".zedite").on("click", function () {
+                    var el = $(this).parent().parent();
+                    zform.eform(el, data2, function (retdata) {
+                        alert(JSON.stringify(retdata));
+                    });
                 })
             })
         </script>
