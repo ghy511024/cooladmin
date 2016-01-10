@@ -143,7 +143,7 @@ window.AdminPage = [{
         name: "develop js",
         url: "/jspage/keycode.html", tag: [
             {
-                name: "代码片段",
+                name: "备份",
                 title: "简单易忘片段",
                 url: "/jspage/keycode.html",
                 links: [
@@ -165,6 +165,20 @@ window.AdminPage = [{
                     {
                         name: "zclip 一键复制",
                         url: "/jspage/zcopy.html"
+                    }
+                ]
+            },  {
+                name: "插件开发",
+                title: "底层支持",
+                url: "/jspage/csstool.html",
+                links: [
+                    {
+                        name: "css tool",
+                        url: "/jspage/csstool.html"
+                    },
+                    {
+                        name: "zen html",
+                        url: "/jspage/zenhtml.html"
                     }
                 ]
             }
@@ -193,7 +207,7 @@ window.AdminPage = [{
 //        url: "/zytv/m10.html", tag: [
 //            {
 //                name: "上线日志",
-//                title: "章鱼10月",
+//                title: "章鱼10月+000
 //                url: "/zytv/m10.html",
 //                links: [
 //                    {

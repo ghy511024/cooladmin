@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--js代码片段</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>csstool</h5>
+            </div>
+            <div id="zalert">
+                <div class="bk"></div>
+                <div class="pane"></div>
+            </div>
+            <div class="margin-top">
+                <p>一个完整的插件通常分为3部分 css,js,html。比如一个弹窗插件，图片轮播插件。要用到这些插件，就需要引用这三部分。一个页面插件太多，这样就非常不好，如果一个插件，css 和html 都在js中开发维护，那这个插件就比较方便了</p>
+                <p>如何在js 中去维护css,html这是一个难题。本文主要介绍如何在js 中维护开发 sass 风格的css</p>
+                <h3>1：使用样例</h3>
+                <pre><code class="language">
+        &lt;script type="text/javascript">
+            zadmin.ready(function () {
+                var dom = zen("div#zalert>div.bk+div.panel");
+                $("body").append(dom)
+
+                //=========生成html=============
+                &lt;div id="zalert">
+                    &lt;div class="bk">&lt;/div>
+                    &lt;div class="pane">&lt;/div>
+                &lt;/div>
+            })
+        &lt;/script>
+                </code></pre>
+                <p>基本上是按照scss 语法解析的。目前只实现了简单的解析功能，什么自定义变量啥的，暂时不支持。</p>
+                <p>ps:注意事项，类名，id名，和带横线（-）的css样式 这些key需要用引号引起来作为字符串key。</p>
+                <h3>2：源代码</h3>
+                <pre><code class="language">
+/**
+ * @author ghy
+ * @desc zen 模版基础类库
+ * @contact qq 249398279
+ * */
+jQuery.fn.zen = function (selector, callback) {
+    var $this = $(this);
+    if (typeof selector == undefined)
+        return $this;
+    selector.replace(/^([^>+]+)(([>+])(.*))?/, function ($0, instruction, $1, operator, subSelector) {
+        instruction.replace(/^([^*]+)(\*([0-9]+))?/, function ($0, tag, multiplier, factor) {
+            if (factor == undefined)
+                factor = 1;
+            if (factor < 1)
+                factor = 1;
+            var tagName = tag.match(/[^.#]+/)[0];
+            for (var i = 1; i <= factor; i++) {
+                var el = $('<' + tagName + '>');
+                tag.replace(/([.#])([^.#]+)/g, function ($0, kind, name) {
+                    if (kind == '#') {
+                        el.attr('id', name);
+                    } else if (kind == '.') {
+                        el.addClass(name);
+                    }
+                });
+                $this.append(el);
+                if (operator == undefined) {
+                    if (callback != undefined)
+                        jQuery.each([el], callback);
+                } else if (operator == '+') {
+                    $this.zen(subSelector, callback);
+                } else if (operator == '>') {
+                    el.zen(subSelector, callback);
+                }
+            }
+        });
+    });
+    return $(this);
+}
+window.zen = function (selector, callback) {
+    var dom = $("&lt;span>").zen(selector, callback).html();
+    return  $(dom);
+}
+                </code></pre>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript">
+            zadmin.ready(function () {
+                var style = {
+                    ".main": {
+                        width: "100px",
+                        height: "100px",
+                        ".item": {
+                            "font-size": "12px",
+                        },
+                        ".panel": {
+                            color: "red"
+                        }
+                    }
+                };
+                CssTool.makstyle(style);
+                //head 标签中会生成css 样式 （f12 可看本页面）
+                // .main{width:100px;height:100px}.main .item{font-size:12px}.main .panel{color:red}
+            })
+        </script>
+    </body>
+</html>
