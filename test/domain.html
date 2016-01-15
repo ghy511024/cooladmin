@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://static.ws.kukuplay.com/ghy/domain.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+
+        <style type="text/css">
+            .list label{
+                margin-left: 15px;
+                width: 100px;
+                display: inline-block;
+                line-height: 21px;
+                color: #4C1471;
+                font-size: 14px;
+                font-family: "微软雅黑";
+                font-weight: bold;
+            }
+            .list{
+                width: 1300px;
+                word-break: break-all;
+                margin: 30px auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <label>开始位置（例如aa 自动查询到 zz 最好不要超过三个字母）</label><input type="text" class="start" value="aa">
+            <label>默认后缀 例如（vtv.com）</label><input type="text" class="end" value="vtv.com">
+            <button id="search"> 查询</button>
+            <label>正在查询 <span class="tips"></span></label>
+            <div class="list"></div>
+        </div>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript">
+            status = false;
+            var surfix = "itv.com"
+            function check(_domain) {
+                $(".tips").html(_domain + surfix);
+                $.ajax({
+                    url: "http://pandavip.www.net.cn/check/check_ac1.cgi?domain=" + encodeURIComponent(_domain + surfix),
+                    type: "post",
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    timeout: 15000,
+                    jsonpCallback: "callback",
+                    error: function () {
+                        console.log("==========time out 1s later reconnect==================");
+                        setTimeout(function () {
+                            if (status) {
+                                check(_domain)
+                            }
+                        }, 5000)
+                    }
+                });
+            }
+            var arry = [];
+            function callback(data) {
+                console.log(data)
+                data = data || "";
+                var item = data.split("|");
+                if (item[2] == "210") {
+                    console.log("=====================恭喜=======================");
+                    console.log(item[1] + ":" + item[2] + ":" + item[3])
+                    arry.push(item[1]);
+                    write(item[1])
+                    var domain = item[1].replace(surfix, "")
+                    domain = getnext(domain);
+                    if (domain != "-1") {
+                        if (status) {
+                            check(domain)
+                        }
+                    }
+                    else {
+                        console.log("==========================end================================")
+                    }
+                }
+                else if (item[2] == "211") {
+
+                    var domain = item[1].replace(surfix, "")
+                    domain = getnext(domain);
+                    if (domain != "-1") {
+                        if (status) {
+                            check(domain)
+                        }
+
+                    }
+                    else {
+                        console.log("==========================end================================")
+                    }
+                }
+                else if (item[2] == "213") {//超时从试
+                    var domain = item[2];
+                    if (status) {
+                        check(domain)
+                    }
+                }
+
+            }
+
+            function getnext(str) {
+                var start = 97;
+                var end = 122;
+                var arry = str.split("");
+                var asciiArry = [];
+                for (var i in arry) {
+                    var ascii = arry[i].charCodeAt();
+                    asciiArry.push(ascii);
+                }
+                for (var i = asciiArry.length - 1; i >= 0; i--) {
+                    asciiArry[i] < start ? asciiArry[i] = start : false;
+                    asciiArry[i]++;
+                    if (asciiArry[i] > end) {
+                        asciiArry[i] = start;
+                    }
+                    else {
+                        break;
+                    }
+                }
+                var chr = "";
+                for (var i in asciiArry) {
+                    chr += String.fromCharCode(asciiArry[i])
+                }
+                if (chr.replace(/z+/gi, "") == "") {
+                    return "-1"
+                }
+                else {
+                }
+                return chr;
+            }
+            //==============ceshi==========
+
+            function write(str) {
+                $(".list").append("<label>" + str + "</label>")
+            }
+            $(document).ready(function () {
+                $("#search").on("click", function () {
+                    var start = $(".start").val() || "aa"
+                    surfix = $(".end").val() || ".com"
+                    status = true;
+                    check(start);
+
+                })
+            })
+        </script>
+
+
+    </body></html>

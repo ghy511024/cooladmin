@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin--demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+        <script src="../js/main.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>coolAdmin 内置函数使用介绍</h5>
+            </div>
+            <div class="mt20">
+                <p>
+                    此教程中的所有函数，均可在本页面F12打开控制台，在控制台中测试，以便观察结果。
+                </p>
+                <h3 class='mt50'>1：工具类 Ut</h3>
+                <p>方法截图：</p>
+                <p>
+                    <img src="/images/Ut/pic-ut.png" alt="" />
+                </p>
+                <p>Ut 工具类在引入coolAdmin 后就可以使用了，下面为Ut工具类的具体使用</p>
+                <pre><code class="language">
+            //==================Ut.getParam=======================
+            //地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi
+            Ut.getParam() // {key1:"haha",key2:"xixi"}
+            Ut.getParam("key1")// "haha"
+
+            //==================Ut.gettime=======================
+            var str = $("#start-time").val()//2016-01-08 12:00
+            Ut.gettime(str)//1452225600000
+
+            //==================Ut.Null=======================
+            var a, b = null, c = undefined, e = "";
+            f = 0, g = false
+            Ut.Null(a);//true
+            Ut.Null(b);//true
+            Ut.Null(c);//true
+            Ut.Null(d);//true
+            Ut.Null(e);//true
+            Ut.Null(f);//true
+            Ut.Null(g);//true
+
+            //==================Ut.isURL=======================
+            var url1 = "http://www.zhangyu.tv"
+            var url2 = "www.zhangyu.tv"
+            Ut.isURL(url1);//true
+            Ut.isURL(url2);//false
+
+            //==================Ut.getTimeTostr=======================
+            Ut.getTimeTostr(1452225600000);//2016-01-08 12:00
+
+            //==================Ut.search=======================
+            //地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi
+            Ut.search("key3", "hehe")//地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi&key3=hehe
+                </code></pre>
+            </div>
+            <h3 class='mt50'>2：自定义系统弹窗zalert()</h3>
+            <p>系统弹窗函数 alert()。自定义弹窗函数 zalert() <div class="btn btn-info" onclick="zalert('hellow')">测试</div></p>
+        <pre><code class="language">
+          $(".xxx").on("click",function(){
+                zalert("hellow")//（此函数将不会阻塞其他函数的执行）
+            })
+                </code></pre>
+        <h3 class='mt50'>
+            3： unixtime 转换为字符串
+        </h3>
+        <pre><code class="language">
+            //==========html 原始数据==================
+                 &lt;tr>
+                     &lt;td class="mytime" time="1452225600000"> &lt;/td>
+                 &lt;/tr>
+
+            //==========html 预期结果==================
+                 &lt;tr>
+                     &lt;td class="mytime" time="1452225600000">2016-01-08 12:00 &lt;/td>
+                 &lt;/tr>
+
+            //=========方案1： 自己写js处理====================
+            $(".mytime").each(function () {
+                var time = $(this).attr("time");
+                if (Ut) {
+                    var str = Ut.getTimeTostr(time)
+                    $(this).html(str);
+                }
+            })
+
+            //=========方案2：coolAdmin 类库处理====================
+                 &lt;tr>
+            &lt;!------只需要给含有时间的td 加上class time ，然后将unix time 设置给属性 time,结果如下------>
+                     &lt;td class="time" time="1452225600000"> &lt;/td>
+                 &lt;/tr>
+                </code></pre>
+        <p>tr td,并不是必须的，只要有class='time' 就行了</p>
+        <h3 class='mt50'>
+            4：日期控件初始化
+        </h3>
+        <p><label>开始时间：</label><input type="text" id="start-time" class="timepicker" start="1452225600000"/>
+            <label>结束时间：</label><input type="text" id="end-time" class="timepicker" end="1452225600000"/></p>
+        <pre><code class="language">
+            //==========java ==================
+            mv.addObject("start", System.currentTimeMillis());
+           
+            //==========jsp ==================
+            &lt;input type="text" id="mytime" time="${start}" />  
+
+            //=========js 方法1： 自己加载日期插件====================
+             $(".start").datetimepicker();//初始化日期插件
+            //赋值默认值
+             var start = $("#start").attr("start") 
+            if (start != null) {
+                var start = new Date(Number(start));
+                var str = Ut.getTimeTostr(start)
+                $("#start").val(str);
+            }
+            //=========js 方法2： 给input 加上特殊id====================
+            //==========jsp ==================
+            &lt;input type="text" id="start-time" start="${start}" class="timepicker"/>
+            &lt;input type="text" id="end-time" end="${start}" class="timepicker"/>    
+                </code></pre>
+        <p>class="timepicker" 有此class 的input 将会初始化日期插件</p>
+        <p>id="start-time" start="${start}" 会给默认将start 的unixtime 将转换为字符串</p>
+        <p>id="end-time" end="${start}" end 的unixtime 将转换为字符串</p>
+        <p>此版本只针对这两个id(需要一一对应)处理，做默认转换，其他id属性将不转换，可自己手写。</p>
+    </div>
+    <script type="text/javascript">
+//            //地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi
+//            Ut.getParam() // {key1:"haha",key2:"xixi"}
+//            Ut.getParam("key1")// "haha"
+//            //=========================================
+//            var str = $("#start-time").val()//2016-01-08 12:00
+//            Ut.gettime(str)//1452225600000
+//            //=========================================
+//            var a, b = null, c = undefined, e = "";
+//            f = 0, g = false
+//            Ut.Null(a);//true
+//            Ut.Null(b);//true
+//            Ut.Null(c);//true
+//            Ut.Null(d);//true
+//            Ut.Null(e);//true
+//            Ut.Null(f);//true
+//            Ut.Null(g);//true
+//            //=========================================
+//            var url1 = "http://www.zhangyu.tv"
+//            var url2 = "www.zhangyu.tv"
+//            Ut.isURL(url1);//true
+//            Ut.isURL(url2);//false
+//            //=========================================
+//            Ut.getTimeTostr(1452225600000);//2016-01-08 12:00
+//            //=========================================
+//            //地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi
+//            Ut.search("key3", "hehe")//地址栏为 http://www.zhangyu.tv?key1=haha&key2=xixi&key3=hehe
+    </script>
+</body>
+</html>
