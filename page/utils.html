@@ -115,13 +115,13 @@ and open the template in the editor.
             &lt;input type="text" id="mytime" time="${start}" />  
 
             //=========js 方法1： 自己加载日期插件====================
-             $(".start").datetimepicker();//初始化日期插件
+             $("#mytime").datetimepicker();//初始化日期插件
             //赋值默认值
-             var start = $("#start").attr("start") 
+             var start = $("#mytime").attr("time") 
             if (start != null) {
                 var start = new Date(Number(start));
                 var str = Ut.getTimeTostr(start)
-                $("#start").val(str);
+                $("#mytime").val(str);
             }
             //=========js 方法2： 给input 加上特殊id====================
             //==========jsp ==================

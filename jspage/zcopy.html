@@ -9,9 +9,10 @@ and open the template in the editor.
         <title>coolAdmin 后端wiki--zcopy 一键复制</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
         <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
         <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script  src="http://static.ws.kukuplay.com/common/lib/zclip/jquery.zclip.min.js"></script>
         <script type="text/javascript" src="../js/admin/adminload.js"></script>
     </head>
     <body>
@@ -43,19 +44,19 @@ and open the template in the editor.
         </div>
         <script type="text/javascript" src="../js/main.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                setTimeout(function () {
-                    $('.btn-info').zclip({
-                        path: 'http://static.ws.kukuplay.com/common/lib/zclip/ZeroClipboard.swf',
-                        copy: function () {
-                            return "http://www.zhangyu.tv";
-                        },
-                        afterCopy: function () {
-                            alert("复制成功")
-                        }
-                    });
-                }, 10)
-            })
+zadmin.ready(function () {
+    setTimeout(function () {
+        $('.btn-info').zclip({
+            path: 'http://static.ws.kukuplay.com/common/lib/zclip/ZeroClipboard.swf',
+            copy: function () {
+                return "http://www.zhangyu.tv";
+            },
+            afterCopy: function () {
+                alert("复制成功")
+            }
+        });
+    }, 10)
+})
         </script>
     </body>
 </html>

@@ -1,6 +1,6 @@
 /**
  * @version 1.0
- * @description 第一版实现基础解析，暂时不支持
+ * @description 第一版实现基础解析，暂时不支持高级语法
  * @author hongyu.gong
  * @date 2015-11-6
  * */
