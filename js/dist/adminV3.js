@@ -14,7 +14,8 @@ var Ut = (function () {
             else {
                 return param;
             }
-        }, gettime: function (str) {
+        },
+        gettime: function (str) {
             var ret = null;
             if (str == null || str.length == 0) {
                 return;
@@ -31,9 +32,11 @@ var Ut = (function () {
                 ret = new Date(y, M, d, h, m).getTime();
             }
             return ret;
-        }, Null: function (e) {
+        },
+        Null: function (e) {
             return e == null || e == "" || e.length == 0;
-        }, isURL: function (str) {
+        },
+        isURL: function (str) {
             if (str.match(/(http[s]?|ftp):\/\/[^\/\.]+?\..+(\w|\/)$/i) == null) {
                 return false
             }
@@ -75,7 +78,7 @@ var Ut = (function () {
 })();
 /**
  * @version 1.0
- * @description 第一版实现基础解析，暂时不支持
+ * @description 第一版实现基础解析，暂时不支持高级语法
  * @author hongyu.gong
  * @date 2015-11-6
  * */

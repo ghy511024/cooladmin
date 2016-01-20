@@ -165,9 +165,13 @@ window.AdminPage = [{
                     {
                         name: "zclip 一键复制",
                         url: "/jspage/zcopy.html"
+                    },
+                    {
+                        name: "ajax 上传图片",
+                        url: "/jspage/ajaximg.html"
                     }
                 ]
-            },  {
+            }, {
                 name: "插件开发",
                 title: "底层支持",
                 url: "/jspage/csstool.html",
