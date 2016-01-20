@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--兼容的video</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>ajax 异步上传图片 样例</h5>
+            </div>
+            <div class="margin-top">
+                <p>
+                    传统图片通过表单提交，会引起页面刷新，jquery ajaxupload 可以实现通过ajax 上传图片不引起页面刷新
+                </p>
+                <p>
+                    但这个插件在上传接口返回的数据为json格式的数据时，往往会不好使。所以本文中的类库对原来的插件稍加了部分修改，使得更为通用。
+                </p>
+                <p>
+                    <a href="http://static.ws.kukuplay.com/common/lib/ajaximg/ajaxupload.js" target="_blank">http://static.ws.kukuplay.com/common/lib/ajaximg/ajaxupload.js</a>
+                </p>
+                <p>
+                    版本并不是最新版本，但这个版本一直沿用至今，没出啥问题。
+                </p>
+                <h3>1:使用demo</h3>
+                <pre><code class="language">
+
+          &lt;script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/ajaximg/ajaxupload.js">  &lt;/script>
+      
+        $(document).ready(function(){
+            new AjaxUpload($("#upimg-btn"), {
+                action: '/picture/multiupload',
+                name: 'upfile',
+                data: ({}),
+                autoSubmit: true,
+                onSubmit: function (file, ext) {
+                },
+                onComplete: function (file, ret) {
+                // ret 为上传完图片后的返回数据
+                // 数据可能是字符串，也可能是数组，也可能是 json
+                }
+            });
+        })
+</code></pre>
+                <p>
+                    ps：备注 不支持跨域，上传接口地址必须和页面是同域名，（可使用ngix 中转）
+                </p>
+                <p>
+                    这博客是托管在github上的静态网页，没法做nginx中转，所以本文就不做实际的demo ，只是把代码粘贴出来
+                </p>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

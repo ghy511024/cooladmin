@@ -158,7 +158,6 @@ and open the template in the editor.
                         </tr>
                     </tbody>
                 </table>
-                <h3>5：下班了，今天先写到这儿，下周继续。。。</h3>
             </div>
         </div>
         <script type="text/javascript">
@@ -168,13 +167,15 @@ and open the template in the editor.
                 _id3: {type: "text", name: "标题5", },
                 radio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
                 checkbox: {type: "checkbox", check: [{name: "男", value: "1"}, {name: "n女", value: "5"}, {name: "阿斯蒂芬", value: "3"}]},
-                textarea: {type: "textarea", name: "描述", value: "haha"},
+                textarea: {type: "textarea", name: "描述"},
                 dynlist: {type: "dynlist", name: "动态列表", list: [{name: "链接", key: "ghy1"}]}
             };
 
             zadmin.ready(function () {
                 $("#cform").on("click", function () {
-                    zform.cform(data2);
+                    zform.cform(data2, function (retdata) {
+                        alert(JSON.stringify(retdata));
+                    });
                 })
                 $(".zedite").on("click", function () {
                     var el = $(this).parent().parent();
