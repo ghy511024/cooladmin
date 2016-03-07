@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/adminpageV3.0.css"/>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+    </head>
+    <body>
+        <div class="zyform-up-wrap cansee" style="position:relative">
+            <i class="fa fa-eye zyadmin-eyeicon"></i>
+            <i class="fa fa-cloud-upload zyadmin-upicon"></i>
+            <input type="text" value=""/>
+        </div>
+        <input type="text" class="zy-imgup" value="http://fengyun-bar.b0.upaiyun.com/143505201360612.png"/>
+        <!--<script type="text/javascript" src="../js/dist/adminV3.js"></script>-->
+        <script type="text/javascript" src="../js/admin/form/imgajaxupload.js"></script>
+        <script type="text/javascript">
+            window.UpConf = {
+                upurl: "/picture/multiupload", //乐视体育 多图片上传接口
+//                upurl: "/picture/imgupload", //章鱼单图片上传
+                success: function (ret, el) {// 上传成功后回调函数
+
+                }
+//                , returl: "origin"
+            }
+        </script>
+    </body>
+</html>

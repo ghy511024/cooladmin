@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--zform 教程</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+        <style type="text/css">
+            td img{
+                max-height: 100px;
+                max-width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>zform 自动弹窗表单教程</h5>
+            </div>
+            <div class="mt20">
+                <p>
+                    后台的数据列表通常是一个页面，想添加新数据，往往跳转到一个新页面去提交表单，体验上并不好。都还能接受，但是作为开发者，这种表单每次都要重新写
+                    即使不重新写也是将以前的现有的页面拷贝过来改一改然后就用上了，这是非常麻烦的一种开发体验。
+                </p>
+                <p>教程就不介绍zform到底是什么了，详情demo页面有介绍，主要介绍一些配置参数</p>
+                <h3>先来一个demo</h3>
+                <pre><code class="language">
+      &lt;script type="text/javascript">
+            var formdata = {
+                zforbidtext: {type: "text", name: "文本标签", forbid: "true", value: "此文本不可编辑"},
+                ztext: {type: "text", name: "文本标签"},
+                zimgup: {type: "imgup", name: "图片"},
+                zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
+                zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
+                ztextarea: {type: "textarea", name: "文本描述"},
+                zdynlist: {type: "dynlist", name: "动态列表", list: [{name: "字段1", key: "key1"}]},
+                zdynimglist: {type: "dynlist", name: "动态图片列表", imgup: "true", list: [{name: "图片", key: "link"}]}
+            }
+    //////////////////////上面的是配置数据，下面的是触发事件,拿到数据后ajax提交部分由开发人员自己写，插件就不代劳了////////////////
+            zadmin.ready(function () {
+                $("#showcform").on("click", function () {
+                    cform.cform(formdata, function (ret) {
+                        console.log("表单获取数据：" + JSON.stringify(ret));
+                        alert("表单获取数据：" + JSON.stringify(ret))
+                    });
+                })
+            })
+        &lt;/script>
+                </code></pre>
+                <div class="btn btn-info" id="showcform">点我创建表单</div>
+                <p>图片上传，这个demo 教程里是上传不了的哦，但是乐体社区，和章鱼后端是可以的，涉及到跨域问题，在后端页面那个域名下，必须有个上传图片的接口，没有接口，可以通过nginx中转到一个上传的接口，否则跨域都不行</p>
+                <h3>属性说明</h3>
+                <div class="table-wrap">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th>type（input类型）</th>
+                        <th>name（标签名）</th>
+                        <th class="max300">check（radio等选择属性设置）</th>
+                        <th>value(默认值)</th>
+                        <th>forbid（编辑状态）</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>text</td>
+                                <td>标签名</td>
+                                <td>--</td>
+                                <td>"默认值"</td>
+                                <td>"true" (如果为true，则此列不可编辑,默认为空)</td>
+                            </tr>
+                            <tr>
+                                <td>imgup</td>
+                                <td>上传标签名</td>
+                                <td>--</td>
+                                <td>"http://www.xxx.com/img.png"</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>radio</td>
+                                <td>单选框标签名</td>
+                                <td>[{name: "男", value: "1"}, {name: "女", value: "2"}]</td>
+                                <td>"2"</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>check</td>
+                                <td>复选框标签名</td>
+                                <td>[{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}]</td>
+                                <td>["1","2"]</td>
+                                <td>--</td>
+                            </tr>
+                            <tr>
+                                <td>textarea</td>
+                                <td>文本框</td>
+                                <td>--</td>
+                                <td>"文本框内容"</td>
+                                <td>"true" (如果为true，则此列不可编辑,默认为空)</td>
+                            </tr>
+                            <tr>
+                                <td>dynlist</td>
+                                <td>动态列表标签名</td>
+                                <td>--</td>
+                                <td>下面更详细的篇幅介绍</td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>编辑列表信息</h3>
+                <p>上述代码为创建一个新表单，对于已经存在的数据，如果想编辑，再来个demo</p>
+
+                <div class="table-wrap">
+                    <table class="table table-bordered">
+                        <thead>
+                        <th>zforbidtext</th>
+                        <th>ztext</th>
+                        <th>zimgup</th>
+                        <th>zradio</th>
+                        <th>zcheckbox</th>
+                        <th>ztextarea</th>
+                        <th>zdynlist</th>
+                        <th>zdynimglist</th>
+                        <th>操作</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td data-key="zforbidtext">此文本不可编辑</td>
+                                <td data-key="ztext">文本内容</td>
+                                <td data-key="zimgup" data-value="http://fengyun-bar.b0.upaiyun.com/144594847038395.png"><img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" /></td>
+                                <td data-key="zradio" data-value="2">女</td>
+                                <td data-key="zcheckbox" data-value="['1','2']">爱唱歌，爱跳舞</td>
+                                <td data-key="ztextarea">文本内容</td>
+                                <td data-key="zdynlist" data-value="[{'字段1':{'key':'key1',value:'哈哈'}},{'字段1':{'key':'key1',value:'呵呵'}}]">哈哈，呵呵，嗯嗯</td>
+                                <td data-key="zdynimglist" data-value="[{'图片链接':{'key':'link',value:'http://fengyun-bar.b0.upaiyun.com/142260603057098.png'}},{'图片链接':{'key':'link',value:'http://fengyun-bar.b0.upaiyun.com/144594847038395.png'}}]">
+                                    <img src="http://fengyun-bar.b0.upaiyun.com/142260603057098.png" alt="" /><img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" />
+                                </td>
+                                <td><div class="btn btn-info zedite">编辑</div></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>表单代码</p>
+                <pre><code class="language">
+                    &lt;table class="table table-bordered">
+                        &lt;thead>
+                        &lt;th>zforbidtext&lt;/th>
+                        &lt;th>ztext&lt;/th>
+                        &lt;th>zimgup&lt;/th>
+                        &lt;th>zradio&lt;/th>
+                        &lt;th>zcheckbox&lt;/th>
+                        &lt;th>ztextarea&lt;/th>
+                        &lt;th>zdynlist&lt;/th>
+                        &lt;th>zdynimglist&lt;/th>
+                        &lt;th>操作&lt;/th>
+                        &lt;/thead>
+                        &lt;tbody>
+                            &lt;tr>
+                                &lt;td data-key="zforbidtext">此文本不可编辑&lt;/td>
+                                &lt;td data-key="ztext">文本内容&lt;/td>
+                                &lt;td data-key="zimgup" data-value="http://fengyun-bar.b0.upaiyun.com/142260603057098.png">&lt;img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" />&lt;/td>
+                                &lt;td data-key="zradio" data-value="2">女&lt;/td>
+                                &lt;td data-key="zcheckbox" data-value="['1','2']">爱唱歌，爱跳舞&lt;/td>
+                                &lt;td data-key="ztextarea">文本内容&lt;/td>
+                                &lt;td data-key="zdynlist" data-value="[{'字段1':{'key':'key1',value:'哈哈'}},{'字段1':{'key':'key1',value:'呵呵'}}]">哈哈，呵呵，嗯嗯&lt;/td>
+                                &lt;td data-key="zdynimglist" data-value="[{'图片链接':{'key':'link',value:'http://fengyun-bar.b0.upaiyun.com/142260603057098.png'}},{'图片链接':{'key':'link',value:'http://fengyun-bar.b0.upaiyun.com/144594847038395.png'}}]">
+                                    &lt;img src="http://fengyun-bar.b0.upaiyun.com/142260603057098.png" alt="" />&lt;img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" />
+                                &lt;/td>
+                                &lt;td>&lt;div class="btn btn-info zedite">编辑&lt;/div>&lt;/td>
+                            &lt;/tr>
+                        &lt;/tbody>
+                    &lt;/table>
+      &lt;script type="text/javascript">
+            var formdata = {
+                zforbidtext: {type: "text", name: "文本标签", forbid: "true", value: "此文本不可编辑"},
+                ztext: {type: "text", name: "文本标签"},
+                zimgup: {type: "imgup", name: "图片"},
+                zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
+                zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
+                ztextarea: {type: "textarea", name: "文本描述"},
+                zdynlist: {type: "dynlist", name: "动态列表", list: [{name: "字段1", key: "key1"}]},
+                zdynimglist: {type: "dynlist", name: "动态图片列表", imgup: "true", list: [{name: "图片", key: "link"}]}
+            }
+    //////////////////////创建表单为 zform.cform,而编辑表单为 eform////////////////
+            zadmin.ready(function () {
+                $(".zedite").on("click", function () {
+                    var el = $(this).parent().parent();
+                    zform.eform(el, formdata, function (ret) {
+                        console.log("表单获取数据：" + JSON.stringify(ret));
+                        alert("表单获取数据：" + JSON.stringify(ret))
+                    });
+                })
+            })
+        &lt;/script>
+                </code></pre>
+                <h3>问？table 需要怎么设置才能变成这个表单</h3>
+                <p>table 中的,插件会自动去扫描含"data-key"这个字段的td</p>
+                <p>data-key 这个字段的取值为 formdata 这个数据中的,可取的key 值，比如zforbidtext、ztext 等（如果设置的值不为 formdata 中的key,则为无效数据）</p>
+                <p>表单中每种类型的默认值为data-value(其中 data-key对应的type数据类型为 "text","textarea" 这两种类型可以不用填写data-value，如果不填写将会取td中的文本值作为表单的默认值。)</p>
+                <p>data-value 的值为弹窗表单的默认值，值的格式请参照：属性说明表格中的value字段</p>
+                <p>如果有一个动态列表，是需要上传图片的，则需要加上这个字段 imgup="true"</p>
+                <h3>问？获取表单数据</h3>
+                <p>怎么获取表单数据，获取后怎么提交后台？</p>
+                <pre><code class="language">
+            zadmin.ready(function () {
+                $("#showcform").on("click", function () {
+                        //当点击表单中的 "保存" 时会调用这个回调函数，并且将表单中的数据传过来
+                    cform.cform(formdata, function (ret) {
+                       //这儿拿到数据后 构造表单数据，然后手写ajax
+                       //每个业务对数据处理不一样，所有，业务需要什么数据由自己构造
+                        var data={};
+                        data["a"]=ret["ztext"]
+                        $.ajax({
+                            url: "/xxx/url",
+                            type: "post",
+                            data: (data),
+                            dataType: "json",
+                            error: function (jqXHR, textStatus, errorThrown) {
+
+                            },
+                            success: function (ret) {
+                                if (ret["ret"] == 0) {
+                                }
+                                else {
+                                }
+                            }
+                        })    
+
+                    });
+                })
+            })
+                </code></pre>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+        <script type="text/javascript">
+            var formdata = {
+                zforbidtext: {type: "text", name: "文本标签", forbid: "true"},
+                ztext: {type: "text", name: "文本标签"},
+                zimgup: {type: "imgup", name: "图片"},
+                zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
+                zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
+                ztextarea: {type: "textarea", name: "文本描述"},
+                zdynlist: {type: "dynlist", name: "动态列表", list: [{name: "字段1", key: "key1"}]},
+                zdynimglist: {type: "dynlist", name: "动态图片列表", imgup: "true", list: [{name: "图片", key: "link"}]}
+            }
+            //////////////////////上面的是配置数据，下面的是触发事件,拿到数据后ajax部分由开发人员自己写////////////////
+            zadmin.ready(function () {
+                $("#showcform").on("click", function () {
+                    zform.cform(formdata, function (ret) {
+                        console.log("表单获取数据：" + JSON.stringify(ret));
+                        alert("表单获取数据：" + JSON.stringify(ret))
+
+                    });
+                })
+//                ===============编辑==============
+                $(".zedite").on("click", function () {
+                    var el = $(this).parent().parent();
+                    zform.eform(el, formdata, function (ret) {
+                        console.log("表单获取数据：" + JSON.stringify(ret));
+                        alert("表单获取数据：" + JSON.stringify(ret))
+                    });
+                })
+            })
+        </script>
+    </body>
+</html>
