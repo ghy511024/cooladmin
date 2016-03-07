@@ -87,7 +87,7 @@ window.zform = (function () {
                     //radio
                     else if (type == "radio") {
                         var name = $(this).find("input[type='radio']").attr("name");
-                        var value = $(this).find("input[name='" + name + "']").val();
+                        var value = $(this).find("input[name='" + name + "']:checked").val();
                         if (value != null && value.length > 0) {
                             data[key] = value;
                         }
