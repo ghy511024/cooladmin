@@ -26,7 +26,8 @@ var Admins = (function () {
                     "sScrollX": "100%",
                     "sScrollXInner": "100%"
                 });
-            }, 50)
+
+            }, 500)
         },
         timePicker: function () {
             $(".time").each(function () {
@@ -36,24 +37,29 @@ var Admins = (function () {
                     $(this).html(str);
                 }
             })
-            $(".timepicker").datetimepicker();
-            var start = $("#start-time").attr("start") || Ut.getParam("start");
-            var end = $("#end-time").attr("end") || Ut.getParam("end");
-            if (start != null) {
-                if (start.length == 10) {
-                    start = Number(start) * 1000
+            try {
+                var start = $("#start-time").attr("start") || Ut.getParam("start");
+                var end = $("#end-time").attr("end") || Ut.getParam("end");
+                if (start != null) {
+                    if (start.length == 10) {
+                        start = Number(start) * 1000
+                    }
+                    var start = new Date(Number(start));
+                    var str = Ut.getTimeTostr(start)
+                    $("#start-time").val(str);
                 }
-                var start = new Date(Number(start));
-                var str = Ut.getTimeTostr(start)
-                $("#start-time").val(str);
+                if (end != null) {
+                    if (end.length == 10) {
+                        end = Number(end) * 1000
+                    }
+                    var end = new Date(Number(end));
+                    var str2 = Ut.getTimeTostr(end)
+                    $("#end-time").val(str2);
+                }
+                $(".timepicker").datetimepicker();
             }
-            if (end != null) {
-                if (end.length == 10) {
-                    end = Number(end) * 1000
-                }
-                var end = new Date(Number(end));
-                var str2 = Ut.getTimeTostr(end)
-                $("#end-time").val(str2);
+            catch (e) {
+
             }
         },
         initEvent: function () {
@@ -95,6 +101,7 @@ var Admins = (function () {
                     })
                 }
             }
+            this.cRightPage();
         },
         cpage: function (data) {
             //布局页面
@@ -237,6 +244,23 @@ var Admins = (function () {
                 }
             }
             return ret;
+        }, cRightPage: function () {
+            if (window.AdminRightPage) {
+                var r = zen("div.topbar-right")
+                for (var i in AdminRightPage) {
+                    var btn = zen("a.link")
+                    var name = AdminRightPage[i].name
+                    var url = AdminRightPage[i].url
+                    var cla = AdminRightPage[i].cla
+                    $(btn).html(name)
+                    if (url != null) {
+                        $(btn).attr("href", url);
+                    }
+                    $(btn).addClass(cla)
+                    $(r).append(btn)
+                }
+                $(".topbar").append($(r))
+            }
         }
     }
     var ret = {
@@ -248,5 +272,7 @@ var Admins = (function () {
 })();
 $(document).ready(function () {
     Admins.init();
-    zadmin.init();
+    if (window.zadmin) {
+        zadmin.init();
+    }
 })

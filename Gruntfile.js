@@ -14,7 +14,8 @@ module.exports = function (grunt) {
                     "js/admin/zen.js",
                     "js/admin/ftip.js",
                     "js/admin/zalert.js",
-                    "js/admin/form/zform.js",
+                    "js/admin/form/imgajaxupload.js", //ajax 上传图片 插件
+//                    "js/admin/form/zform.js", //动态表单
                     "js/admin/core.js"
                 ]
             }

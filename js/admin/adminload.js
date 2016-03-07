@@ -18,7 +18,10 @@
         "http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js", // 数据表格
         "http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js",
 //        "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminV3.1.min.js",
-        "/js/dist/adminV3.js"
+
+//        "/js/admin/form/imgajaxupload.js",
+        "/js/admin/form/zform.js",
+        "/js/dist/adminV3.js",
     ];
     for (var i = 0; i < csss.length; i++) {
         var tmpcss = document.createElement('link');
@@ -35,16 +38,16 @@
     }
     window.HOME_LINK = "/";
     window.zadmin = (function (fun) {
-        var tmpfun = function () {
-        };
+        var tmpfun = [];
         admin = {
             ready: function (fun) {
                 if (typeof fun === "function") {
-                    tmpfun = fun;
+                    tmpfun.push(fun);
                 }
             }, init: function () {
-                tmpfun();
-                console.log("admin ready...")
+                for (var i in tmpfun) {
+                    tmpfun[i]();
+                }
             }
         };
         return admin;
@@ -83,6 +86,10 @@ window.AdminPage = [{
                         name: "工具函数",
                         url: "/page/utils.html"
                     }
+                    , {
+                        name: "zform 教程",
+                        url: "/jspage/zform.html"
+                    }
                 ]
             },
             {
@@ -94,6 +101,7 @@ window.AdminPage = [{
                         name: "cdn 类库",
                         url: "/"
                     }
+
 //                    ,
 //                    {
 //                        name: "模块依赖资源",
@@ -223,3 +231,11 @@ window.AdminPage = [{
 //        ]
 //    }
 ];
+window.AdminRightPage = [{
+        name: "退出登录1",
+        cla: "logout"
+    }, {
+        name: "退出登录2",
+        cla: "logout"
+    }
+]

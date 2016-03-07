@@ -69,6 +69,16 @@ $lb2_color:#ECF0F1;
         height:100%;
         float:left;
     }
+    .topbar-right{
+        float: right;
+        line-height: 50px;
+        margin: 0px 20px;
+        .link{
+            color: #fff;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
     .topbar-nav-btn{
         padding: 0 20px;
         height: 50px;
@@ -328,6 +338,11 @@ $lb2_color:#ECF0F1;
     display: inline-block;
 }
 
+.max10{ @extend .els; max-width: 10px;}
+.max20{ @extend .els; max-width: 20px;}
+.max30{ @extend .els; max-width: 30px;}
+.max50{ @extend .els; max-width: 50px;}
+.max80{ @extend .els; max-width: 80px;}
 .max100{ @extend .els; max-width: 100px;}
 .max200{ @extend .els; max-width: 200px;}
 .max300{ @extend .els; max-width: 300px;}
@@ -391,17 +406,26 @@ input[type="text"],select{
         position:absolute;
         left:50%;
         margin-left: -300px;
-        top:100px;
-        overflow-y: auto;
-        max-height: 80%;
+        top:10%;
+        overflow: hidden;
+        height: 80%;
+        .form-scroll{
+            overflow-y: auto;
+            position:absolute;
+            width:100%;
+            top:0px;
+            bottom:0px;
+        }
         .close{
             position: absolute;
             font-size:30px;
-            right: 6px;
-            top: 1px;
+            right: 20px;
+            top: 6px;
+            z-index:2;
         }
         .form{
             margin: 50px;
+            margin-bottom:20px;
             label{
                 width: 120px;
                 text-align: right;
@@ -474,7 +498,7 @@ input[type="text"],select{
             .save-wrap{
                 margin-top:20px;
                 text-align:center;
-                height:30px;
+                height:60px;
                 border-top:1px solid #ccc;
                 .btn{
                     position:absolute;
@@ -483,7 +507,6 @@ input[type="text"],select{
                 .cancel{
                     right:50%;
                     margin-right:20px;
-
                 }
                 .save{
                     left:50%;
@@ -491,5 +514,32 @@ input[type="text"],select{
                 }
             }
         }
+    }
+}
+//////////////////图片上传控件/////////////////////////////
+.zyform-up-wrap{
+    position:relative;
+    display:inline-block;
+    .zyadmin-upicon,.zyadmin-eyeicon{
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        margin-top: -5px;
+        cursor: pointer;
+    }
+    .zyadmin-eyeicon{
+        /*display:none;*/
+        right:20px;
+    }
+    input{
+        padding-right: 35px;
+    }
+    img{
+        display:none;
+        position: absolute;
+        right: 0px;
+        top:100%;
+        max-width: 200px;
+        z-index:1;
     }
 }

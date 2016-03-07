@@ -66,7 +66,7 @@ window.fytip = (function ($) {
                     var w = $(this).innerWidth();
                     var h = $(this).innerHeight();
                     var type = $(this).attr("data-tip") || "top";
-                    var desc = $(this).attr("data-desc");
+                    var desc = $(this).attr("data-desc") || "content";
                     if (desc == "content") {
                         desc = $(this).html();
                     }

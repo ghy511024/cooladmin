@@ -1,6 +1,6 @@
 /* 
  * @后端通用弹窗模版 v1
- * 针对社区特殊需求 开发板。
+ * 探索脚步从未停止
  * @author ghy;
  * @contact qq:249398279
  */
@@ -34,24 +34,7 @@ window.zform = (function () {
             })
         }, bindEvent: function () {
 
-        },
-        bindImgUpbtn: function (el, fun) {
-            new AjaxUpload(el, {
-                action: '/picture/multiupload',
-                name: 'upfile',
-                data: ({maxWidth: "120", maxHeight: "120"}),
-                dataType: 'json',
-                autoSubmit: true,
-                onSubmit: function (file, ext) {
-                },
-                onComplete: function (file, retarray) {
-                    if (typeof fun == "function") {
-                        fun(el, retarray);
-                    }
-                }
-            });
-        },
-        save: function () {
+        }, save: function () {
             var data = zform.getData();
             console.log(JSON.stringify(data));
             if (tmpfun != null && typeof tmpfun == "function") {
@@ -119,34 +102,17 @@ window.zform = (function () {
             var retarray = [];
             $(el).find(".dyn-list .dyn-item").each(function () {
                 var map = {};
-                //图片类型单独处理
-                var imgup = $(this).attr("imgup") == "true";
-                console.log(imgup)
-                if (imgup) {
-                    var data = $(this).data("ret");
-                    if (typeof data == "string") {
-                        try {
-                            map = eval(data);
-                        } catch (e) {
-                        }
-                    } else {
-                        map = data
+                var haskey = false;
+                $(this).find("input").each(function () {
+                    var key = $(this).attr("key");
+                    var value = $(this).val();
+                    if (key != null && value != null && value.length > 0) {
+                        map[key] = value;
+                        haskey = true;
                     }
+                })
+                if (haskey) {
                     retarray.push(map);
-                }
-                else {
-                    var haskey = false;
-                    $(this).find("input").each(function () {
-                        var key = $(this).attr("key");
-                        var value = $(this).val();
-                        if (key != null && value != null && value.length > 0) {
-                            map[key] = value;
-                            haskey = true;
-                        }
-                    })
-                    if (haskey) {
-                        retarray.push(map);
-                    }
                 }
             })
             return retarray;
@@ -215,13 +181,10 @@ window.cform = (function () {
             $(el).find("td").each(function () {
                 var key = $(this).data("key");
                 var value = $(this).data("value");
-                var imgup = $(this).data("imgup") == true;
-                console.log(imgup)
                 if (key != null && key.length > 0) {
                     for (var tmpkey in data) {
                         if (tmpkey == key) {
                             tmpdata[key] = data[key];
-                            tmpdata[key]["imgup"] = imgup;
                             if (/^\[/gi.test(value)) {
                                 try {
                                     tmpdata[key]["value"] = eval(value);
@@ -238,7 +201,6 @@ window.cform = (function () {
                     }
                 }
             })
-            console.log(JSON.stringify(tmpdata));
             cform.cform(tmpdata);
         },
         _getText: function (item, key) {
@@ -330,91 +292,42 @@ window.cform = (function () {
             }
             var name = item["name"];
             var list = item["list"];
-            var defvalue = item["value"]; //默认值
-            //========for topic==========
-            var imgup = item["imgup"] == "true" || item["imgup"] == true;//图片上传。。
-            console.log(imgup)
-            //========for end==========
+            var defvalue = item["value"];
+
             if (list != null && list.length > 0) {
                 var dom = zen("div.item>label+div.dyn-list");
                 $(dom).attr("data-ftype", "dynlist");
                 $(dom).attr("data-fkey", key);
                 $(dom).find("label").html(name + "：");
+                var add_btn = zen("span.op-btn.add-dyn>i.fa.fa-plus-square.fa-1x")
+                $(dom).append(add_btn);
                 var listpanel = $(dom).find(".dyn-list");
                 var tmp_item = zen("div.dyn-item.dyn-tmp>span.op-btn.del-dyn+span.op-btn.up-dyn")
                 $(tmp_item).find(".del-dyn").append(zen("i.fa.fa-trash-o.fa-1x"))
                 $(tmp_item).find(".up-dyn").append(zen("i.fa.fa-arrow-up.fa-1x"));
                 $(dom).append(tmp_item);
-                if (imgup) {
-                    var c = $("<div class='btn btn-info upimg-btn'>上传</div>");
+                for (var i in list) {
+                    var name = list[i]["name"];
+                    var tkey = list[i]["key"];
+                    var b = $("<label>" + name + "：</label>");
+                    var c = $($("<input type='text' key='" + tkey + "'>"));
                     $(tmp_item).append(b);
-                    $(dom).append(c);
-                    //绑定上传图片按钮
-                    zform.bindImgUpbtn(c, cform._getImgDylist);
-                    if (defvalue != null && defvalue.length > 0) {
-                        cform._getImgDylist(c, defvalue);
+                    $(tmp_item).append(c);
+                }
+                for (var n in defvalue) {
+                    var c_item = zen("div.dyn-item>span.op-btn.del-dyn+span.op-btn.up-dyn")
+                    var item = defvalue[n];
+                    for (var ckey in item) {
+                        var b = $("<label>" + ckey + "：</label>");
+                        var c = $($("<input type='text' key='" + item[ckey]["key"] + "'  value='" + item[ckey]["value"] + "'>"));
+                        $(c_item).append(b);
+                        $(c_item).append(c);
                     }
-                } else {
-                    var add_btn = zen("span.op-btn.add-dyn>i.fa.fa-plus-square.fa-1x")
-                    $(dom).append(add_btn);
-                    for (var i in list) {
-                        var name = list[i]["name"];
-                        var tkey = list[i]["key"];
-                        var b = $("<label>" + name + "：</label>");
-                        var c = $($("<input type='text' key='" + tkey + "'>"));
-                        $(tmp_item).append(b);
-                        $(tmp_item).append(c);
-                    }
-                    for (var n in defvalue) {
-                        var c_item = zen("div.dyn-item>span.op-btn.del-dyn+span.op-btn.up-dyn")
-                        var item = defvalue[n];
-                        for (var ckey in item) {
-                            var b = $("<label>" + ckey + "：</label>");
-                            var c = $($("<input type='text' key='" + item[ckey]["key"] + "'  value='" + item[ckey]["value"] + "'>"));
-                            $(c_item).append(b);
-                            $(c_item).append(c);
-                        }
-                        $(c_item).find(".del-dyn").append(zen("i.fa.fa-trash-o.fa-1x"))
-                        $(c_item).find(".up-dyn").append(zen("i.fa.fa-arrow-up.fa-1x"));
-                        listpanel.append(c_item);
-                    }
+                    $(c_item).find(".del-dyn").append(zen("i.fa.fa-trash-o.fa-1x"))
+                    $(c_item).find(".up-dyn").append(zen("i.fa.fa-arrow-up.fa-1x"));
+                    listpanel.append(c_item);
                 }
                 return dom;
-            }
-        },
-        _getImgDylist: function (el, retstr) {
-            var retarray = null
-            if (typeof retstr == "string") {
-                retarray = JSON.parse(retstr);
-            }
-            else {
-                retarray = retstr;
-                retstr = JSON.stringify(retstr);
-            }
-            var dylist = $(el).parent().find(".dyn-list");
-            if (retarray != null) {
-                for (var i in retarray) {
-                    var c_item = zen("div.dyn-item>span.op-btn.del-dyn+span.op-btn.up-dyn")
-                    var obj = retarray[i]
-                    console.log(obj)
-                    var th = obj["thumb"]
-                    var th_w = th["width"];
-                    var th_h = th["height"];
-                    var th_url = th["url"];
-                    var or = obj["origin"]
-                    var or_w = or["width"];
-                    var or_h = or["height"];
-                    var or_url = or["url"];
-                    var img = new Image();
-                    img.src = th_url;
-                    var b = $("<span>缩略：" + th_w + "*" + th_h + "，原图：" + or_w + "*" + or_h + "</span>");
-                    $(c_item).append(img);
-                    $(c_item).append(b);
-                    $(c_item).attr("data-ret", JSON.stringify(obj));
-                    $(c_item).attr("imgup", "true");
-                    dylist.append(c_item);
-                    console.log(th_w, th_h, th_url, or_w, or_h, or_url);
-                }
             }
         },
         getSinleton: function () {
