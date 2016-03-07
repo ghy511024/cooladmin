@@ -18,6 +18,7 @@ and open the template in the editor.
                 max-height: 100px;
                 max-width: 100px;
             }
+
         </style>
     </head>
     <body>
@@ -37,6 +38,7 @@ and open the template in the editor.
             var formdata = {
                 zforbidtext: {type: "text", name: "文本标签", forbid: "true", value: "此文本不可编辑"},
                 ztext: {type: "text", name: "文本标签"},
+                ztime: {type: "time", name: "开始时间"},
                 zimgup: {type: "imgup", name: "图片"},
                 zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
                 zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
@@ -74,6 +76,13 @@ and open the template in the editor.
                                 <td>--</td>
                                 <td>"默认值"</td>
                                 <td>"true" (如果为true，则此列不可编辑,默认为空)</td>
+                            </tr>
+                            <tr>
+                                <td>ztime</td>
+                                <td>时间</td>
+                                <td>--</td>
+                                <td>"1457280000000"</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>imgup</td>
@@ -121,6 +130,7 @@ and open the template in the editor.
                         <thead>
                         <th>zforbidtext</th>
                         <th>ztext</th>
+                        <th>ztime</th>
                         <th>zimgup</th>
                         <th>zradio</th>
                         <th>zcheckbox</th>
@@ -133,6 +143,7 @@ and open the template in the editor.
                             <tr>
                                 <td data-key="zforbidtext">此文本不可编辑</td>
                                 <td data-key="ztext">文本内容</td>
+                                <td data-key="ztime" data-value="1457280000000" class="time" time="1457280000000"></td>
                                 <td data-key="zimgup" data-value="http://fengyun-bar.b0.upaiyun.com/144594847038395.png"><img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" /></td>
                                 <td data-key="zradio" data-value="2">女</td>
                                 <td data-key="zcheckbox" data-value="['1','2']">爱唱歌，爱跳舞</td>
@@ -152,6 +163,7 @@ and open the template in the editor.
                         &lt;thead>
                         &lt;th>zforbidtext&lt;/th>
                         &lt;th>ztext&lt;/th>
+                        &lt;th>ztime&lt;/th>
                         &lt;th>zimgup&lt;/th>
                         &lt;th>zradio&lt;/th>
                         &lt;th>zcheckbox&lt;/th>
@@ -164,6 +176,7 @@ and open the template in the editor.
                             &lt;tr>
                                 &lt;td data-key="zforbidtext">此文本不可编辑&lt;/td>
                                 &lt;td data-key="ztext">文本内容&lt;/td>
+                                &lt;td data-key="ztime" data-value="1457280000000" class="time" time="1457280000000">&lt;/td>
                                 &lt;td data-key="zimgup" data-value="http://fengyun-bar.b0.upaiyun.com/142260603057098.png">&lt;img src="http://fengyun-bar.b0.upaiyun.com/144594847038395.png" alt="" />&lt;/td>
                                 &lt;td data-key="zradio" data-value="2">女&lt;/td>
                                 &lt;td data-key="zcheckbox" data-value="['1','2']">爱唱歌，爱跳舞&lt;/td>
@@ -180,6 +193,7 @@ and open the template in the editor.
             var formdata = {
                 zforbidtext: {type: "text", name: "文本标签", forbid: "true", value: "此文本不可编辑"},
                 ztext: {type: "text", name: "文本标签"},
+                ztime: {type: "time", name: "开始时间"},
                 zimgup: {type: "imgup", name: "图片"},
                 zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
                 zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
@@ -243,6 +257,7 @@ and open the template in the editor.
             var formdata = {
                 zforbidtext: {type: "text", name: "文本标签", forbid: "true"},
                 ztext: {type: "text", name: "文本标签"},
+                ztime: {type: "time", name: "开始时间"},
                 zimgup: {type: "imgup", name: "图片"},
                 zradio: {type: "radio", check: [{name: "男", value: "1"}, {name: "女", value: "2"}]},
                 zcheckbox: {type: "checkbox", check: [{name: "爱唱歌", value: "1"}, {name: "爱跳舞", value: "2"}, {name: "爱打球", value: "3"}]},
@@ -255,8 +270,7 @@ and open the template in the editor.
                 $("#showcform").on("click", function () {
                     zform.cform(formdata, function (ret) {
                         console.log("表单获取数据：" + JSON.stringify(ret));
-                        alert("表单获取数据：" + JSON.stringify(ret))
-
+//                        alert("表单获取数据：" + JSON.stringify(ret))
                     });
                 })
 //                ===============编辑==============
