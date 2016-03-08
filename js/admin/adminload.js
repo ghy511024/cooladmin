@@ -20,7 +20,7 @@
 //        "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminV3.1.min.js",
 
 //        "/js/admin/form/imgajaxupload.js",
-        "/js/admin/form/zform.js",
+//        "/js/admin/form/zform.js",
         "/js/dist/adminV3.js",
     ];
     for (var i = 0; i < csss.length; i++) {

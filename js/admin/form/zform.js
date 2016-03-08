@@ -54,9 +54,9 @@ window.zform = (function () {
         }, getData: function () {
             var data = {};
             $(".z-form .form .item").each(function () {
-                var type = $(this).data("ftype") || "text"
+                var type = $(this).data("ftype");
                 var key = $(this).data("fkey")
-                if (key != null && key.length > 0) {
+                if (!Ut.Null(key)) {
                     //普通input
                     if (type == "text") {
                         var value = ($(this).find("input").val() || "").trim();
@@ -64,30 +64,43 @@ window.zform = (function () {
                             data[key] = value;
                         }
                     }
+                    //普通input
+                    else if (type == "time") {
+                        var value = ($(this).find("input").val() || "").trim();
+                        if (value != null && value.length > 0) {
+                            try {
+                                var times = Ut.gettime(value)
+                                data[key] = times;
+                            }
+                            catch (e) {
+                                alert(e)
+                            }
+                        }
+                    }
                     //下拉列表
-                    if (type = "select") {
+                    else if (type == "select") {
                         var value = $(this).find("select").val();
                         if (value != null && value.length > 0) {
                             data[key] = value;
                         }
                     }
                     //radio
-                    if (type = "radio") {
+                    else if (type == "radio") {
                         var name = $(this).find("input[type='radio']").attr("name");
-                        var value = $(this).find("input[name='" + name + "']").val();
+                        var value = $(this).find("input[name='" + name + "']:checked").val();
                         if (value != null && value.length > 0) {
                             data[key] = value;
                         }
                     }
                     //textarea
-                    if (type = "textarea") {
+                    else if (type == "textarea") {
                         var value = $(this).find("textarea").val();
                         if (value != null && value.length > 0) {
                             data[key] = value;
                         }
                     }
                     //checkbox
-                    if (type = "checkbox") {
+                    else if (type == "checkbox") {
                         var checkret = [];
                         $(this).find("input[type='checkbox']:checked").each(function () {
                             var value = $(this).val();
@@ -98,7 +111,7 @@ window.zform = (function () {
                         }
                     }
                     //imgup 图片上传
-                    if (type = "imgup") {
+                    else if (type == "imgup") {
                         var value = $(this).find("input").val(); //表单中默认字段
                         var cvalue = $(this).find("input").data("cvalue");// 图片上传 覆盖字段
                         if (cvalue != null) { //覆盖字段不为空，则提交覆盖字段
@@ -118,7 +131,7 @@ window.zform = (function () {
                         }
                     }
                     //dyn list(动态列表)
-                    if (type = "dynlist") {
+                    else if (type == "dynlist") {
                         var array = zform.getDynlist($(this));
                         if (array.length > 0) {
                             data[key] = array;
@@ -126,6 +139,7 @@ window.zform = (function () {
                     }
                 }
             })
+
             return data;
         },
         getDynlist: function (el) {
@@ -215,8 +229,11 @@ window.cform = (function () {
                         $(panel).append(item);
                     }
                     else if (type == "imgup") {//上传图片控件
-
                         var item = _this._getImgUp(data[key], key);
+                        $(panel).append(item);
+                    }
+                    else if (type == "time") {//时间控件
+                        var item = _this._getTime(data[key], key);
                         $(panel).append(item);
                     }
                 }
@@ -230,7 +247,6 @@ window.cform = (function () {
             $(panel).append(opwrap);
             //=============显示panel===========
             $(window).resize();
-
             $(form).show();
             var ch = $(".zform-cover").find(".form").height();
             var ph = $(".zform-cover").find(".z-form").height();
@@ -445,6 +461,36 @@ window.cform = (function () {
                 }
                 return dom;
             }
+        },
+        _getTime: function (item, key) {
+            if (item == null || key == null) {
+                return;
+            }
+            var name = item["name"];
+            var value = item["value"];
+            var forbid = item["forbid"];
+            var dom = zen("div.item>label");
+            $(dom).attr("data-ftype", "time");
+            $(dom).attr("data-fkey", key);
+            $(dom).find("label").html(name + "：");
+//            $(dom).append($("<input type='text' value='" + (value || "") + "'/>"));
+            var ipt = $("<input type='text'/>");
+            try {
+                ipt.datetimepicker();
+                value = value + "";
+                if (!Ut.Null(value) && value.length == 13) {
+                    var timestr = Ut.getTimeTostr(value);
+                    $(ipt).val(timestr);
+                }
+            }
+            catch (e) {
+
+            }
+            $(dom).append(ipt);
+            if (forbid) {
+                $(dom).find("input").attr("disabled", "true");
+            }
+            return $(dom);
         },
         getSinleton: function () {
             function getInstance() {
