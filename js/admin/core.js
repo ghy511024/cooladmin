@@ -90,8 +90,12 @@ var Admins = (function () {
                 if ((typeof AdminPage != "undefined") && AdminPage != null) {
                     admin.cpage(AdminPage);
                 } else {
+                    var url = window.CONF_URL;
+                    if (Ut.Null(url)) {
+                        url = "/api/getadminpagelink";
+                    }
                     $.ajax({
-                        url: "/api/getadminpagelink",
+                        url: url,
                         type: "post",
                         data: ({}),
                         dataType: "json",

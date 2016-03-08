@@ -48,7 +48,7 @@ and open the template in the editor.
     //////////////////////上面的是配置数据，下面的是触发事件,拿到数据后ajax提交部分由开发人员自己写，插件就不代劳了////////////////
             zadmin.ready(function () {
                 $("#showcform").on("click", function () {
-                    cform.cform(formdata, function (ret) {
+                    zform.cform(formdata, function (ret) {
                         console.log("表单获取数据：" + JSON.stringify(ret));
                         alert("表单获取数据：" + JSON.stringify(ret))
                     });
@@ -224,7 +224,7 @@ and open the template in the editor.
             zadmin.ready(function () {
                 $("#showcform").on("click", function () {
                         //当点击表单中的 "保存" 时会调用这个回调函数，并且将表单中的数据传过来
-                    cform.cform(formdata, function (ret) {
+                    zform.cform(formdata, function (ret) {
                        //这儿拿到数据后 构造表单数据，然后手写ajax
                        //每个业务对数据处理不一样，所有，业务需要什么数据由自己构造
                         var data={};
