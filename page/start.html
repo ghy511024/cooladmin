@@ -101,7 +101,7 @@ and open the template in the editor.
                     "http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.js", //jquery ui 日期插件
                     "http://static.ws.kukuplay.com/common/scripts/lib/jquery.dataTables.min.js", // 数据表格
                     "http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js",
-                   "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminV3.5.js", //【如需升级可改】 后端底层类库（此版本可能会升级）
+                   "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminV3.6.js", //【如需升级可改】 后端底层类库（此版本可能会升级）
                 ];
                 for (var i = 0; i < csss.length; i++) {
                     var tmpcss = document.createElement('link');
@@ -118,28 +118,33 @@ and open the template in the editor.
                 }
                 window.HOME_LINK = "/";// 【可改】 此连接为导航上那个 home(小房子) 图标跳转连接，一般为项目后端管理页面的首页
                 window.zadmin = (function (fun) {
-                    var tmpfun = function () {
-                    };
+                    var tmpfun = [];
                     admin = {
                         ready: function (fun) {
                             if (typeof fun === "function") {
-                                tmpfun = fun;
+                                tmpfun.push(fun);
                             }
                         }, init: function () {
-                            tmpfun();
+                            for (var i in tmpfun) {
+                                tmpfun[i]();
+                            }
                         }
                     };
                     return admin;
                 })();
             })();
 
+ //    
             /**
              *  
-             * 页面配置 没有下面配置则默认从服务器获取信息  地址 "/api/getadminpagelink"
-             * 章鱼tv 后端配置从服务器获取 不需要此配置
-             * 小型项目（博客，单个项目等）可采用下面配置
+             * 页面配置 没有下面配置则默认从服务器获取信息 
+             * 配置信息读取 配置地址 window.CONF_URL="http://xxx.com/api/getadminpagelink";(章鱼同学请咨询小龚，从而获得详细地址)
+             * 配置信息读取 默认地址 "/api/getadminpagelink"（在没有配置情况下的默认地址，从根目录读取）
+
+             * 小型项目（博客，单个项目等）在没有服务器接口的情况下，可采用下面配置（有服务器地址的就无需下面配置）
              * 【可改】
              * */
+           
             window.AdminPage = [{
                     name: "coolAdmin 入门",
                     url: "/page/start.html",
@@ -184,7 +189,7 @@ and open the template in the editor.
                     &lt;script type="text/javascript" src="../js/admin/adminload.js"> &lt;/script>
                  &lt;/head>
                 &lt;body>
-                    //############外面包裹一层 赋值一个 coolAdmin 可是别的id############
+                    //############外面包裹一层 赋值一个 coolAdmin 可是别的id（id="content"）############
                     &lt;div id="content">
                          &lt;div class="content-title">
                             &lt;h5>标题&lt;/h5>

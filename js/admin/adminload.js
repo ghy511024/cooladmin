@@ -37,6 +37,8 @@
         Z.parentNode.insertBefore(tmpjs, Z);
     }
     window.HOME_LINK = "/";
+//    window.CONF_URL="";
+//    window.CONF_URL="http://www.zhangyu.tv/api/getadminpagelink";
     window.zadmin = (function (fun) {
         var tmpfun = [];
         admin = {

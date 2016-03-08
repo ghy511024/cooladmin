@@ -15,12 +15,20 @@ and open the template in the editor.
     <body>
         <button id="test">test</button>
         <script type="text/javascript">
-            $(function () {
-                $("#test").on("click", function () {
-                    zalert("ss")
-                })
-
-            })
+            var haha=function(){
+                return 1;
+            }
+            function ghy(a) {
+//                console.log(typeof this,"jj");
+                function test(b) {
+                    a = a + b
+//                    console.log(typeof test)
+//                    console.log(test.toString)
+                    return test;
+                }
+//                test.toString  = function(){return a;}; 
+                return test;
+            }
         </script>
     </body>
 </html>
