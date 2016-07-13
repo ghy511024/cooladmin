@@ -1,17 +1,38 @@
+
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type="text/javascript" src="../../js/test/styletest.js"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>pietest</title>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/jquery-1.9.4.js"></script>
+        <style type="text/css">
+            .test{
+                width:200px;
+                height:200px;
+                border-radius: 3px;
+                -webkit-box-shadow:rgb(0, 0, 33) 0px 0px 20px 0px;
+                -moz-box-shadow:rgb(0, 0, 33) 0px 0px 20px 0px;
+                box-shadow:rgb(0, 0, 33) 0px 0px 20px 0px;
+                background:#bbb;
+                /*behavior: url(../js/PIE2/PIE.htc);*/
+                display:none;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="test css3"></div>
+        <!--[if lt IE 9]>
+                <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/PIE2/PIE_IE678.js"></script>
+            <![endif]-->
+        <script type="text/javascript">
+            $(function () {
+                if (window.PIE) {
+                    $('.css3').each(function () {
+                        PIE.attach(this);
+                    });
+                }
+            });
+        </script>
+
     </body>
 </html>

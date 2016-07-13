@@ -18,6 +18,15 @@ module.exports = function (grunt) {
                     "js/admin/form/zform.js", //动态表单
                     "js/admin/core.js"
                 ]
+            }, IE678: {
+                dest: "js/dist/IE678.js",
+                src: [
+//                    "js/IE/JSON3.js",
+                    "js/IE/json2.js",
+                    "js/IE/border-box.js",
+                    "js/PIE2/PIE_IE678.js",
+                    "js/PIE2/piepatch.js",
+                ]
             }
         },
         uglify: {
@@ -25,6 +34,11 @@ module.exports = function (grunt) {
                 options: {banner: "<%= banner %>", report: "min"},
                 src: "<%= concat.admin.src %>",
                 dest: "js/dist/adminV3.min.js"
+            },
+            IE678: {
+                options: {banner: "<%= banner %>", report: "min"},
+                src: "<%= concat.IE678.src %>",
+                dest: "js/dist/IE678.min.js"
             }
         },
         watch: {

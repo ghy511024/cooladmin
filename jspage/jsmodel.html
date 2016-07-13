@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>章鱼js 模块化规范</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div  id="content">
+            <div class="content-title">
+                <h5>章鱼js 模块化规范</h5>
+            </div>
+            <div class="margin-top">
+                <p>
+                    如果用 require组织模块，在开发中依赖情况比较严重。如果是自己单独写模块最后再组织进require 模块中，改动比较不方便。
+                </p>
+                <p>
+                    下面是兼容有 require 和没有的情况，都可使用的模块，可插拔模块。让开发更方便。
+                </p>
+                <pre><code class="language">
+        /**
+         * 模块描述
+         * @date 
+         * @author xxx
+         * */
+        (function (model, array, factory) {
+            if (array == null && factory instanceof Function) {
+                array = [];
+            }
+            else if (array instanceof Function) {
+                factory = array;
+            }
+            if (typeof define === 'function' && define.amd) {
+                define(model, array, factory);
+            } else {
+                var tmp = [];
+                if (array instanceof Array) {
+                    for (var i = 0; i < array.length; i++) {
+                        tmp.push(window[array[i]]);
+                    }
+                    window[model] = factory.apply(this, Array.prototype.slice.call(tmp, 0))
+                }
+                else {
+                    window[model] = factory();
+                }
+            }
+        })("Model", ["Model2"], function () {
+            'use strict';
+            // 我们的业务模块开始 （上面的Model 将在window 域下注册，如果是require 将为require模块）
+            // Model2 为依赖模块，字符串格式，相当于window.Model2
+            var model = {};
+            return model;
+        })
+</code></pre>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "http://static.ws.kukuplay.com/common/styles/font-awesome.min.css";
+@import "bootstrap/bootstrap3.5";
 body{  
     font-size: 12px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
@@ -458,12 +459,11 @@ input[type="text"],select{
                     margin-left:10px;
                 }
             }
-            .dyn-list{
+            .dyn-list,.z-list{
                 display: inline-block;
                 width: 300px;
                 vertical-align: top;
                 margin-top: 20px;
-
                 label{
                     width: 50px;
                     text-align: right;
@@ -472,27 +472,27 @@ input[type="text"],select{
                 input[type="text"]{
                     width:200px;
                 }
-                .dyn-item{
+                .dyn-item,.zlist-item{
                     margin-top:5px;
                     position:relative;
                 }
             }
             .op-btn{position:absolute;
                     cursor:pointer;
-                    &.add-dyn{
+                    &.add-dyn,&.add-zlist{
                         position: absolute;
                         left: 127px;
                     }
-                    &.del-dyn{
+                    &.del-dyn,&.del-zlist{
                         left: -14px;
                         top: 5px;
                     }
-                    &.up-dyn{
+                    &.up-dyn,&.up-zlist{
                         left: -30px;
                         top: 5px;
                     }
             }
-            .dyn-tmp{
+            .dyn-tmp,.list-tmp{
                 display:none;
             }
             .save-wrap{

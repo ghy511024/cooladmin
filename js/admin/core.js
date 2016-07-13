@@ -89,6 +89,7 @@ var Admins = (function () {
             if ($(".topbar").length == 0) {
                 if ((typeof AdminPage != "undefined") && AdminPage != null) {
                     admin.cpage(AdminPage);
+                    admin.cRightPage();
                 } else {
                     var url = window.CONF_URL;
                     if (Ut.Null(url)) {
@@ -101,11 +102,12 @@ var Admins = (function () {
                         dataType: "json",
                         success: function (ret) {
                             admin.cpage(ret);
+                            Admins.cRightPage();
                         }
                     })
                 }
             }
-            this.cRightPage();
+//            this.cRightPage();
         },
         cpage: function (data) {
             //布局页面
@@ -270,6 +272,9 @@ var Admins = (function () {
     var ret = {
         init: function () {
             admin.init();
+        },
+        cRightPage: function () {
+            admin.cRightPage();
         }
     }
     return ret;

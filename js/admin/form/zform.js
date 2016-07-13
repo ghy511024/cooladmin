@@ -19,13 +19,19 @@ window.zform = (function () {
                     ImgUp.wrapImgUp(ipt)
                     ImgUp.bindImgUp($(ipt).parent().find(".zyadmin-upicon"))
                 }
+                zform.resize();
             })
-            $(document).on("click", ".up-dyn", function () {
+            $(document).on("click", ".add-zlist", function () {
+                var tmp = $(this).parent().find(".list-tmp").clone().removeClass("list-tmp");
+                $(this).parent().find(".z-list").append(tmp);
+                zform.resize();
+            })
+            $(document).on("click", ".up-dyn,.up-zlist", function () {
                 var parent = $(this).parent();
                 var brother = $(parent).prev();
                 brother.before(parent);
             })
-            $(document).on("click", ".del-dyn", function () {
+            $(document).on("click", ".del-zlist", function () {
                 var parent = $(this).parent();
                 parent.remove();
             })
@@ -43,7 +49,6 @@ window.zform = (function () {
         }, save: function () {
             var data = zform.getData();
             console.log("save data:", JSON.stringify(data));
-
             if (tmpfun != null && typeof tmpfun == "function") {
 
                 tmpfun(data)
@@ -56,6 +61,7 @@ window.zform = (function () {
             $(".z-form .form .item").each(function () {
                 var type = $(this).data("ftype");
                 var key = $(this).data("fkey")
+                var dtype = $(this).attr("dtype");
                 if (!Ut.Null(key)) {
                     //普通input
                     if (type == "text") {
@@ -131,6 +137,13 @@ window.zform = (function () {
                         }
                     }
                     //dyn list(动态列表)
+                    else if (type == "zlist") {
+                        var array = zform.getZlist($(this), dtype);
+                        if (array.length > 0) {
+                            data[key] = array;
+                        }
+                    }
+                    //dyn list(动态列表)
                     else if (type == "dynlist") {
                         var array = zform.getDynlist($(this));
                         if (array.length > 0) {
@@ -141,6 +154,20 @@ window.zform = (function () {
             })
 
             return data;
+        },
+        getZlist: function (el, dtype) {
+            var retarray = [];
+            $(el).find(".z-list .zlist-item").each(function () {
+                var val = $(this).find("input").val();
+                if (!Ut.Null(dtype) && dtype == "number") {
+                    val = Number(val) || null;
+                } else {
+                }
+                if (!Ut.Null(val)) {
+                    retarray.push(val);
+                }
+            })
+            return retarray;
         },
         getDynlist: function (el) {
             var retarray = [];
@@ -192,8 +219,17 @@ window.zform = (function () {
                 tmpfun = fun
             }
             cform.eform(el, data);
+        }, resize: function () {
+            $(".zform-cover .z-form").removeAttr("style")
+            $(window).resize();
+            var ch = $(".zform-cover").find(".form").height();
+            var ph = $(".zform-cover").find(".z-form").height();
+            if (ph - ch > 70) {
+                $(".zform-cover .z-form").css({"height": ch + 70});
+            }
         }
-    }
+    };
+
     return zform;
 })();
 window.cform = (function () {
@@ -220,8 +256,16 @@ window.cform = (function () {
                         var item = _this._getCheckbox(data[key], key);
                         $(panel).append(item);
                     }
+                    else if (type == "select") {
+                        var item = _this._getSlect(data[key], key);
+                        $(panel).append(item);
+                    }
                     else if (type == "textarea") {
                         var item = _this._getTextArea(data[key], key);
+                        $(panel).append(item);
+                    }
+                    else if (type == "zlist") {// 动态列表
+                        var item = _this._getList(data[key], key);
                         $(panel).append(item);
                     }
                     else if (type == "dynlist") {// 动态列表
@@ -246,13 +290,13 @@ window.cform = (function () {
             $(opwrap).find(".save").html("保存")
             $(panel).append(opwrap);
             //=============显示panel===========
-            $(window).resize();
+
+
             $(form).show();
-            var ch = $(".zform-cover").find(".form").height();
-            var ph = $(".zform-cover").find(".z-form").height();
-            if (ph - ch > 70) {
-                $(".zform-cover .z-form").css({"height": ch + 70});
-            }
+            setTimeout(function () {
+                zform.resize();
+            }, 1)
+
         },
         /*
          * 编辑表单
@@ -262,7 +306,7 @@ window.cform = (function () {
             var tmpdata = {};
             $(el).find("td").each(function () {
                 var key = $(this).data("key");//key
-                var value = $(this).data("value");
+                var value = $(this).attr("data-value");
                 var forbid = $(this).data("forbid");// 是否为不可编辑字段
                 if (key != null && key.length > 0) {
                     if (data[key] && (value == null || value.length == 0)) {
@@ -270,10 +314,12 @@ window.cform = (function () {
                             value = ($(this).html() || "").trim();//值 默认为文本内容
                         }
                     }
+                    else if (data[key] && (data[key]["type"] == "text" || data[key]["type"] == "textarea") && value != null) {
+                        value = $(this).attr("data-value");
+                    }
                     for (var tmpkey in data) {
                         if (tmpkey == key) {
                             tmpdata[key] = clone(data[key]);
-//                            tmpdata[key] = data[key];
                             if (/^\[/gi.test(value)) {
                                 try {
                                     tmpdata[key]["value"] = eval(value);
@@ -281,6 +327,9 @@ window.cform = (function () {
                                 catch (e) {
                                     console.log("td数据转换出错", el);
                                 }
+                            } else if (/###/gi.test(value)) {
+                                var array = value.split("###");
+                                tmpdata[key]["value"] = array;
                             }
                             else {
                                 tmpdata[key]["value"] = value;
@@ -389,6 +438,31 @@ window.cform = (function () {
             }
             return $(dom);
         },
+        _getSlect: function (item, key) {
+            if (item == null || key == null) {
+                return;
+            }
+            var rlist = item["select"]
+            var defvalue = item["value"];
+            var name = item["name"];
+            var dom = zen("div.item.select-item>label");
+            $(dom).attr("data-ftype", "select");
+            $(dom).attr("data-fkey", key);
+            var select = $("<select></select>");
+            $(dom).find("label").html(name + "：");
+            for (var i in rlist) {
+                var t = rlist[i];
+                var name = t["name"];
+                var value = t["value"];
+                var option = $("<option value='" + value + "'>" + name + "</option>")
+                if (defvalue === value) {
+                    option.attr("selected", "true");
+                }
+                $(select).append(option);
+            }
+            $(dom).append(select)
+            return $(dom);
+        },
         _getTextArea: function (item, key) {
             if (item == null || key == null) {
                 return;
@@ -401,6 +475,41 @@ window.cform = (function () {
             $(dom).find("label").html(name + "：");
             $(dom).append($("<textarea>" + (value || "") + "</textarea>"));
             return $(dom);
+        },
+        _getList: function (item, key, value) {
+            if (item == null || key == null) {
+                return;
+            }
+            var name = item["name"];
+            var list = item["list"];
+            var defvalue = item["value"];
+            var dtype = item["dtype"];
+            var dom = zen("div.item>label+div.z-list");
+            $(dom).attr("data-ftype", "zlist");
+            $(dom).attr("data-fkey", key);
+            $(dom).find("label").html(name + "：");
+            var add_btn = zen("span.op-btn.add-zlist>i.fa.fa-plus-square.fa-1x")
+            $(dom).append(add_btn);
+            var listpanel = $(dom).find(".z-list");
+            var tmp_item = zen("div.zlist-item.list-tmp>span.op-btn.del-zlist+span.op-btn.up-zlist")
+            $(tmp_item).find(".del-zlist").append(zen("i.fa.fa-trash-o.fa-1x"))
+            $(tmp_item).find(".up-zlist").append(zen("i.fa.fa-arrow-up.fa-1x"));
+            $(dom).append(tmp_item);
+            var c = $($("<input type='text'>"));
+            $(tmp_item).append(c);
+            for (var n in defvalue) {
+                var c_item = zen("div.zlist-item>span.op-btn.del-zlist+span.op-btn.up-zlist")
+                var val = defvalue[n];
+                var c = $($("<input type='text'   value='" + val + "'>"));
+                $(c_item).append(c);
+                $(c_item).find(".del-zlist").append(zen("i.fa.fa-trash-o.fa-1x"))
+                $(c_item).find(".up-zlist").append(zen("i.fa.fa-arrow-up.fa-1x"));
+                listpanel.append(c_item);
+            }
+            if (dtype != null && dtype == "number") {
+                dom.attr("dtype", "number");
+            }
+            return dom;
         },
         _getDynlist: function (item, key, value) {
             if (item == null || key == null) {
@@ -461,6 +570,7 @@ window.cform = (function () {
                 }
                 return dom;
             }
+         
         },
         _getTime: function (item, key) {
             if (item == null || key == null) {
