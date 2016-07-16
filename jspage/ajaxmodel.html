@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+    </head>
+    <body>
+        <div  id="content">
+            <div class="content-title">
+                <h5>章鱼js ajax组件化</h5>
+            </div>
+            <div class="margin-top">
+                <p>
+                    通用ajax 组件，去除重复代码，避免业务处理逻辑写在 ajax返回中。
+                </p>
+                <pre><code class="language">
+        var model = {
+            send: function () {
+                model.ajax("http://www.abc/xx", {"param": "2"}).then(function (ret) {
+                    console.log("请求成功")
+                }, function () {
+                    console.log("请求失败")
+                })
+            },
+            ajax: function (url, data) {
+                var dfd = $.Deferred();
+                $.ajax({
+                    url: url,
+                    type: "post",
+                    data: (data),
+                    dataType: "json",
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        dfd.reject();
+                    },
+                    success: function (ret) {
+                        dfd.resolve(ret);
+                    }
+                });
+                return dfd.promise();
+            }
+        }
+</code></pre>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

