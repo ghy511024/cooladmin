@@ -7,8 +7,8 @@
     var Z = document.getElementsByTagName('script')[0];
     var csss = [
         "http://static.ws.kukuplay.com/common/lib/jquery-ui/v1.8.21/jquery-ui.1.8.21.min.css",
-//        "http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css",
-//        "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminpageV3.0.css" //后端样式
+        "http://static.ws.kukuplay.com/common/styles/dataTables.bootstrap.css",
+//        "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminpageV3.7.css" //后端样式
         "/css/adminpageV3.0.css", //后端样式
 
     ];

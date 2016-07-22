@@ -111,10 +111,8 @@ window.zalert = (function () {
                 }
                 return alls;
             }
-
             return(stylestr);
         }
-
     }
     $(document).ready(function () {
         zalert.init();
