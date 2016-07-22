@@ -16,12 +16,12 @@ module.exports = function (grunt) {
                     "js/admin/zalert.js",
                     "js/admin/form/imgajaxupload.js", //ajax 上传图片 插件
                     "js/admin/form/zform.js", //动态表单
+                    "js/admin/maskimage.js", //图片展示
                     "js/admin/core.js"
                 ]
             }, IE678: {
                 dest: "js/dist/IE678.js",
                 src: [
-//                    "js/IE/JSON3.js",
                     "js/IE/json2.js",
                     "js/IE/border-box.js",
                     "js/PIE2/PIE_IE678.js",

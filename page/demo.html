@@ -37,17 +37,15 @@ and open the template in the editor.
             </div>
             <div class="mt20">
                 <h3>1：标准数据表格</h3>
-                <table class="table table-bordered" id="table10">
+                <table class="table table-bordered" id="example">
                     <thead>
-                    <th>标题1</th> <th>标题2</th> <th>标题3</th> <th>标题4</th>
+                    <th>标题1</th> <th class="max200">标题2</th> <th>标题3</th> <th>标题4</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>aaa0</td><td>bbb</td><td>ccc</td><td>ddd</td>
-                        </tr>
-                        <tr><td>aaa1</td><td>bbb</td><td>ccc</td><td>ddd</td></tr>
+                        <tr><td>aaa0</td><td class="max200"><span class="maskimg">http://sc2.hao123img.com/data/385ade9e2382e83ae549b92af15e6833</span></td><td>ccc</td><td>ddd</td></tr>
+                        <tr><td>aaa1</td><td class="max200"><span class="maskimg">http://fengyun-bar.b0.upaiyun.com/1464682042986711.jpg</span></td><td>ccc</td><td>ddd</td></tr>
                         <tr><td>aaa2</td><td>bbb</td><td>ccc</td><td>ddd</td></tr>
-                        <tr><td>aaa3</td><td>bbb</td><td>ccc</td><td>ddd</td></tr>
+                        <tr><td></td><td>bbb</td><td>ccc</td><td>ddd</td></tr>
                         <tr><td>aaa4</td><td>bbb</td><td>ccc</td><td>ddd</td> </tr>
                         <tr><td>aaa5</td><td>bbb</td><td>ccc</td><td>ddd</td> </tr>
                         <tr><td>aaa6</td><td>bbb</td><td>ccc</td><td>ddd</td> </tr>
@@ -170,7 +168,6 @@ and open the template in the editor.
                 textarea: {type: "textarea", name: "描述"},
                 dynlist: {type: "dynlist", name: "动态列表", list: [{name: "链接", key: "ghy1"}]}
             };
-
             zadmin.ready(function () {
                 $("#cform").on("click", function () {
                     zform.cform(data2, function (retdata) {
