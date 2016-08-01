@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>coolAdmin 后端wiki--CSS3hover白光闪过效果</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link type="text/css" href="../css/highlight/agate.css" rel="stylesheet"/>
+        <script type="text/javascript" src="http://cdn.bootcss.com/highlight.js/8.5/highlight.min.js"></script>
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/admin/adminload.js"></script>
+
+    </head>
+    <body>
+        <div id="content">
+            <div class="content-title">
+                <h5>CSS3hover白光闪过效果</h5>
+            </div>
+            <div class="margin-top">
+                <p>
+                    本例是静态页的动态效果，主要用到了CSS3相关样式和属性，达到hover状态有白光闪过的效果。
+                </p>
+                <p>
+                    需使用该效果时，为需要加白色光的标签a添加如下的style
+                </p>
+                <h3>1:使用demo</h3>
+                <pre><code class="language">
+&lt;style type="text/css">  
+    a:before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 80px;
+        height: 100%;
+        top: 0;
+        left: -137px;
+        overflow: hidden;
+        background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+        background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+        -webkit-transform: skewX(-25deg);
+        -moz-transform: skewX(-25deg);
+}
+    a:hover:before{
+        -webkit-transition: left 1s;
+        -moz-transition: left 1s;
+        transition: left 1s;
+        left: 110%;
+ }
+&lt;/style>
+&lt;a href="javascript:void(0)">  &lt;/a>
+                    </code>
+                </pre>
+                <p>
+                    以下为案例
+                </p>
+                <a href="javascript:void(0)" class="test"></a>
+                <style type="text/css">
+                    .test{
+                        width: 500px;
+                        height: 200px;
+                        background-color: #000;
+                        display: inline-block;
+                        position: relative;
+                    }
+                    .test:before{
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 80px;
+                        height: 100%;
+                        top: 0;
+                        left: -137px;
+                        overflow: hidden;
+                        background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+                        background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0)));
+                        background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+                        background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+                        -webkit-transform: skewX(-25deg);
+                        -moz-transform: skewX(-25deg);
+                    }
+                    .test:hover:before{
+                        -webkit-transition: left 1s;
+                        -moz-transition: left 1s;
+                        transition: left 1s;
+                        left: 110%;
+
+                    }
+                </style>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/main.js"></script>
+    </body>
+</html>

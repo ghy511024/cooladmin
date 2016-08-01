@@ -143,6 +143,10 @@ window.AdminPage = [{
                     {
                         name: "zen html",
                         url: "/jspage/zenhtml.html"
+                    },
+                    {
+                        name: "hover白光闪过",
+                        url: "/jspage/csswhite.html"
                     }
                 ]
             },
