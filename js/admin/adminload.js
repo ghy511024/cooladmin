@@ -174,15 +174,19 @@ window.AdminPage = [{
                         name: "ajax模块化",
                         url: "/jspage/ajaxmodel.html"
                     },
+                    {
+                        name: "font-icon 图标字体",
+                        url: "/page/font.html"
+                    },
                 ]
             }
         ]}
 ];
 window.AdminRightPage = [{
-        name: "退出登录1",
+        name: "按钮1",
         cla: "logout"
     }, {
-        name: "退出登录2",
+        name: "按钮2",
         cla: "logout"
     }
 ]
