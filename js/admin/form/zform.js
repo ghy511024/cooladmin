@@ -31,7 +31,7 @@ window.zform = (function () {
                 var brother = $(parent).prev();
                 brother.before(parent);
             })
-            $(document).on("click", ".del-zlist", function () {
+            $(document).on("click", ".del-zlist,.del-dyn", function () {
                 var parent = $(this).parent();
                 parent.remove();
             })
@@ -488,12 +488,13 @@ window.cform = (function () {
             $(dom).attr("data-ftype", "zlist");
             $(dom).attr("data-fkey", key);
             $(dom).find("label").html(name + "：");
-            var add_btn = zen("span.op-btn.add-zlist>i.fa.fa-plus-square.fa-1x")
+//            var add_btn = zen("span.op-btn.add-zlist>i.fa.fa-plus-square.fa-1x")
+            var add_btn = zen("span.op-btn.add-zlist>i.iconfont.icon-add")
             $(dom).append(add_btn);
             var listpanel = $(dom).find(".z-list");
             var tmp_item = zen("div.zlist-item.list-tmp>span.op-btn.del-zlist+span.op-btn.up-zlist")
-            $(tmp_item).find(".del-zlist").append(zen("i.fa.fa-trash-o.fa-1x"))
-            $(tmp_item).find(".up-zlist").append(zen("i.fa.fa-arrow-up.fa-1x"));
+            $(tmp_item).find(".del-zlist").append(zen("i.iconfont.icon-del"))
+            $(tmp_item).find(".up-zlist").append(zen("i.iconfont.icon-up"));
             $(dom).append(tmp_item);
             var c = $($("<input type='text'>"));
             $(tmp_item).append(c);
@@ -502,8 +503,8 @@ window.cform = (function () {
                 var val = defvalue[n];
                 var c = $($("<input type='text'   value='" + val + "'>"));
                 $(c_item).append(c);
-                $(c_item).find(".del-zlist").append(zen("i.fa.fa-trash-o.fa-1x"))
-                $(c_item).find(".up-zlist").append(zen("i.fa.fa-arrow-up.fa-1x"));
+                $(c_item).find(".del-zlist").append(zen("i.iconfont.icon-del"))
+                $(c_item).find(".up-zlist").append(zen("i.iconfont.icon-up"));
                 listpanel.append(c_item);
             }
             if (dtype != null && dtype == "number") {
@@ -524,12 +525,13 @@ window.cform = (function () {
                 $(dom).attr("data-ftype", "dynlist");
                 $(dom).attr("data-fkey", key);
                 $(dom).find("label").html(name + "：");
-                var add_btn = zen("span.op-btn.add-dyn>i.fa.fa-plus-square.fa-1x")
+//                var add_btn = zen("span.op-btn.add-dyn>i.fa.fa-plus-square.fa-1x")
+                var add_btn = zen("span.op-btn.add-dyn>i.iconfont.icon-add")
                 $(dom).append(add_btn);
                 var listpanel = $(dom).find(".dyn-list");
                 var tmp_item = zen("div.dyn-item.dyn-tmp>span.op-btn.del-dyn+span.op-btn.up-dyn")
-                $(tmp_item).find(".del-dyn").append(zen("i.fa.fa-trash-o.fa-1x"))
-                $(tmp_item).find(".up-dyn").append(zen("i.fa.fa-arrow-up.fa-1x"));
+                $(tmp_item).find(".del-dyn").append(zen("i.iconfont.icon-del"))
+                $(tmp_item).find(".up-dyn").append(zen("i.iconfont.icon-up"));
                 $(dom).append(tmp_item);
                 for (var i in list) {
                     var name = list[i]["name"];
@@ -564,13 +566,13 @@ window.cform = (function () {
                             }
                         }
                     }
-                    $(c_item).find(".del-dyn").append(zen("i.fa.fa-trash-o.fa-1x"))
-                    $(c_item).find(".up-dyn").append(zen("i.fa.fa-arrow-up.fa-1x"));
+                    $(c_item).find(".del-dyn").append(zen("i.iconfont.icon-del"))
+                    $(c_item).find(".up-dyn").append(zen("i.iconfont.icon-up"));
                     listpanel.append(c_item);
                 }
                 return dom;
             }
-         
+
         },
         _getTime: function (item, key) {
             if (item == null || key == null) {

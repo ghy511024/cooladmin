@@ -25,17 +25,16 @@ window.ImgUp = (function () {
         },
         wrapImgUp: function (el) {
             $(el).wrap("<div class='zyform-up-wrap'></div>");
-            var eyeicon = $('<i class="fa fa-eye zyadmin-eyeicon"></i>')
-            var upbtn = $('<i class="fa fa-cloud-upload zyadmin-upicon"></i>')
+//            var eyeicon = $('<i class="fa fa-eye zyadmin-eyeicon"></i>')
+//            var upbtn = $('<i class="fa fa-cloud-upload zyadmin-upicon"></i>')
+            var eyeicon = $('<i class="iconfont icon-eye f12 zyadmin-eyeicon"></i>')
+            var upbtn = $('<i class="iconfont icon-upload f12 zyadmin-upicon"></i>')
             $(el).parent().append(eyeicon).append(upbtn);
         },
         bindAllImgUp: function () {
-
             $(".zyform-up-wrap .zyadmin-upicon").each(function () {
                 imgup.bindImgUp($(this));
-
             })
-
         },
         bindImgUp: function (el) {
             window.UpConf = window.UpConf || {};

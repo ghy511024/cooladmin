@@ -1,13 +1,15 @@
 @charset "UTF-8";
-@import "http://static.ws.kukuplay.com/common/styles/font-awesome.min.css";
 @import "bootstrap/bootstrap3.5";
+@import "dist/font";
 body{  
     font-size: 12px;
     font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
     line-height: 1.428571429;
     color: #333333;
     background-color: #ffffff;
+    
 }
+
 ul,ul li{  list-style: none;
            padding: 0px;
            margin: 0px;}
@@ -47,6 +49,9 @@ $tb_img:linear-gradient(to bottom,#54436F 0,#40505B 100%);
 $lb_color:#3B8686;
 $lb_img:linear-gradient(75deg,#98598D 0,#577184 100%);
 $lb2_color:#ECF0F1;
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
 //顶部导航
 .topbar{
     a{  text-decoration: none;}
@@ -65,6 +70,13 @@ $lb2_color:#ECF0F1;
                 margin-left:20px;
                 color:#fff;
                 line-height:68px;
+                background: url("http://static.ws.kukuplay.com/images/home_1.png");
+                background-size: contain;
+                display: block;
+                top: 5px;
+                bottom: 5px;
+                position: absolute;
+                width: 40px;
             }
         }
         height:100%;
@@ -118,6 +130,13 @@ $lb2_color:#ECF0F1;
             display: inline-block;
             vertical-align: top;
             padding: 0 10px;
+            .col-title{
+                color: #df1155;
+                border-bottom: 2px solid #df1155;
+                height: 24px;
+                line-height: 16px;
+                margin: 0px 10px;
+            }
             ul{
                 li{
                     min-width: 60px;
@@ -216,11 +235,12 @@ $lb2_color:#ECF0F1;
             text-overflow: ellipsis;
             white-space: nowrap;
             text-align:center;
+            display:none;
 
         }
         .list{
             position: absolute;
-            top: 40px;
+            top: 0px;
             left: 0px;
             right: 0px;
             bottom: 0px;

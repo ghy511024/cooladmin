@@ -47,10 +47,30 @@ module.exports = function (grunt) {
 //                tasks: ['concat', 'uglify']
                 tasks: ['concat']
             }
+        },
+        //图片database64
+        datauri: {
+            dist: {
+                src: "css/img/*.*",
+                dest: "css/dist/",
+                options: {
+                    target: ['css/*.css']
+                }
+            }
+        }, fontoptim: {
+            ptserif: {
+                src: 'css/font/iconfont.woff',
+                dest: 'css/dist/font',
+                options: {
+                    fontFamily: 'iconfont'
+                }
+            }
         }
     });
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask("default", ["watch", "uglify", "concat"]);
+    grunt.loadNpmTasks('grunt-datauri');
+    grunt.loadNpmTasks('grunt-fontoptim');
+    grunt.registerTask("default", ["watch", "uglify", "concat", "dataUri", "fontoptim"]);
 };

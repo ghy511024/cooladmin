@@ -19,7 +19,7 @@
         "http://static.ws.kukuplay.com/common/scripts/lib/dataTables.bootstrap.js",
 //        "http://static.ws.kukuplay.com/common/lib/zylib/v3.0/adminV3.1.min.js",
 //        "/js/admin/form/imgajaxupload.js",
-        "/js/admin/form/zform.js",
+//        "/js/admin/form/zform.js",
         "/js/dist/adminV3.js",
     ];
 
