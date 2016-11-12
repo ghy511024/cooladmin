@@ -166,6 +166,7 @@ var Admins = (function () {
                     //=======添加悬浮提示导航=======
                     var dropmenu = zen("div.dropdown-menu");
                     var taglink = topitem["tag"] || [];
+
                     for (var i = 0; i < taglink.length; i++) {
                         var col = zen("div.topbar-nav-col>div.col-title+ul");
                         var links = taglink[i]["links"] || [];
@@ -175,6 +176,7 @@ var Admins = (function () {
                             var link = $("<li ><a href='" + src + "'>" + name + "</a></li>");
                             $(col).find("ul").append(link);
                         }
+                        $(col).find(".col-title").html(taglink[i].name);
                         dropmenu.append(col);
                     }
                     navitem.append(dropmenu);

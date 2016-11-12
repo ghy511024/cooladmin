@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="http://static.ws.kukuplay.com/common/lib/jquery/v1.9.2/jquery-1.9.2.js"></script>
+        <script type="text/javascript" src="../js/scroll/zyscroll_all.js"></script>
+        <link rel="stylesheet" href="../css/scroll/zyscroll.css"/>
+        <style type="text/css">
+            .drag{
+                width:100px;
+                height:100px;
+                background: #000;
+                position:absolute;
+                right:0px;
+                top:30px;
+            }
+            .tt{
+                width:20px;
+                height:20px;
+                background:red;
+                position:absolute;
+                right:0px;
+                top:-20px;
+                cursor: move;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main">
+            <!--            <div class="wrap">
+                            <div class="scwrap">
+                                <div class="content sc_content">
+                                    1</br>
+                                    2</br>
+                                    3</br>
+                                    4</br>
+                                    5</br>
+                                    6</br>
+                                    7</br>
+                                </div>
+                            </div>
+                            <div class="scbar">
+                                <div class="scpanel">
+                                    <div class="sc-bar"></div>
+                                </div>
+                            </div>
+                        </div>-->
+            <div class="drag">
+                <div class="tt"></div>
+            </div>
+            <div class="ghytest">
+                <div class="sc_content">
+                    <div class="s1" style="height:250px;background: blue"></div>
+                    <div class="s1"  style="height:250px;background: yellow"></div>
+                    <!--<div class="s1"  style="height:250px;background: red"></div>-->
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                window.sc = ZYSC($(".ghytest"))
+                sc.init();
+                sc.callback = function (po, ph, allh) {
+                    console.log(po, ph, allh)//滚动高度，窗口高度，内容高度
+                }
+                //拖动测试
+                drag($(".drag"), {handle: $(".tt")}).init();
+            })
+            function add() {
+                var str = $('<div class="s1" style="height:250px;background: blue;border-bottom:1px solid #ddd"></div>');
+                $(".sc_content").append(str);
+                sc.update();
+            }
+            function test1() {
+                sc.scrollTo("bottom");
+            }
+        </script>
+    </body>
+</html>
